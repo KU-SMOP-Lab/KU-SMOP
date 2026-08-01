@@ -18,21 +18,21 @@
 const BOOK_CHAPTERS = [
 
   { year:2019,
-    title:"Macroscopic Fundamental Diagram Validation for Collision Formation",
-    authors:["Silverstein, Claire E.","Hamdar, Samer H.","Kang, Seungmo","Jang, Kitae"],
-    venue:"Traffic and Granular Flow '17 · Springer, pp. 107–116 · 2019",
+    title:"Macroscopic Fundamental Diagram Validation for Collision Formation on Freeway Networks",
+    authors:["Silverstein", "Claire E.","Samer H. Hamdar","Kang, Seungmo","Kitae Jang"],
+    venue:"in Samer H. Hamdar (ed.) Traffic and Granular Flow '17 · Springer, pp. 107–116 · 2019",
     tags:["Book Chapter"] },
 
   { year:2009,
-    title:"Optimizing the Biofuel Infrastructure: Transportation Networks and Biorefinery Locations",
-    authors:["Kang, Seungmo","Önal, Hayri","Ouyang, Yanfeng","Scheffran, Jürgen","Tursun, Ü. Deniz"],
-    venue:"Handbook of Bioenergy Economics and Policy · Springer, pp. 151–173 · 2009",
+    title:"Optimizing the Biofuel Infrastructure: Transportation Networks and Biorefinery Locations in Illinois",
+    authors:["Seungmo Kang","Hayri Önal","Yanfeng Ouyang","Jürgen Scheffran","Ü. Deniz Tursun"],
+    venue:"in Madhu Khanna et al. (eds.) Handbook of Bioenergy Economics and Policy · Springer, pp. 151–173 · 2009",
     tags:["Book Chapter"] },
 
   { year:2007,
     title:"Location-Based Services: Enabling Technologies and a Concierge Service Model",
-    authors:["Kang, Seungmo","Kim, Tschangho John","Jang, Sung-Gheel"],
-    venue:"Societies and Cities in the Age of Instant Access · Springer, pp. 227–239 · 2007",
+    authors:["Seungmo Kang","Tschangho John Kim","Sung-Gheel Jang"],
+    venue:"in Harvey Miller (ed.) Societies and Cities in the Age of Instant Access · Springer, pp. 227–239 · 2007",
     tags:["Book Chapter"] },
 
 ];

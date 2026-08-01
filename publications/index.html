@@ -52,8 +52,9 @@ const TAG_CLASS = {
 };
 const SPECIAL_LABELS = { "book-chapter": "Book Chapters", "patent": "Patents" };
 
+const PI_NAMES = ["Kang, Seungmo", "Seungmo Kang", "강승모"];
 function renderAuthors(authors) {
-  return authors.map(a => a === "Kang, Seungmo" || a === "강승모"
+  return authors.map(a => a.trim()).map(a => PI_NAMES.includes(a)
     ? `<strong>${a}</strong>` : a).join("; ");
 }
 function renderTags(tags) {

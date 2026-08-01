@@ -21,7 +21,7 @@
 const DOMESTIC_JOURNALS = [
 
   { year:2022,
-    title:"토지이용패턴과 사회경제지표가 지하철 수요 변화에 미치는 영향",
+    title:"토지이용패턴과 사회경제지표가 지하철 수요 변화에 미치는 영향: 서울 지하철 9호선을 중심으로",
     authors:["민하루","서영현","강승모"],
     venue:"한국철도학회 논문집 · Vol. 25, No. 5, pp. 386–397",
     tags:["Domestic Journal"] },
