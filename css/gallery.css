@@ -20,7 +20,7 @@ section { padding-top: 2.5rem; }
   padding-bottom: .5rem; border-bottom: 2px solid #80350E;
   display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
 }
-.event-date { font-size: 1rem; font-weight: 600; color: var(--gray-400); }
+.event-date { font-size: 1.15rem; font-weight: 600; color: var(--gray-400); }
 .event-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: .75rem; grid-auto-flow: dense; }
 .event-photo {
   aspect-ratio: 4/3; border-radius: 6px; overflow: hidden;
