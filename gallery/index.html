@@ -82,6 +82,15 @@ function renderGallery(filter) {
       </div>`;
   }).join("");
   document.getElementById("gallery-grid").innerHTML = html;
+
+  // 세로 사진 자동 인식 → 세로로 긴 칸(가로 2장 높이)으로 표시
+  document.querySelectorAll("#gallery-grid .event-photo img").forEach(img => {
+    const mark = () => {
+      if (img.naturalHeight > img.naturalWidth) img.parentElement.classList.add("portrait");
+    };
+    if (img.complete && img.naturalWidth) mark();
+    else img.addEventListener("load", mark);
+  });
 }
 
 // 사진 클릭 → lightbox 열기 (이벤트 위임)
