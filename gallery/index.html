@@ -29,6 +29,10 @@
       <button class="filter-btn" data-filter="conferences">학회</button>
       <button class="filter-btn" data-filter="field-trips">답사·MT</button>
       <button class="filter-btn" data-filter="celebrations">축하 행사</button>
+      <div class="sort-toggle">
+        <button class="sort-btn active" data-sort="newest">최신순</button>
+        <button class="sort-btn" data-sort="oldest">오래된순</button>
+      </div>
     </div>
 
     <div class="gallery-grid" id="gallery-grid"></div>
@@ -55,11 +59,15 @@
 <script src="../data/gallery.js"></script>
 <script>
 let currentEvents = [];   // 현재 필터로 표시 중인 활동들
+let currentFilter = "all";
+let currentSort = "newest";  // 배열이 최신순이므로 "oldest"면 뒤집어서 표시
 let lbEvent = 0;          // 라이트박스가 열려 있는 활동 index
 let lbIndex = 0;          // 그 활동 안에서 몇 번째 사진인지
 
 function renderGallery(filter) {
+  currentFilter = filter;
   currentEvents = filter === "all" ? GALLERY : GALLERY.filter(g => g.category === filter);
+  if (currentSort === "oldest") currentEvents = [...currentEvents].reverse();
   const html = currentEvents.map((ev, ei) => {
     const tiles = (ev.photos && ev.photos.length)
       ? ev.photos.map((p, i) => `
@@ -143,6 +151,15 @@ document.querySelectorAll(".filter-btn").forEach(btn => {
     document.querySelectorAll(".filter-btn").forEach(b => b.classList.remove("active"));
     btn.classList.add("active");
     renderGallery(btn.dataset.filter);
+  });
+});
+
+document.querySelectorAll(".sort-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".sort-btn").forEach(b => b.classList.remove("active"));
+    btn.classList.add("active");
+    currentSort = btn.dataset.sort;
+    renderGallery(currentFilter);
   });
 });
 </script>

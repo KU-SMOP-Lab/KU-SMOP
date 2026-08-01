@@ -12,6 +12,18 @@ section { padding-top: 2.5rem; }
 }
 .filter-btn.active, .filter-btn:hover { border-color: #80350E; color: #80350E; background: var(--gray-100); }
 
+/* 정렬 토글 (필터 바 오른쪽) */
+.sort-toggle { margin-left: auto; display: flex; gap: .35rem; }
+.sort-btn {
+  font-family: var(--font-heading);
+  font-size: .85rem; font-weight: 600; padding: .45rem .9rem;
+  border-radius: 8px; border: 2px solid transparent;
+  background: none; color: var(--gray-400);
+  cursor: pointer; transition: all var(--transition);
+}
+.sort-btn.active { color: #80350E; border-color: #80350E; background: var(--white); }
+.sort-btn:hover:not(.active) { color: var(--gray-600); }
+
 /* ── 활동(이벤트)별 섹션 ── */
 .gallery-event { margin-bottom: 3rem; }
 .event-title {
