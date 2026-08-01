@@ -13,7 +13,7 @@ section { padding-top: 2.5rem; }
 .filter-btn.active, .filter-btn:hover { border-color: #80350E; color: #80350E; background: var(--gray-100); }
 
 /* ── 활동(이벤트)별 섹션 ── */
-.gallery-event { margin-bottom: 5rem; }
+.gallery-event { margin-bottom: 6.5rem; }
 .event-title {
   font-family: var(--font-heading); font-weight: 700; font-size: 1.45rem;
   color: var(--navy); margin-bottom: .9rem;

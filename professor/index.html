@@ -56,7 +56,6 @@ document.getElementById("prof-sidebar").innerHTML = `
   </div>`;
 
 const bio = P.bio.map(p => `<p class="bio-text">${p}</p>`).join("");
-const interests = P.interests.map(i => `<div class="interest-pill">${i}</div>`).join("");
 const education = P.education.map(e => `
   <div class="edu-item">
     <div class="edu-degree">${e.degree}</div>
@@ -82,6 +81,14 @@ const awards = P.awards.map(a => `
       <p class="award-org">${a.org}</p>
     </div>
   </div>`).join("");
+const services = (P.services || []).map(s => `
+  <div class="career-item">
+    <div class="career-year">${s.period}</div>
+    <div>
+      <p class="career-role">${s.role}</p>
+      <p class="career-org">${s.org}</p>
+    </div>
+  </div>`).join("");
 
 document.getElementById("prof-main").innerHTML = `
   <div>
@@ -89,21 +96,22 @@ document.getElementById("prof-main").innerHTML = `
     ${bio}
   </div>
   <div>
-    <h2 class="prof-section-title">Research Interests</h2>
-    <div class="interest-grid">${interests}</div>
-  </div>
-  <div>
     <h2 class="prof-section-title">Education</h2>
     <div>${education}</div>
   </div>
   <div>
-    <h2 class="prof-section-title">Academic & Professional Career</h2>
+    <h2 class="prof-section-title">Experience</h2>
     <div>${career}</div>
   </div>
   <div>
-    <h2 class="prof-section-title">Awards & Honors</h2>
+    <h2 class="prof-section-title">Awards</h2>
     <div>${awards}</div>
-  </div>`;
+  </div>
+  ${services ? `
+  <div>
+    <h2 class="prof-section-title">기타 경력</h2>
+    <div>${services}</div>
+  </div>` : ""}`;
 </script>
 
 </body>

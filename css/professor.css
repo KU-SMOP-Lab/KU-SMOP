@@ -28,13 +28,13 @@ section { padding-top: 2.5rem; }
 
 .career-item { display: flex; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--gray-100); }
 .career-item:last-child { border-bottom: none; }
-.career-year { min-width: 110px; font-size: .85rem; font-weight: 500; color: var(--gray-400); padding-top: .15rem; flex-shrink: 0; }
+.career-year { min-width: 158px; font-size: .85rem; font-weight: 500; color: var(--gray-400); padding-top: .15rem; flex-shrink: 0; }
 .career-role { font-weight: 600; font-size: 1rem; color: var(--navy); margin-bottom: .2rem; }
 .career-org { font-size: .9rem; color: var(--gray-600); }
 
 .award-item { display: flex; gap: 1.5rem; padding: 1rem 0; border-bottom: 1px solid var(--gray-100); }
 .award-item:last-child { border-bottom: none; }
-.award-year { min-width: 44px; font-size: .82rem; color: var(--gray-400); font-weight: 500; padding-top: .15rem; flex-shrink: 0; }
+.award-year { min-width: 80px; font-size: .82rem; color: var(--gray-400); font-weight: 500; padding-top: .15rem; flex-shrink: 0; }
 .award-name { font-weight: 600; font-size: 1rem; color: var(--navy); }
 .award-org { font-size: .9rem; color: var(--gray-600); margin-top: .2rem; }
 
