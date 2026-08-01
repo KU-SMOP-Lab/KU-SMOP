@@ -29,8 +29,17 @@ section { padding-top: 2.5rem; }
 }
 .proj-title { font-family: var(--font-heading); font-weight: 700; font-size: 1rem; color: var(--navy); line-height: 1.45; margin-bottom: .4rem; }
 .proj-agency { font-size: .9rem; color: var(--gray-500); margin-bottom: .6rem; }
-.proj-desc { font-size: .9rem; color: var(--gray-600); line-height: 1.6; }
 .proj-status { display: inline-flex; align-items: center; gap: .35rem; font-size: .8rem; font-weight: 600; margin-top: .75rem; }
+.proj-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: .75rem; }
+.proj-bottom .proj-status { margin-top: 0; }
+.proj-link {
+  display: inline-flex; align-items: center; gap: .3rem;
+  font-size: .8rem; font-weight: 600; color: #80350E;
+  border: 1.5px solid #80350E; border-radius: var(--radius-full);
+  padding: .2rem .7rem; text-decoration: none;
+  transition: all .15s ease;
+}
+.proj-link:hover { background: #80350E; color: #fff; }
 .proj-status::before { content: '●'; font-size: .55rem; }
 .active { color: #16a34a; } .active::before { color: #16a34a; }
 .completed { color: var(--gray-400); } .completed::before { color: var(--gray-400); }

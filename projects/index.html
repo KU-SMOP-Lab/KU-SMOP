@@ -61,8 +61,10 @@ years.forEach(yr => {
           <span class="proj-period">${p.period}</span>
         </div>
         <p class="proj-agency">${p.agency}</p>
-        <p class="proj-desc">${p.desc}</p>
-        <span class="proj-status ${ongoing ? 'active' : 'completed'}">${ongoing ? 'Ongoing' : 'Completed'}</span>
+        <div class="proj-bottom">
+          <span class="proj-status ${ongoing ? 'active' : 'completed'}">${ongoing ? 'Ongoing' : 'Completed'}</span>
+          ${p.link ? `<a class="proj-link" href="${p.link}" target="_blank" rel="noopener">Link ↗</a>` : ''}
+        </div>
       </div>`;
   });
   html += `</div></div>`;
