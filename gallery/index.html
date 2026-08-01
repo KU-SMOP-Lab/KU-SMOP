@@ -54,58 +54,60 @@
 
 <script src="../data/gallery.js"></script>
 <script>
-let currentItems = [];
-let currentIndex = 0;
+let currentEvents = [];   // 현재 필터로 표시 중인 활동들
+let lbEvent = 0;          // 라이트박스가 열려 있는 활동 index
+let lbIndex = 0;          // 그 활동 안에서 몇 번째 사진인지
 
 function renderGallery(filter) {
-  currentItems = filter === "all" ? GALLERY : GALLERY.filter(g => g.category === filter);
-  const html = currentItems.map((g, i) => {
-    const sizeClass = g.size ? ` ${g.size}` : "";
-    const inner = g.image
-      ? `<img src="../${g.image}" alt="${g.title}">`
-      : `<div class="gallery-placeholder"><p>${g.title}</p></div>`;
+  currentEvents = filter === "all" ? GALLERY : GALLERY.filter(g => g.category === filter);
+  const html = currentEvents.map((ev, ei) => {
+    const tiles = (ev.photos && ev.photos.length)
+      ? ev.photos.map((p, i) => `
+          <div class="event-photo" data-event="${ei}" data-photo="${i}">
+            <img src="../${p}" alt="${ev.title}" loading="lazy">
+          </div>`).join("")
+      : `<div class="event-photo event-photo-empty"><p>사진 준비 중</p></div>`;
     return `
-      <div class="gallery-item${sizeClass}" data-category="${g.category}" data-index="${i}">
-        ${inner}
-        <div class="gallery-overlay">
-          <p class="gallery-overlay-title">${g.title}</p>
-          <p class="gallery-overlay-date">${g.date}</p>
-        </div>
+      <div class="gallery-event">
+        <p class="event-title">${ev.title}<span class="event-date">${ev.date}</span></p>
+        <div class="event-grid">${tiles}</div>
       </div>`;
   }).join("");
   document.getElementById("gallery-grid").innerHTML = html;
 }
 
-// 갤러리 클릭 → lightbox 열기 (이벤트 위임)
+// 사진 클릭 → lightbox 열기 (이벤트 위임)
 document.getElementById("gallery-grid").addEventListener("click", e => {
-  const item = e.target.closest(".gallery-item");
-  if (!item) return;
-  openLightbox(parseInt(item.dataset.index));
+  const tile = e.target.closest(".event-photo");
+  if (!tile || tile.classList.contains("event-photo-empty")) return;
+  openLightbox(parseInt(tile.dataset.event), parseInt(tile.dataset.photo));
 });
 
-function openLightbox(index) {
-  currentIndex = index;
+function openLightbox(eventIndex, photoIndex) {
+  lbEvent = eventIndex;
+  lbIndex = photoIndex;
   showLightboxItem();
   document.getElementById("lightbox").classList.add("open");
   document.body.style.overflow = "hidden";
 }
 
 function showLightboxItem() {
-  const g = currentItems[currentIndex];
-  const content = g.image
-    ? `<img class="lightbox-img" src="../${g.image}" alt="${g.title}">`
-    : `<div class="lightbox-placeholder"><p>${g.title}</p></div>`;
-  document.getElementById("lightbox-content").innerHTML = content;
-  document.getElementById("lightbox-title").textContent = g.title;
-  document.getElementById("lightbox-date").textContent  = g.date;
+  const ev = currentEvents[lbEvent];
+  document.getElementById("lightbox-content").innerHTML =
+    `<img class="lightbox-img" src="../${ev.photos[lbIndex]}" alt="${ev.title}">`;
+  document.getElementById("lightbox-title").textContent = ev.title;
+  document.getElementById("lightbox-date").textContent =
+    `${ev.date} · ${lbIndex + 1} / ${ev.photos.length}`;
 
-  // 이전/다음 버튼 숨기기 (항목이 1개면)
-  document.querySelector(".lightbox-prev").style.display = currentItems.length > 1 ? "" : "none";
-  document.querySelector(".lightbox-next").style.display = currentItems.length > 1 ? "" : "none";
+  // 사진이 1장뿐인 활동이면 이전/다음 버튼 숨기기
+  const multi = ev.photos.length > 1;
+  document.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
+  document.querySelector(".lightbox-next").style.display = multi ? "" : "none";
 }
 
 function shiftLightbox(dir) {
-  currentIndex = (currentIndex + dir + currentItems.length) % currentItems.length;
+  const n = currentEvents[lbEvent].photos.length;
+  lbIndex = (lbIndex + dir + n) % n;
   showLightboxItem();
 }
 
