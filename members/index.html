@@ -71,6 +71,7 @@ function renderCurrent() {
     html += `<div class="member-section"><p class="member-section-title">${cfg.label}</p><div class="member-grid">`;
     members.forEach(m => {
       const avatar = m.photo ? `<img src="../${m.photo}" alt="${m.name}">` : "";
+      const interestText = (m.interest || "").replace(/^\s*Research Interests?\s*:\s*/i, "");
       const linkChips = (m.links || []).map(l => `
         <a href="${l.url}" target="_blank" rel="noopener" class="link-chip link-chip-${l.type}">
           ${LINK_ICONS[l.type] || LINK_ICONS.website}${LINK_LABELS[l.type] || "Link"}
@@ -82,7 +83,7 @@ function renderCurrent() {
             <p class="member-name">${m.name}</p>
             <p class="member-name-kr">${m.nameKr}</p>
             <span class="tag ${cfg.tag} member-role">${cfg.badge}</span>
-            <p class="member-interest">${m.interest}</p>
+            ${interestText ? `<p class="interest-label">Research Interests</p><p class="member-interest">${interestText}</p>` : ""}
             <p class="member-email"><a href="mailto:${m.email}">${m.email}</a></p>
             ${linkChips ? `<div class="link-chips">${linkChips}</div>` : ""}
           </div>

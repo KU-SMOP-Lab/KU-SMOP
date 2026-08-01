@@ -7,7 +7,9 @@
      name:     "English Name",
      nameKr:   "한국어 이름",
      role:     "postdoc" | "phd" | "phdcourse" | "masters" | "undergrad",
-     interest: "Research Interest: ...",
+     interest: "관심분야1, 관심분야2, ...",
+               // "Research Interest:" 접두어는 써도 되고 안 써도 됨 (화면에서 자동 처리)
+               // 카드에는 "RESEARCH INTERESTS" 라벨 아래 내용만 표시됨
      email:    "email@korea.ac.kr",
      photo:    "images/members/파일명.jpg",  // 없으면 null
      links: [
@@ -186,15 +188,8 @@ const CURRENT_MEMBERS = [
   },
 
   // ── Undergraduate Researchers ──────────────────────────────────
-  {
-    name:     "[Name]",
-    nameKr:   "[Korean Name]",
-    role:     "undergrad",
-    interest: "Research Interest: [Add here]",
-    email:    "[email]@korea.ac.kr",
-    photo:    null,
-    links:    [],
-  },
+  // (현재 0명 — 멤버가 없는 항목은 페이지에 자동으로 표시되지 않고,
+  //  여기에 멤버를 추가하면 해당 섹션이 자동으로 다시 나타남)
 
 ];
 
