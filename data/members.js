@@ -44,7 +44,7 @@ const CURRENT_MEMBERS = [
     role:     "postdoc",
     interest: "Research Interest: [Add here]",
     email:    "seongjongwoo@korea.ac.kr",
-    photo:    "images/members/current/우성종.JPG",
+    photo:    "images/members/current/우성종.jpg",
     links:    [],
   },
 
@@ -55,7 +55,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: [Add here]",
     email:    "[email]@korea.ac.kr",
-    photo:    null,
+    photo:    "images/members/current/정헌.jpg",
     links:    [],
   },
   {
@@ -64,7 +64,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: [Add here]",
     email:    "mm1nha@naver.com",
-    photo:    null,
+    photo:    "images/members/current/민하루.jpg",
     links:    [],
   },
      {
@@ -73,7 +73,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: Transportation Planning, Demand-Responsive Transport(DRT), On-Demand Mobility",
     email:    "hc_park@korea.ac.kr",
-    photo:    "images/members/current/박현철_증명사진-241203.jpg",
+    photo:    "images/members/current/박현철.jpg",
     links:    [],
   },
      {
@@ -82,7 +82,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: Transportation Planning, Public Transportation, Accelerated Rail Transit Operation & Optimization",
     email:    "jhlee0789@korea.ac.kr",
-    photo:    "images/members/current/이준희-210812.jpg",
+    photo:    "images/members/current/이준희.jpg",
     links:    [],
   },
      {
@@ -109,7 +109,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: Public Transport Planning, Sustainable Transportation, International Development Cooperation",
     email:    "hippotimbo@korea.ac.kr",
-    photo:    null,
+    photo:    "images/members/current/최원균.jpg",
     links:    [{ type: "linkedin", url: "https://www.linkedin.com/in/choi-wongyun" }],
   },
      {
@@ -118,7 +118,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: Traffic Simulation, Urban Mobility",
     email:    "fermathooni88@korea.ac.kr",
-    photo:    "images/members/current/권동훈220314.JPG",
+    photo:    "images/members/current/권동훈.jpg",
     links:    [{ type: "website",  url: "https://sites.google.com/view/donghoonkwon/" }],
   },
      {
@@ -127,7 +127,7 @@ const CURRENT_MEMBERS = [
     role:     "phd",
     interest: "Research Interest: Transportation Planning, Optimization, Public Transportation",
     email:    "kssh9071@korea.ac.kr",
-    photo:    "images/members/current/강상혁220314.jpg",
+    photo:    "images/members/current/강상혁.jpg",
     links:    [],
   },
 
@@ -149,7 +149,7 @@ const CURRENT_MEMBERS = [
     role:     "masters",
     interest: "Research Interest: Locations & Routing Optimization, Data Analysis",
     email:    "1004oeb@korea.ac.kr",
-    photo:    "images/members/current/오은빛_250117.jpg",
+    photo:    "images/members/current/오은빛.jpg",
     links:    [],
   },
   {
@@ -158,7 +158,7 @@ const CURRENT_MEMBERS = [
     role:     "masters",
     interest: "Research Interest: Location optimization with gis",
     email:    "dodo171709@gmail.com",
-    photo:    "images/members/current/김도연_250325.jpg",
+    photo:    "images/members/current/김도연.jpg",
     links:    [],
   },
   {
@@ -167,7 +167,7 @@ const CURRENT_MEMBERS = [
     role:     "masters",
     interest: "Research Interest: Transportation Planning & Optimization, Data Analysis",
     email:    "kj010622@korea.ac.kr",
-    photo:    "images/members/current/김주완_250117.jpg",
+    photo:    "images/members/current/김주완.jpg",
     links:    [],
   },
   {
@@ -176,7 +176,7 @@ const CURRENT_MEMBERS = [
     role:     "masters",
     interest: "Research Interest: [Add here]",
     email:    "miinseo324@korea.ac.kr",
-    photo:    "images/members/current/박민서_260310.jpg",
+    photo:    "images/members/current/박민서.jpg",
     links:    [],
   },
 

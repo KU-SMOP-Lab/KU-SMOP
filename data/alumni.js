@@ -37,7 +37,7 @@ const ALUMNI = [
      yearLabel:"2010–2011",          // 화면에 표시되는 기간
      degree:   "연구교수",           // ※ 직함 맞는지 확인 필요
      position: "서울시립대학교 교수",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/박신형.jpg",
    },
    {
      name:     "Dongkyu Oh",
@@ -46,7 +46,7 @@ const ALUMNI = [
      yearLabel:"2012–2013",  // (선택) 연구교수 전용 — 쓰려면 // 를 지우고, month 줄은 삭제
      degree:   "연구교수",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "한국철도기술연구원 선임연구원",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/오동규.jpg",
    },
    {
      name:     "Mohammad Hadi Almasi",
@@ -55,7 +55,7 @@ const ALUMNI = [
      yearLabel:"2016–2017",  // (선택) 연구교수 전용 — 쓰려면 // 를 지우고, month 줄은 삭제
      degree:   "연구교수",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "Islamic Azad University, Gorgan Branch 교수",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/무하마드 하디 알마시.jpg",
    },
    {
      name:     "Yoon-Young Choi",
@@ -64,7 +64,7 @@ const ALUMNI = [
      yearLabel:"2018",  // (선택) 연구교수 전용 — 쓰려면 // 를 지우고, month 줄은 삭제
      degree:   "연구교수",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "삼성화재 자동차보험부문 모빌리티사업부",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/최윤영.jpg",
    },
    {
      name:     "Young-Hyun Seo",
@@ -73,7 +73,7 @@ const ALUMNI = [
      yearLabel:"2020–2022",  // (선택) 연구교수 전용 — 쓰려면 // 를 지우고, month 줄은 삭제
      degree:   "연구교수",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "SK Telecom",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/서영현.png",
    },
    {
      name:     "Yoonseok Oh",
@@ -82,7 +82,7 @@ const ALUMNI = [
      yearLabel:"2022 · 2022-2024",  // (선택) 연구교수 전용 — 쓰려면 // 를 지우고, month 줄은 삭제
      degree:   "박사 · 연구교수",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "삼성화재 자동차보험부문 모빌리티사업부",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/오윤석.jpg",
    },
    {
      name:     "Sujin Park",
@@ -91,7 +91,7 @@ const ALUMNI = [
      yearLabel:"2022–2025",  // (선택) 연구교수 전용 — 쓰려면 // 를 지우고, month 줄은 삭제
      degree:   "연구교수",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "남양주 시정연구원 연구위원",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/박수진.jpg",
    },
    {
      name:     "Minho Lee",
@@ -100,7 +100,7 @@ const ALUMNI = [
      month:    2,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "서울연구원",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/이민호.jpg",
    },
    {
      name:     "Yerang Shin",
@@ -109,7 +109,7 @@ const ALUMNI = [
      month:    2,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "샘표식품",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/신예랑.jpg",
    },
    {
      name:     "Jongwook Park",
@@ -118,7 +118,7 @@ const ALUMNI = [
      month:    2,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "경찰청",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/박종욱.jpg",
    },
    {
      name:     "Cheongrae Kim",
@@ -127,7 +127,7 @@ const ALUMNI = [
      month:    2,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "한국도로공사",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/김청래.jpg",
    },
    {
      name:     "Umji Park",
@@ -136,7 +136,7 @@ const ALUMNI = [
      month:    8,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "경찰청",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/박엄지.jpg",
    },
    {
      name:     "Yegin Na",
@@ -145,7 +145,7 @@ const ALUMNI = [
      month:    8,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "스튜디오 갈릴레이",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/나예진.jpg",
    },
    {
      name:     "YUAN YIN",
@@ -154,7 +154,7 @@ const ALUMNI = [
      month:    8,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "아트박스",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/윤우연.jpg",
    },
    {
      name:     "Heeseung Shon",
@@ -163,7 +163,7 @@ const ALUMNI = [
      month:    2,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "University of Illinois at Chicago (UIC) Postdoctoral Researcher",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/손희승.jpg",
    },
    {
      name:     "Hyunkeun Bae",
@@ -172,7 +172,7 @@ const ALUMNI = [
      month:    8,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "과학기술정책연구원",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/배현근.jpg",
    },
    {
      name:     "Jinju Kim",
@@ -181,7 +181,7 @@ const ALUMNI = [
      month:    8,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "한국교통연구원",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/김진주.jpg",
    },
    {
      name:     "Sungmin Kim",
@@ -190,7 +190,7 @@ const ALUMNI = [
      month:    2,               // 졸업 월 (숫자) — 화면에 "2024.02"로 표시됨
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "라온로드",       // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/김성민.jpg",
    },
    {
      name:     "Hoonyong Shim",
@@ -200,7 +200,7 @@ const ALUMNI = [
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "KT",       // (선택) 없으면 줄 자체를 빼면 됨
      thesis:   "대리운전 데이터를 활용한 시공간 특성 분석 및 예약 가격 최적화",          // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/심훈용.jpg",
    },
    {
      name:     "Hyun Park",
@@ -210,7 +210,7 @@ const ALUMNI = [
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "한국교통연구원",       // (선택) 없으면 줄 자체를 빼면 됨
      thesis:   "퀵커머스 서비스의 물류비용 절감을 위한 동기 및 비동기 환적 배송 문제",          // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/박현.jpg",
    },
    {
      name:     "Hyunhoo Joh",
@@ -220,7 +220,7 @@ const ALUMNI = [
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      position: "KDI 공공투자관리센터",       // (선택) 없으면 줄 자체를 빼면 됨
      thesis:   "유동적 재배치, 이질적 차량군 및 다중 규격 컨테이너를 고려한 ADMM 기반 시간 의존적 내륙 컨테이너 운송 최적화",          // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/조현후.jpg",
    },
    {
      name:     "Siwon Jang",
@@ -230,7 +230,7 @@ const ALUMNI = [
      degree:   "석사",           // ← "박사" / "석사" / "학사" / "연구교수" 중 하나로 바꾸기
      // position: "TBD",       // (선택) 없으면 줄 자체를 빼면 됨
      thesis:   "중간 집적 시설과 시간 창을 고려한 다계층 아크 라우팅 문제 기반의 폐기물 수거 경로 최적화",          // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/장시원.jpg",
    },
    {
      name:     "Seunghun Baek",
@@ -240,6 +240,6 @@ const ALUMNI = [
      degree:   "석사",           // ※ 실제 학위로 바꾸기 ("박사" / "석사" / "학사")
      position: "현대글로비스",       // (선택) 없으면 줄 자체를 빼면 됨
      thesis:   "비호환성을 고려한 승객과 물품을 동시에 운송하는 최적 Ride-Sharing 문제 해결을 위한 강화학습 기반 Adaptive Large Neighborhood Search 알고리즘 개발",          // (선택) 없으면 줄 자체를 빼면 됨
-     photo:    null,   // 사진 파일이 생기면 "images/members/alumni/파일명.jpg" 형태로 교체
+     photo:    "images/members/alumni/백승훈.jpg",
    }
 ];
