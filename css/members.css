@@ -55,6 +55,12 @@ section { padding-top: 2.5rem; }
 .link-chip-website       { --c: var(--navy); }
 
 .alumni-list { display: flex; flex-direction: column; gap: 0; }
+.alumni-group-title {
+  font-family: var(--font-heading); font-weight: 700; font-size: 1.15rem;
+  letter-spacing: .06em; text-transform: uppercase; color: #747474;
+  margin: 2.25rem 0 .5rem; padding-bottom: .5rem; border-bottom: 2px solid #80350E;
+}
+.alumni-group-title:first-child { margin-top: 0; }
 .alumni-item { display: flex; align-items: center; gap: 1.5rem; padding: .9rem 0; border-bottom: 1px solid var(--gray-100); }
 .alumni-item:last-child { border-bottom: none; }
 .alumni-degree-badge {
@@ -62,8 +68,14 @@ section { padding-top: 2.5rem; }
   color: #80350E; border: 2px solid #80350E; border-radius: 8px;
   padding: .1rem .55rem; background: var(--white); vertical-align: middle; margin-left: .3rem;
 }
-.alumni-year { min-width: 50px; font-size: .95rem; font-weight: 700; color: var(--gray-400); }
-.alumni-name { font-weight: 600; font-size: 1.05rem; color: var(--navy); flex: 1; }
+.alumni-year { min-width: 50px; font-size: .95rem; font-weight: 700; color: var(--gray-400); white-space: nowrap; }
+.alumni-mid { flex: 1; display: flex; flex-direction: column; gap: .3rem; }
+.alumni-name { font-weight: 600; font-size: 1.05rem; color: var(--navy); }
+.alumni-thesis { font-size: .88rem; color: var(--gray-600); line-height: 1.5; }
+.alumni-thesis .thesis-label {
+  font-size: .68rem; font-weight: 700; letter-spacing: .06em;
+  text-transform: uppercase; color: var(--gray-400); margin-right: .4rem;
+}
 .alumni-where { font-size: .95rem; color: var(--gray-600); }
 
 .alumni-avatar {

@@ -39,20 +39,41 @@
 
 <script src="../../data/alumni.js"></script>
 <script>
-const sorted = [...ALUMNI].sort((a, b) => b.year - a.year);
-const html = sorted.map(a => {
+// 학위(배지 문구) 기준 그룹 — 멤버가 0명인 그룹은 자동으로 표시되지 않음
+const GROUPS = [
+  { title: "Research Professors · 연구교수", match: d => d.includes("연구교수") && !d.includes("박사") && !d.includes("석사") },
+  { title: "Ph.D. · 박사",  match: d => d.includes("박사") },
+  { title: "M.S. · 석사",   match: d => d.includes("석사") && !d.includes("박사") },
+  { title: "B.S. · 학사",   match: d => d.includes("학사") },
+];
+const sortKey = a => a.year * 100 + (a.month || 0);
+
+function itemHtml(a) {
+  const when = a.yearLabel || (a.month ? `${a.year}.${String(a.month).padStart(2, "0")}` : a.year);
   const initials = a.name.split(/[\s,]+/).filter(Boolean).slice(0,2).map(s => s[0]).join("");
   const avatar = a.photo
     ? `<div class="alumni-avatar"><img src="../../${a.photo}" alt="${a.name}"></div>`
     : `<div class="alumni-avatar"><div class="alumni-avatar-initials">${initials}</div></div>`;
   return `
     <div class="alumni-item">
-      <span class="alumni-year">${a.year}</span>
-      <span class="alumni-name">${a.name}${a.nameKr ? ` · <span style="font-weight:400;color:var(--gray-500)">${a.nameKr}</span>` : ""} <span class="alumni-degree-badge">${a.degree}</span></span>
-      <span class="alumni-where">→ ${a.position}</span>
+      <span class="alumni-year">${when}</span>
+      <div class="alumni-mid">
+        <span class="alumni-name">${a.name}${a.nameKr ? ` · <span style="font-weight:400;color:var(--gray-500)">${a.nameKr}</span>` : ""} <span class="alumni-degree-badge">${a.degree}</span></span>
+        ${a.thesis ? `<p class="alumni-thesis"><span class="thesis-label">Thesis</span>${a.thesis}</p>` : ""}
+        ${a.position ? `<p class="alumni-where">→ ${a.position}</p>` : ""}
+      </div>
       ${avatar}
     </div>`;
-}).join("");
+}
+
+let html = "";
+GROUPS.forEach(g => {
+  const members = ALUMNI.filter(a => g.match(a.degree));
+  if (!members.length) return;
+  const sorted = [...members].sort((a, b) => sortKey(a) - sortKey(b)); // 오름차순 (가장 일찍 졸업한 사람이 위)
+  html += `<p class="alumni-group-title">${g.title}</p>`;
+  html += sorted.map(itemHtml).join("");
+});
 document.getElementById("alumni-list").innerHTML = html;
 </script>
 
