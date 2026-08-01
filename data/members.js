@@ -11,11 +11,19 @@
      email:    "email@korea.ac.kr",
      photo:    "images/members/파일명.jpg",  // 없으면 null
      links: [
-       // 개인 홈페이지/SNS 링크 목록. 없으면 [] 또는 항목 삭제
-       // type: "linkedin" | "github" | "googlescholar" | "website"
+       // 개인 링크 목록 — 카드의 이메일 아래에 아이콘+이름 칩 버튼으로 표시됨
+       // 없으면 links: [] 로 비워두면 됨 (칩이 아예 안 나타남)
+       //
+       // type은 아래 4가지 중에서만 골라 쓰세요 (칩 색상·아이콘이 자동 적용):
+       //   "linkedin"      → 파란색 LinkedIn 칩
+       //   "github"        → 검은색 GitHub 칩
+       //   "googlescholar" → 파란색 Scholar 칩
+       //   "website"       → 남색 Website 칩 (개인 홈페이지, 블로그 등 기타 링크)
+       //
+       // 필요한 것만 골라서 넣으면 됨 (전부 다 넣을 필요 없음):
        { type: "linkedin", url: "https://linkedin.com/in/username" },
        { type: "github",   url: "https://github.com/username" },
-       { type: "googlescholar", url: "https://scholar.google.com/..." },
+       { type: "googlescholar", url: "https://scholar.google.com/citations?user=..." },
        { type: "website",  url: "https://개인홈페이지.com" },
      ],
    }
@@ -107,7 +115,7 @@ const CURRENT_MEMBERS = [
     interest: "Research Interest: Public Transport Planning, Sustainable Transportation, International Development Cooperation",
     email:    "hippotimbo@korea.ac.kr",
     photo:    null,
-    links:    [],
+    links:    [{ type: "linkedin", url: "https://www.linkedin.com/in/choi-wongyun" }],
   },
      {
     name:     "Donghoon Kwon",
@@ -116,7 +124,7 @@ const CURRENT_MEMBERS = [
     interest: "Research Interest: Traffic Simulation, Urban Mobility",
     email:    "fermathooni88@korea.ac.kr",
     photo:    "images/members/current/권동훈220314.JPG",
-    links:    [],
+    links:    [{ type: "website",  url: "https://sites.google.com/view/donghoonkwon/" }],
   },
      {
     name:     "Sanghyeok Kang",

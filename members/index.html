@@ -55,6 +55,13 @@ const LINK_ICONS = {
   website: `<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>`,
 };
 
+const LINK_LABELS = {
+  linkedin: "LinkedIn",
+  github: "GitHub",
+  googlescholar: "Scholar",
+  website: "Website",
+};
+
 function renderCurrent() {
   let html = "";
   ROLE_ORDER.forEach(role => {
@@ -64,9 +71,9 @@ function renderCurrent() {
     html += `<div class="member-section"><p class="member-section-title">${cfg.label}</p><div class="member-grid">`;
     members.forEach(m => {
       const avatar = m.photo ? `<img src="../${m.photo}" alt="${m.name}">` : "";
-      const linkIcons = (m.links || []).map(l => `
-        <a href="${l.url}" target="_blank" rel="noopener" class="member-link member-link-${l.type}" title="${l.type}">
-          ${LINK_ICONS[l.type] || LINK_ICONS.website}
+      const linkChips = (m.links || []).map(l => `
+        <a href="${l.url}" target="_blank" rel="noopener" class="link-chip link-chip-${l.type}">
+          ${LINK_ICONS[l.type] || LINK_ICONS.website}${LINK_LABELS[l.type] || "Link"}
         </a>`).join("");
       html += `
         <div class="member-card">
@@ -76,10 +83,8 @@ function renderCurrent() {
             <p class="member-name-kr">${m.nameKr}</p>
             <span class="tag ${cfg.tag} member-role">${cfg.badge}</span>
             <p class="member-interest">${m.interest}</p>
-            <div class="member-footer">
-              <p class="member-email"><a href="mailto:${m.email}">${m.email}</a></p>
-              ${linkIcons ? `<div class="member-links">${linkIcons}</div>` : ""}
-            </div>
+            <p class="member-email"><a href="mailto:${m.email}">${m.email}</a></p>
+            ${linkChips ? `<div class="link-chips">${linkChips}</div>` : ""}
           </div>
         </div>`;
     });
