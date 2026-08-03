@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Form 스타일 예시</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Instrument Sans', sans-serif; background: #f1f5f9; color: #1e293b; }
+
+    .top-bar { background: #0a1628; color: #fff; padding: 1rem 2rem; text-align: center; font-size: .9rem; }
+    .top-bar strong { color: #93c5fd; }
+
+    .option-label { background: #0a1628; color: #fff; padding: 2rem 2rem 1.25rem; max-width: 680px; margin: 2.5rem auto 0; border-radius: 12px 12px 0 0; }
+    .option-label .badge { display: inline-block; background: #80350E; font-size: .72rem; font-weight: 700; letter-spacing: .1em; padding: .2rem .7rem; border-radius: 6px; margin-bottom: .6rem; }
+    .option-label h2 { font-size: 1.2rem; font-weight: 700; margin-bottom: .3rem; }
+    .option-label p { font-size: .85rem; color: #94a3b8; }
+
+    .demo-box { max-width: 680px; margin: 0 auto 0; background: #fff; border-radius: 0 0 12px 12px; border: 1px solid #e2e8f0; border-top: none; }
+
+    /* ══════════════════════════
+       옵션 1: 에디토리얼 (박스 없음)
+    ══════════════════════════ */
+    .opt1 { padding: 2.5rem 3rem; }
+    .opt1-title {
+      font-size: 1.7rem; font-weight: 700; color: #747474;
+      padding-bottom: .75rem; border-bottom: 2px solid #80350E;
+      margin-bottom: 2rem; display: flex; align-items: center; gap: .75rem;
+    }
+    .opt1-title span { font-size: .8rem; font-weight: 600; color: #80350E; border: 2px solid #80350E; border-radius: 6px; padding: .15rem .55rem; }
+    .opt1 .field { margin-bottom: 1.5rem; }
+    .opt1 label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: #747474; margin-bottom: .5rem; }
+    .opt1 input, .opt1 textarea, .opt1 select {
+      width: 100%; padding: .7rem 0; border: none; border-bottom: 1.5px solid #e2e8f0;
+      font-family: 'Instrument Sans', sans-serif; font-size: .95rem; color: #1e293b;
+      background: transparent; outline: none; transition: border-color .2s;
+    }
+    .opt1 input:focus, .opt1 textarea:focus, .opt1 select:focus { border-bottom-color: #80350E; }
+    .opt1 textarea { min-height: 100px; resize: vertical; }
+    .opt1 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .opt1-btn {
+      margin-top: 2rem; background: #747474; color: #fff;
+      border: none; padding: .85rem 2.5rem; font-family: 'Instrument Sans', sans-serif;
+      font-size: .9rem; font-weight: 700; cursor: pointer; border-radius: 6px;
+      transition: background .2s;
+    }
+    .opt1-btn:hover { background: #5a5a5a; }
+
+    /* ══════════════════════════
+       옵션 2: 네이비 헤더 카드
+    ══════════════════════════ */
+    .opt2 { overflow: hidden; border-radius: 0 0 12px 12px; }
+    .opt2-header { background: #0a1628; padding: 1.75rem 2.5rem; }
+    .opt2-header h3 { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: .3rem; }
+    .opt2-header p { font-size: .85rem; color: #94a3b8; line-height: 1.6; }
+    .opt2-body { padding: 2rem 2.5rem; background: #F4F5F4; }
+    .opt2 .field { margin-bottom: 1.25rem; }
+    .opt2 label { display: block; font-size: .72rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: #747474; margin-bottom: .4rem; }
+    .opt2 input, .opt2 textarea, .opt2 select {
+      width: 100%; padding: .65rem .9rem;
+      border: 2px solid #e2e8f0; border-radius: 6px;
+      font-family: 'Instrument Sans', sans-serif; font-size: .9rem; color: #1e293b;
+      background: #fff; outline: none; transition: border-color .2s;
+    }
+    .opt2 input:focus, .opt2 textarea:focus, .opt2 select:focus { border-color: #80350E; }
+    .opt2 textarea { min-height: 100px; resize: vertical; }
+    .opt2 .row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .opt2-btn {
+      margin-top: 1.5rem; background: #80350E; color: #fff;
+      border: none; width: 100%; padding: .85rem; font-family: 'Instrument Sans', sans-serif;
+      font-size: .9rem; font-weight: 700; cursor: pointer; border-radius: 6px;
+      transition: background .2s;
+    }
+    .opt2-btn:hover { background: #6b2a0b; }
+
+    /* ══════════════════════════
+       옵션 3: 미니멀 테이블형
+    ══════════════════════════ */
+    .opt3 { padding: 2.5rem 3rem; }
+    .opt3-top { display: flex; align-items: flex-end; justify-content: space-between; margin-bottom: 2rem; padding-bottom: .75rem; border-bottom: 2px solid #80350E; }
+    .opt3-top h3 { font-size: 1.3rem; font-weight: 700; color: #215F9A; }
+    .opt3-top span { font-size: .8rem; color: #747474; }
+    .opt3 .field { display: grid; grid-template-columns: 130px 1fr; gap: 1rem; align-items: center; padding: .85rem 0; border-bottom: 1px solid #f1f5f9; }
+    .opt3 .field:last-of-type { border-bottom: none; }
+    .opt3 label { font-size: .78rem; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; color: #94a3b8; }
+    .opt3 input, .opt3 textarea, .opt3 select {
+      width: 100%; padding: .5rem .75rem;
+      border: 1.5px solid #e2e8f0; border-radius: 6px;
+      font-family: 'Instrument Sans', sans-serif; font-size: .9rem; color: #1e293b;
+      background: #fff; outline: none; transition: border-color .2s;
+    }
+    .opt3 input:focus, .opt3 textarea:focus, .opt3 select:focus { border-color: #80350E; }
+    .opt3 textarea { min-height: 90px; resize: vertical; }
+    .opt3-footer { display: flex; align-items: center; justify-content: space-between; margin-top: 1.75rem; }
+    .opt3-note { font-size: .78rem; color: #94a3b8; }
+    .opt3-btn {
+      background: #0a1628; color: #fff;
+      border: none; padding: .75rem 2rem; font-family: 'Instrument Sans', sans-serif;
+      font-size: .88rem; font-weight: 700; cursor: pointer; border-radius: 6px;
+      transition: background .2s;
+    }
+    .opt3-btn:hover { background: #1e3a5f; }
+
+    .spacer { height: 1px; }
+  </style>
+</head>
+<body>
+
+<div class="top-bar"><strong>Contact Form 스타일 예시</strong> — 3가지 비교</div>
+
+<!-- ══ 옵션 1 ══ -->
+<div class="option-label">
+  <div class="badge">옵션 1</div>
+  <h2>에디토리얼 — 박스 없음, 라인 입력창</h2>
+  <p>사이트 연도 헤더 스타일 그대로. 입력창은 밑줄만. 가장 심플하고 학술적.</p>
+</div>
+<div class="demo-box">
+  <div class="opt1">
+    <div class="opt1-title">Send a Message <span>CONTACT</span></div>
+    <div class="row">
+      <div class="field"><label>Full Name *</label><input type="text" placeholder="홍길동"></div>
+      <div class="field"><label>Affiliation</label><input type="text" placeholder="Korea University"></div>
+    </div>
+    <div class="field"><label>Email *</label><input type="email" placeholder="your@email.com"></div>
+    <div class="field"><label>Purpose *</label>
+      <select><option>Select a topic</option><option>Graduate Admission</option><option>Research Collaboration</option></select>
+    </div>
+    <div class="field"><label>Message *</label><textarea placeholder="Tell us about yourself..."></textarea></div>
+    <button class="opt1-btn">Send Message →</button>
+  </div>
+</div>
+
+<!-- ══ 옵션 2 ══ -->
+<div class="option-label">
+  <div class="badge">옵션 2</div>
+  <h2>네이비 헤더 카드</h2>
+  <p>상단은 사이트 네이비, 버튼은 크림슨. 연구실 컬러 정체성이 강함.</p>
+</div>
+<div class="demo-box">
+  <div class="opt2">
+    <div class="opt2-header">
+      <h3>Send Us a Message</h3>
+      <p>Whether you're a prospective student, a collaborator, or just curious about our research.</p>
+    </div>
+    <div class="opt2-body">
+      <div class="row">
+        <div class="field"><label>Full Name *</label><input type="text" placeholder="홍길동"></div>
+        <div class="field"><label>Affiliation</label><input type="text" placeholder="Korea University"></div>
+      </div>
+      <div class="field"><label>Email *</label><input type="email" placeholder="your@email.com"></div>
+      <div class="field"><label>Purpose *</label>
+        <select><option>Select a topic</option><option>Graduate Admission</option><option>Research Collaboration</option></select>
+      </div>
+      <div class="field"><label>Message *</label><textarea placeholder="Tell us about yourself..."></textarea></div>
+      <button class="opt2-btn">Send Message →</button>
+    </div>
+  </div>
+</div>
+
+<!-- ══ 옵션 3 ══ -->
+<div class="option-label" style="margin-bottom:0;">
+  <div class="badge">옵션 3</div>
+  <h2>테이블형 — 라벨 좌측 정렬</h2>
+  <p>항목마다 라벨이 왼쪽에. 논문/서류 느낌. 가장 academic한 스타일.</p>
+</div>
+<div class="demo-box" style="margin-bottom:3rem;">
+  <div class="opt3">
+    <div class="opt3-top">
+      <h3>Contact Form</h3>
+      <span>SMOP Lab · Korea University</span>
+    </div>
+    <div class="field"><label>Name *</label><input type="text" placeholder="홍길동"></div>
+    <div class="field"><label>Affiliation</label><input type="text" placeholder="Korea University"></div>
+    <div class="field"><label>Email *</label><input type="email" placeholder="your@email.com"></div>
+    <div class="field"><label>Purpose *</label>
+      <select><option>Select a topic</option><option>Graduate Admission</option><option>Research Collaboration</option></select>
+    </div>
+    <div class="field"><label>Message *</label><textarea placeholder="Tell us about yourself..."></textarea></div>
+    <div class="opt3-footer">
+      <span class="opt3-note">We typically respond within 2–3 business days.</span>
+      <button class="opt3-btn">Submit →</button>
+    </div>
+  </div>
+</div>
+
+</body>
+</html>

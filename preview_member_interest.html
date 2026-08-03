@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미리보기 — Research Interest 표시 방식 4가지</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/members.css" />
+  <style>
+    body { background: var(--gray-50, #fafafa); }
+    .preview-wrap { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+    .preview-note {
+      background: #fff7ed; border: 1px solid #fdba74; border-radius: 6px;
+      padding: 1rem 1.25rem; font-size: .9rem; color: #9a3412; margin-bottom: 2.5rem; line-height: 1.6;
+    }
+    .option-label {
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;
+      color: var(--navy, #1a2b4a); margin: 3rem 0 .35rem;
+    }
+    .option-desc { font-size: .9rem; color: var(--gray-500, #737373); margin-bottom: 1.25rem; }
+    .demo-grid { display: grid; grid-template-columns: repeat(2, 260px); gap: 1.25rem; }
+    @media (max-width: 620px) { .demo-grid { grid-template-columns: 1fr; } }
+
+    /* ── 방식 A: 라벨 분리 ── */
+    .int-label {
+      font-size: .68rem; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--gray-400); margin-top: .7rem;
+    }
+    .int-text { font-size: .85rem; color: var(--gray-600); line-height: 1.55; margin-top: .15rem; }
+
+    /* ── 방식 B: 키워드 태그 ── */
+    .int-tags { display: flex; flex-wrap: wrap; gap: .3rem; margin-top: .3rem; }
+    .int-tag {
+      font-size: .72rem; font-weight: 600; color: var(--gray-600);
+      background: var(--gray-100); border: 1px solid var(--gray-200);
+      border-radius: var(--radius-full, 999px); padding: .15rem .55rem;
+    }
+
+    /* ── 방식 C: 불릿 리스트 ── */
+    .int-list { list-style: none; margin: .15rem 0 0; padding: 0; }
+    .int-list li {
+      font-size: .84rem; color: var(--gray-600); line-height: 1.5;
+      padding-left: .8rem; position: relative;
+    }
+    .int-list li::before { content: '–'; position: absolute; left: 0; color: #80350E; }
+
+    /* ── 방식 D: 구분점 한 줄 ── */
+    .int-dots { font-size: .85rem; color: var(--gray-600); line-height: 1.6; margin-top: .7rem; }
+    .int-dots .sep { color: #80350E; margin: 0 .25rem; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<div class="preview-wrap">
+
+  <div class="preview-note">
+    <strong>미리보기 페이지</strong> — 멤버 카드의 Research Interest 표시 방식 4가지 비교입니다.
+    사진은 생략하고 텍스트 부분만 비교합니다. 왼쪽은 관심사가 4개로 긴 경우, 오른쪽은 3개인 경우입니다.
+  </div>
+
+  <!-- ══════════ 방식 A ══════════ -->
+  <h2 class="option-label">방식 A — 라벨 분리</h2>
+  <p class="option-desc">"RESEARCH INTERESTS" 를 회색 소문자 라벨로 분리하고, 내용만 본문으로. 문장 안에 섞여 있던 접두어가 사라져서 내용이 바로 눈에 들어옴.</p>
+  <div class="demo-grid">
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Seunghee Ryu</p>
+        <p class="member-name-kr">유승희</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-label">Research Interests</p>
+        <p class="int-text">Mobility Data Intelligence, Public Transportation, Intelligent Transportation Systems, Optimization</p>
+        <p class="member-email"><a href="#">seunghee38@korea.ac.kr</a></p>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Wongyun Choi</p>
+        <p class="member-name-kr">최원균</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-label">Research Interests</p>
+        <p class="int-text">Public Transport Planning, Sustainable Transportation, International Development Cooperation</p>
+        <p class="member-email"><a href="#">hippotimbo@korea.ac.kr</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 방식 B ══════════ -->
+  <h2 class="option-label">방식 B — 키워드 태그</h2>
+  <p class="option-desc">관심사 하나하나를 작은 회색 태그로. 한눈에 스캔되고 개수가 많아도 깔끔함. 항목이 길면 태그가 두 줄로 감김.</p>
+  <div class="demo-grid">
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Seunghee Ryu</p>
+        <p class="member-name-kr">유승희</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-label">Research Interests</p>
+        <div class="int-tags">
+          <span class="int-tag">Mobility Data Intelligence</span>
+          <span class="int-tag">Public Transportation</span>
+          <span class="int-tag">Intelligent Transportation Systems</span>
+          <span class="int-tag">Optimization</span>
+        </div>
+        <p class="member-email"><a href="#">seunghee38@korea.ac.kr</a></p>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Wongyun Choi</p>
+        <p class="member-name-kr">최원균</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-label">Research Interests</p>
+        <div class="int-tags">
+          <span class="int-tag">Public Transport Planning</span>
+          <span class="int-tag">Sustainable Transportation</span>
+          <span class="int-tag">International Development Cooperation</span>
+        </div>
+        <p class="member-email"><a href="#">hippotimbo@korea.ac.kr</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 방식 C ══════════ -->
+  <h2 class="option-label">방식 C — 불릿 리스트</h2>
+  <p class="option-desc">관심사를 한 줄에 하나씩. 각 항목이 또렷하게 구분되지만, 항목이 많으면 카드가 세로로 길어짐.</p>
+  <div class="demo-grid">
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Seunghee Ryu</p>
+        <p class="member-name-kr">유승희</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-label">Research Interests</p>
+        <ul class="int-list">
+          <li>Mobility Data Intelligence</li>
+          <li>Public Transportation</li>
+          <li>Intelligent Transportation Systems</li>
+          <li>Optimization</li>
+        </ul>
+        <p class="member-email"><a href="#">seunghee38@korea.ac.kr</a></p>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Wongyun Choi</p>
+        <p class="member-name-kr">최원균</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-label">Research Interests</p>
+        <ul class="int-list">
+          <li>Public Transport Planning</li>
+          <li>Sustainable Transportation</li>
+          <li>International Development Cooperation</li>
+        </ul>
+        <p class="member-email"><a href="#">hippotimbo@korea.ac.kr</a></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 방식 D ══════════ -->
+  <h2 class="option-label">방식 D — 구분점(·) 한 줄</h2>
+  <p class="option-desc">쉼표 대신 갈색 구분점(·)으로 연결. 라벨 없이 가장 컴팩트하지만, 항목 구분이 태그보다는 약함.</p>
+  <div class="demo-grid">
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Seunghee Ryu</p>
+        <p class="member-name-kr">유승희</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-dots">Mobility Data Intelligence<span class="sep">·</span>Public Transportation<span class="sep">·</span>Intelligent Transportation Systems<span class="sep">·</span>Optimization</p>
+        <p class="member-email"><a href="#">seunghee38@korea.ac.kr</a></p>
+      </div>
+    </div>
+    <div class="member-card">
+      <div class="member-info">
+        <p class="member-name">Wongyun Choi</p>
+        <p class="member-name-kr">최원균</p>
+        <span class="tag tag-blue member-role">Ph.D. Candidate</span>
+        <p class="int-dots">Public Transport Planning<span class="sep">·</span>Sustainable Transportation<span class="sep">·</span>International Development Cooperation</p>
+        <p class="member-email"><a href="#">hippotimbo@korea.ac.kr</a></p>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>

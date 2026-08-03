@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미리보기 — 홈 디자인 대안 4가지 (사진 없음)</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;600;700;900&family=IBM+Plex+Mono:wght@400;500;600&display=swap" />
+  <style>
+    :root {
+      --navy: #16233d; --blue: #215F9A; --brown: #80350E;
+      --gray: #747474; --line: #dcdee2; --ink: #2b3240;
+      --mono: 'IBM Plex Mono', monospace;
+      --sans: 'Noto Sans KR', sans-serif;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #e9eaec; font-family: var(--sans); color: var(--ink); }
+    a { text-decoration: none; color: inherit; }
+
+    .pv-wrap { max-width: 1240px; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+    .pv-note { background: #fff7ed; border: 1px solid #fdba74; border-radius: 6px;
+      padding: 1.1rem 1.35rem; font-size: .92rem; color: #9a3412; line-height: 1.75; margin-bottom: 2.5rem; }
+    .pv-note ul { margin: .5rem 0 0 1.1rem; }
+    .pv-label { font-weight: 700; font-size: 1.25rem; color: var(--navy); margin: 3.2rem 0 .3rem; }
+    .pv-desc { font-size: .92rem; color: #5b6270; margin-bottom: 1rem; line-height: 1.7; }
+    .pv-frame { background: #fff; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 8px 30px rgba(0,0,0,.13); border: 1px solid #d4d6da; }
+    .pv-bar { background: #f1f2f4; border-bottom: 1px solid #e2e4e8; padding: .55rem .9rem; display: flex; gap: .4rem; }
+    .pv-bar i { width: 10px; height: 10px; border-radius: 50%; background: #d0d3d8; display: block; }
+
+    /* 프레임 안 미니 nav */
+    .m-nav { display: flex; align-items: center; justify-content: space-between;
+      padding: .9rem 2.5rem; border-bottom: 1px solid var(--line); }
+    .m-logo { font-weight: 900; font-size: 1.05rem; color: var(--blue); letter-spacing: -.5px; }
+    .m-logo span { color: var(--brown); }
+    .m-menu { display: flex; gap: 1.3rem; font-size: .74rem; font-weight: 600; letter-spacing: .05em; color: #58606e; }
+    .inner { max-width: 1020px; margin: 0 auto; padding: 0 2.5rem; }
+
+    /* ══════════════════ A. 인덱스 / 에디토리얼 ══════════════════ */
+    .a-top { padding: 3.2rem 0 0; }
+    .a-meta { font-family: var(--mono); font-size: .68rem; letter-spacing: .18em;
+      color: var(--gray); text-transform: uppercase; }
+    .a-mark { display: flex; align-items: flex-end; gap: 1.4rem; margin: 1.4rem 0 1.1rem; }
+    .a-smop { font-size: 6.4rem; font-weight: 900; line-height: .82; color: var(--blue); letter-spacing: -4px; }
+    .a-smop b { color: var(--brown); font-weight: 900; }
+    .a-full { font-size: 1rem; font-weight: 600; color: var(--ink); line-height: 1.5; padding-bottom: .5rem; }
+    .a-full em { display: block; font-style: normal; font-weight: 400; color: var(--gray); font-size: .9rem; margin-top: .2rem; }
+    .a-rule { border-top: 2px solid var(--navy); }
+    .a-cols { display: grid; grid-template-columns: 1fr 1.15fr; gap: 4rem; padding: 2.2rem 0 3.2rem; }
+    .a-lead { font-size: 1rem; line-height: 2; color: #414958; }
+    .a-lead strong { color: var(--navy); font-weight: 600; }
+    .a-idxtitle { font-family: var(--mono); font-size: .68rem; letter-spacing: .18em; color: var(--gray);
+      text-transform: uppercase; padding-bottom: .7rem; border-bottom: 1px solid var(--line); }
+    .a-idx { display: flex; align-items: baseline; gap: .7rem; padding: .62rem 0; border-bottom: 1px solid #eef0f2; }
+    .a-idx:hover .a-nm { color: var(--brown); }
+    .a-no { font-family: var(--mono); font-size: .72rem; color: var(--brown); width: 22px; flex-shrink: 0; }
+    .a-nm { font-size: .95rem; color: var(--ink); white-space: nowrap; }
+    .a-dot { flex: 1; border-bottom: 1px dotted #c9ccd2; transform: translateY(-4px); }
+    .a-ct { font-family: var(--mono); font-size: .72rem; color: var(--gray); }
+
+    /* ══════════════════ B. 초대형 타이포 ══════════════════ */
+    .b-hero { position: relative; padding: 4.5rem 0 3rem; overflow: hidden; }
+    .b-side { position: absolute; left: 1rem; top: 4.5rem; writing-mode: vertical-rl;
+      font-family: var(--mono); font-size: .66rem; letter-spacing: .3em; color: var(--gray); text-transform: uppercase; }
+    .b-body { padding-left: 4.5rem; }
+    .b-big { font-size: 4.9rem; font-weight: 900; line-height: .95; letter-spacing: -3px; color: var(--navy); }
+    .b-big .thin { font-weight: 300; color: var(--gray); }
+    .b-big .out { color: transparent; -webkit-text-stroke: 1.5px var(--brown); }
+    .b-under { display: grid; grid-template-columns: 1fr 1fr; gap: 3.5rem; margin-top: 2.4rem;
+      padding-top: 1.6rem; border-top: 1px solid var(--line); }
+    .b-lead { font-size: 1.02rem; line-height: 1.95; color: #414958; }
+    .b-kv { font-family: var(--mono); font-size: .74rem; color: var(--gray); line-height: 2.1; }
+    .b-kv b { color: var(--ink); font-weight: 500; }
+    .b-flow { padding: 1.4rem 0 3rem; padding-left: 4.5rem; font-size: 1.05rem; line-height: 2.1; color: #4d5563; }
+    .b-flow span { color: var(--navy); font-weight: 600; }
+    .b-flow i { font-style: normal; color: var(--brown); margin: 0 .55rem; }
+
+    /* ══════════════════ C. 운행표 / 데이터보드 ══════════════════ */
+    .c-wrap { background: var(--navy); color: #fff; padding: 2.8rem 0 2.4rem; }
+    .c-tick { font-family: var(--mono); font-size: .68rem; letter-spacing: .16em; color: #7f9ac4;
+      text-transform: uppercase; margin-bottom: 1.3rem; }
+    .c-tick b { color: #fff; font-weight: 500; }
+    .c-title { font-size: 3.1rem; font-weight: 800; line-height: 1.05; letter-spacing: -1.5px; }
+    .c-title span { color: #7f9ac4; font-weight: 300; }
+    .c-sub { font-size: .95rem; color: #a9b8d1; margin-top: .9rem; max-width: 620px; line-height: 1.85; }
+    .c-board { padding: 2.6rem 0 3rem; }
+    .c-hd { display: grid; grid-template-columns: 46px 1fr 130px 110px; gap: 1rem;
+      font-family: var(--mono); font-size: .66rem; letter-spacing: .16em; color: var(--gray);
+      text-transform: uppercase; padding-bottom: .7rem; border-bottom: 1.5px solid var(--navy); }
+    .c-row { display: grid; grid-template-columns: 46px 1fr 130px 110px; gap: 1rem;
+      align-items: baseline; padding: .78rem 0; border-bottom: 1px solid #eef0f2; transition: background .15s; }
+    .c-row:hover { background: #f7f8fa; }
+    .c-row .n { font-family: var(--mono); font-size: .78rem; color: var(--brown); }
+    .c-row .t { font-size: 1rem; color: var(--ink); }
+    .c-row .e { font-family: var(--mono); font-size: .74rem; color: var(--gray); }
+    .c-row .s { font-family: var(--mono); font-size: .7rem; color: var(--blue); letter-spacing: .05em; }
+
+    /* ══════════════════ D. 네트워크 다이어그램 ══════════════════ */
+    .d-hero { position: relative; padding: 4rem 0 3.4rem; overflow: hidden; background: #fbfbfc; }
+    .d-svg { position: absolute; right: -40px; top: 0; height: 100%; width: 54%; }
+    .d-in { position: relative; z-index: 2; }
+    .d-tag { display: inline-block; font-family: var(--mono); font-size: .68rem; letter-spacing: .16em;
+      color: var(--brown); text-transform: uppercase; margin-bottom: 1rem; }
+    .d-title { font-size: 3.4rem; font-weight: 800; line-height: 1.08; letter-spacing: -1.8px; color: var(--navy); max-width: 620px; }
+    .d-title span { color: var(--blue); }
+    .d-lead { font-size: 1rem; line-height: 1.95; color: #4d5563; max-width: 470px; margin-top: 1.3rem; }
+    .d-links { margin-top: 1.9rem; display: flex; gap: 2rem; }
+    .d-link { font-size: .9rem; font-weight: 600; color: var(--navy); border-bottom: 2px solid var(--brown); padding-bottom: .2rem; }
+    .d-nums { display: grid; grid-template-columns: repeat(4,1fr); border-top: 1px solid var(--line); }
+    .d-num { padding: 1.5rem 0; }
+    .d-n { font-size: 2rem; font-weight: 800; color: var(--navy); letter-spacing: -1px; }
+    .d-l { font-family: var(--mono); font-size: .68rem; letter-spacing: .1em; color: var(--gray); text-transform: uppercase; margin-top: .25rem; }
+    .sec-pad { padding: 2.6rem 0 3rem; }
+    .sec-h { font-family: var(--mono); font-size: .68rem; letter-spacing: .18em; color: var(--gray);
+      text-transform: uppercase; margin-bottom: 1.1rem; }
+  </style>
+</head>
+<body>
+<div class="pv-wrap">
+
+  <div class="pv-note">
+    <strong>사진 없이 · 카드(네모 박스) 없이</strong> 만든 4가지입니다. 공통적으로 이렇게 바꿨습니다.
+    <ul>
+      <li><b>테두리 있는 카드·알약 버튼을 전부 제거</b> — 얇은 선(hairline)과 여백으로만 구분</li>
+      <li>숫자·라벨에 <b>고정폭 글꼴</b>을 섞어 도면·시간표 같은 공학적 인상 부여</li>
+      <li>가운데 정렬 대신 <b>비대칭 배치</b>, 글자 크기 대비를 크게</li>
+      <li>모든 버튼의 <b>화살표(→) 제거</b>, 링크는 밑줄로만 표시</li>
+    </ul>
+  </div>
+
+  <!-- ══════════ A ══════════ -->
+  <h2 class="pv-label">방식 A — 학술지 표지 · 색인형</h2>
+  <p class="pv-desc">SMOP 약자를 큰 활자로 세우고, 연구 분야를 <b>책 목차(색인)처럼 점선으로 연결</b>해 나열합니다. 박스가 하나도 없고 선과 여백으로만 구성돼 인쇄물 같은 인상을 줍니다. 오른쪽 숫자는 해당 분야의 논문 수입니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="inner">
+      <div class="a-top">
+        <p class="a-meta">Korea University — School of Civil, Environmental and Architectural Engineering</p>
+        <div class="a-mark">
+          <p class="a-smop">SM<b>OP</b></p>
+          <p class="a-full">Smart Mobility Operations and Planning Lab
+            <em>스마트 모빌리티 운영 · 계획 연구실</em></p>
+        </div>
+      </div>
+      <div class="a-rule"></div>
+      <div class="a-cols">
+        <div>
+          <p class="a-lead">교통과 물류 체계에 <strong>최적화 기법과 데이터 분석</strong>을 적용해
+          효율성을 높이는 연구를 수행합니다. AI, 빅데이터, Operations Research를 융합하여
+          지속가능한 모빌리티 체계의 설계와 운영을 다룹니다.</p>
+        </div>
+        <div>
+          <p class="a-idxtitle">연구 분야 / Research Areas</p>
+          <div class="a-idx"><span class="a-no">01</span><span class="a-nm">교통 계획 및 운영</span><span class="a-dot"></span><span class="a-ct">12</span></div>
+          <div class="a-idx"><span class="a-no">02</span><span class="a-nm">물류 최적화</span><span class="a-dot"></span><span class="a-ct">08</span></div>
+          <div class="a-idx"><span class="a-no">03</span><span class="a-nm">지능형 교통체계</span><span class="a-dot"></span><span class="a-ct">07</span></div>
+          <div class="a-idx"><span class="a-no">04</span><span class="a-nm">대중교통체계</span><span class="a-dot"></span><span class="a-ct">09</span></div>
+          <div class="a-idx"><span class="a-no">05</span><span class="a-nm">교통 경제 및 투자 분석</span><span class="a-dot"></span><span class="a-ct">05</span></div>
+          <div class="a-idx"><span class="a-no">06</span><span class="a-nm">교통지리정보시스템 · 위치기반서비스</span><span class="a-dot"></span><span class="a-ct">04</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ B ══════════ -->
+  <h2 class="pv-label">방식 B — 초대형 타이포그래피</h2>
+  <p class="pv-desc">글자 자체를 화면 요소로 씁니다. 한 단어는 <b>윤곽선만 남긴 글씨</b>로 처리하고, 왼쪽 여백에 세로로 세운 소속 문구를 둡니다. 연구 분야는 목록이 아니라 <b>한 문장처럼 흐르게</b> 배치했습니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="inner">
+      <div class="b-hero">
+        <p class="b-side">Korea University · Seoul</p>
+        <div class="b-body">
+          <h1 class="b-big">Smart<br>Mobility<br><span class="out">Operations</span><br><span class="thin">and Planning</span></h1>
+          <div class="b-under">
+            <p class="b-lead">교통과 물류 시스템에서 발생하는 어려운 문제를
+            수리 모형과 최적화 알고리즘으로 해결합니다.</p>
+            <div class="b-kv">
+              지도교수 &nbsp;&nbsp;<b>강승모 Seungmo Kang</b><br>
+              소속 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>건축사회환경공학부</b><br>
+              구성원 &nbsp;&nbsp;&nbsp;&nbsp;<b>재학 16 · 졸업 23</b><br>
+              연락처 &nbsp;&nbsp;&nbsp;&nbsp;<b>s_kang@korea.ac.kr</b>
+            </div>
+          </div>
+        </div>
+      </div>
+      <p class="b-flow"><span>교통 계획 및 운영</span><i>/</i><span>물류 최적화</span><i>/</i><span>지능형 교통체계</span><i>/</i><span>대중교통체계</span><i>/</i><span>교통 경제 및 투자 분석</span><i>/</i><span>교통시설물 설치 및 관리</span><i>/</i><span>항공 교통</span><i>/</i><span>항만 운영</span></p>
+    </div>
+  </div>
+
+  <!-- ══════════ C ══════════ -->
+  <h2 class="pv-label">방식 C — 운행표(Departure Board) 스타일</h2>
+  <p class="pv-desc">교통 연구실이라는 정체성을 <b>열차 운행 정보판</b>에 빗댄 디자인입니다. 상단은 진한 남색 판, 아래는 연구 분야를 표(表) 형태로 나열합니다. 고정폭 숫자와 얇은 줄만 써서 카드가 전혀 없습니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="c-wrap"><div class="inner">
+      <p class="c-tick">Korea University &nbsp;·&nbsp; Seoul &nbsp;·&nbsp; <b>Now recruiting — 대학원생 및 학부연구생 모집 중</b></p>
+      <h1 class="c-title">Smart Mobility<br><span>Operations and Planning</span></h1>
+      <p class="c-sub">교통·물류 시스템의 계획과 운영을 최적화 모형으로 설계합니다.
+      고려대학교 건축사회환경공학부 · 지도교수 강승모</p>
+    </div></div>
+    <div class="inner"><div class="c-board">
+      <div class="c-hd"><span>No.</span><span>연구 분야</span><span>Field</span><span>Papers</span></div>
+      <div class="c-row"><span class="n">01</span><span class="t">교통 계획 및 운영</span><span class="e">Planning</span><span class="s">12</span></div>
+      <div class="c-row"><span class="n">02</span><span class="t">물류 최적화</span><span class="e">Logistics</span><span class="s">08</span></div>
+      <div class="c-row"><span class="n">03</span><span class="t">지능형 교통체계</span><span class="e">ITS</span><span class="s">07</span></div>
+      <div class="c-row"><span class="n">04</span><span class="t">대중교통체계</span><span class="e">Transit</span><span class="s">09</span></div>
+      <div class="c-row"><span class="n">05</span><span class="t">교통 경제 및 투자 분석</span><span class="e">Economics</span><span class="s">05</span></div>
+      <div class="c-row"><span class="n">06</span><span class="t">교통지리정보시스템 · 위치기반서비스</span><span class="e">GIS-T / LBS</span><span class="s">04</span></div>
+    </div></div>
+  </div>
+
+  <!-- ══════════ D ══════════ -->
+  <h2 class="pv-label">방식 D — 네트워크 도면 (사진 대신 선으로 그린 그래픽)</h2>
+  <p class="pv-desc">사진 대신 <b>교통망을 추상화한 노드-링크 도면</b>을 코드로 그려 배경에 둡니다. 연구 주제가 곧 그래픽이 되는 방식이라 사진 없이도 화면이 비어 보이지 않습니다. 아래는 숫자 요약(선으로만 구분).</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="d-hero">
+      <svg class="d-svg" viewBox="0 0 520 420" fill="none">
+        <g stroke="#215F9A" stroke-width="1" opacity=".45">
+          <path d="M60 330 L150 250 L260 280 L370 190 L470 220"/>
+          <path d="M40 150 L150 250 L250 130 L370 190 L490 110"/>
+          <path d="M150 250 L180 380 L320 350 L370 190"/>
+          <path d="M250 130 L260 280 L320 350"/>
+          <path d="M60 330 L180 380"/>
+          <path d="M470 220 L490 110"/>
+        </g>
+        <g stroke="#80350E" stroke-width="1.6" opacity=".6">
+          <path d="M40 150 L150 250 L260 280 L370 190 L490 110"/>
+        </g>
+        <g fill="#fff" stroke="#215F9A" stroke-width="1.6">
+          <circle cx="60" cy="330" r="5"/><circle cx="40" cy="150" r="5"/>
+          <circle cx="250" cy="130" r="5"/><circle cx="180" cy="380" r="5"/>
+          <circle cx="320" cy="350" r="5"/><circle cx="470" cy="220" r="5"/>
+          <circle cx="490" cy="110" r="5"/>
+        </g>
+        <g fill="#80350E">
+          <circle cx="150" cy="250" r="7"/><circle cx="260" cy="280" r="7"/><circle cx="370" cy="190" r="7"/>
+        </g>
+      </svg>
+      <div class="inner"><div class="d-in">
+        <span class="d-tag">Korea University · Transportation</span>
+        <h1 class="d-title">모빌리티 시스템을<br><span>모형으로 설계합니다</span></h1>
+        <p class="d-lead">대중교통 노선 설계, 수요응답형 모빌리티, 물류 네트워크 최적화.
+        SMOP 연구실은 교통·물류의 복잡한 문제를 수리 모형과 최적화로 풉니다.</p>
+        <div class="d-links">
+          <a href="#" class="d-link">연구 분야</a>
+          <a href="#" class="d-link">연구실 소개</a>
+          <a href="#" class="d-link">대학원생 모집</a>
+        </div>
+      </div></div>
+    </div>
+    <div class="inner">
+      <div class="d-nums">
+        <div class="d-num"><p class="d-n">41</p><p class="d-l">Journal Papers</p></div>
+        <div class="d-num"><p class="d-n">23</p><p class="d-l">Research Projects</p></div>
+        <div class="d-num"><p class="d-n">16</p><p class="d-l">Lab Members</p></div>
+        <div class="d-num"><p class="d-n">23</p><p class="d-l">Alumni</p></div>
+      </div>
+      <div class="sec-pad">
+        <p class="sec-h">Recent News</p>
+        <p style="font-size:1rem;line-height:1.9;color:#4d5563;">2026.07 — 7월 정구홍 박사님 세미나 및 MT를 진행했습니다.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미리보기 — 세로 사진 처리 방식 4가지</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: var(--gray-50, #fafafa); }
+    .preview-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+    .preview-note {
+      background: #fff7ed; border: 1px solid #fdba74; border-radius: 6px;
+      padding: 1rem 1.25rem; font-size: .9rem; color: #9a3412; margin-bottom: 2.5rem; line-height: 1.6;
+    }
+    .option-label {
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.3rem;
+      color: var(--navy, #1a2b4a); margin: 3.5rem 0 .35rem;
+      padding-top: 2rem; border-top: 3px dashed var(--gray-300);
+    }
+    .option-label:first-of-type { border-top: none; padding-top: 0; }
+    .option-desc { font-size: .9rem; color: var(--gray-500); margin-bottom: 1.25rem; line-height: 1.6; }
+    .event-title {
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+      color: var(--navy); margin: 1.5rem 0 .75rem;
+      padding-bottom: .4rem; border-bottom: 2px solid #80350E;
+    }
+
+    /* A: 현재 방식 — 4:3 강제 크롭 */
+    .grid-a { display: grid; grid-template-columns: repeat(2,1fr); gap: .75rem; }
+    .grid-a .tile { aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; background: var(--gray-100); }
+    .grid-a img { width: 100%; height: 100%; object-fit: cover; display: block; }
+
+    /* B: 레터박스 — 칸은 유지, 사진 전체 보이게 + 흐림 배경 */
+    .grid-b { display: grid; grid-template-columns: repeat(2,1fr); gap: .75rem; }
+    .grid-b .tile { aspect-ratio: 4/3; border-radius: 6px; overflow: hidden; position: relative; background: var(--gray-200); }
+    .grid-b .bg { position: absolute; inset: -20px; background-size: cover; background-position: center;
+      filter: blur(18px) brightness(.85); }
+    .grid-b img { position: relative; width: 100%; height: 100%; object-fit: contain; display: block; }
+
+    /* C: 자연 비율 masonry (CSS columns) */
+    .grid-c { columns: 2; column-gap: .75rem; }
+    .grid-c .tile { break-inside: avoid; margin-bottom: .75rem; border-radius: 6px; overflow: hidden; }
+    .grid-c img { width: 100%; display: block; }
+
+    /* D: 세로 사진만 세로로 긴 칸 (행 단위 그리드) */
+    .grid-d { display: grid; grid-template-columns: repeat(2,1fr); grid-auto-rows: 10px; grid-auto-flow: dense; gap: .75rem; }
+    .grid-d .tile { border-radius: 6px; overflow: hidden; background: var(--gray-100); }
+    .grid-d .land { grid-row: span 22; }   /* 가로 사진: 4:3 근사 */
+    .grid-d .port { grid-row: span 38; }   /* 세로 사진: 3:4 근사 */
+    .grid-d img { width: 100%; height: 100%; object-fit: cover; display: block; }
+  </style>
+</head>
+<body>
+
+<div class="preview-wrap">
+
+  <div class="preview-note">
+    <strong>미리보기 페이지</strong> — 세로 사진이 섞인 실제 활동 2개(교통학회 수상: 세로 2 + 가로 2 / 하계 MT: 세로 1 + 가로 3)로
+    4가지 처리 방식을 비교합니다. 특히 <b>상장 사진(세로)</b>이 어떻게 보이는지 봐주세요.
+  </div>
+
+  <!-- ══════════ A ══════════ -->
+  <h2 class="option-label">방식 A — 현재: 모두 4:3으로 크롭</h2>
+  <p class="option-desc">그리드는 반듯하지만 세로 사진의 위아래가 크게 잘림 — 상장 사진은 내용을 알아볼 수 없게 됨.</p>
+  <p class="event-title">교통학회 회장상 & 최우수상</p>
+  <div class="grid-a">
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_1.jpg"></div>
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_2.jpg"></div>
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_3.jpg"></div>
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_4.jpg"></div>
+  </div>
+  <p class="event-title">하계 MT 2024</p>
+  <div class="grid-a">
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_1.jpg"></div>
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_2.jpg"></div>
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_3.jpg"></div>
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_4.jpg"></div>
+  </div>
+
+  <!-- ══════════ B ══════════ -->
+  <h2 class="option-label">방식 B — 레터박스: 칸은 그대로, 사진 전체 표시 + 흐림 배경</h2>
+  <p class="option-desc">그리드가 반듯하고 사진도 안 잘림. 세로 사진 양옆의 빈 공간은 그 사진을 흐리게 깔아서 채움 (인스타그램 방식). 대신 세로 사진이 칸 안에서 작게 보임.</p>
+  <p class="event-title">교통학회 회장상 & 최우수상</p>
+  <div class="grid-b">
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2501_교통학회_수상/25_교통학회_1.jpg')"></div><img src="images/gallery/2501_교통학회_수상/25_교통학회_1.jpg"></div>
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2501_교통학회_수상/25_교통학회_2.jpg')"></div><img src="images/gallery/2501_교통학회_수상/25_교통학회_2.jpg"></div>
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2501_교통학회_수상/25_교통학회_3.jpg')"></div><img src="images/gallery/2501_교통학회_수상/25_교통학회_3.jpg"></div>
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2501_교통학회_수상/25_교통학회_4.jpg')"></div><img src="images/gallery/2501_교통학회_수상/25_교통학회_4.jpg"></div>
+  </div>
+  <p class="event-title">하계 MT 2024</p>
+  <div class="grid-b">
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2406_하계MT/24_하계MT_1.jpg')"></div><img src="images/gallery/2406_하계MT/24_하계MT_1.jpg"></div>
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2406_하계MT/24_하계MT_2.jpg')"></div><img src="images/gallery/2406_하계MT/24_하계MT_2.jpg"></div>
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2406_하계MT/24_하계MT_3.jpg')"></div><img src="images/gallery/2406_하계MT/24_하계MT_3.jpg"></div>
+    <div class="tile"><div class="bg" style="background-image:url('images/gallery/2406_하계MT/24_하계MT_4.jpg')"></div><img src="images/gallery/2406_하계MT/24_하계MT_4.jpg"></div>
+  </div>
+
+  <!-- ══════════ C ══════════ -->
+  <h2 class="option-label">방식 C — 자연 비율 그대로 (벽돌식 배치)</h2>
+  <p class="option-desc">모든 사진이 원본 비율 그대로, 잘리는 부분 없음. 높이가 제각각이라 벽돌 쌓듯 배치됨 (핀터레스트 스타일). 자유로운 느낌이지만 줄이 안 맞아서 정돈된 느낌은 덜함.</p>
+  <p class="event-title">교통학회 회장상 & 최우수상</p>
+  <div class="grid-c">
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_1.jpg"></div>
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_2.jpg"></div>
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_3.jpg"></div>
+    <div class="tile"><img src="images/gallery/2501_교통학회_수상/25_교통학회_4.jpg"></div>
+  </div>
+  <p class="event-title">하계 MT 2024</p>
+  <div class="grid-c">
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_1.jpg"></div>
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_2.jpg"></div>
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_3.jpg"></div>
+    <div class="tile"><img src="images/gallery/2406_하계MT/24_하계MT_4.jpg"></div>
+  </div>
+
+  <!-- ══════════ D ══════════ -->
+  <h2 class="option-label">방식 D — 세로 사진만 세로로 긴 칸 (3:4), 가로는 4:3</h2>
+  <p class="option-desc">세로 사진은 세로 칸(살짝만 크롭), 가로 사진은 지금처럼 4:3. 빈틈은 자동으로 메꿔짐. 크롭이 최소화되면서도 B보다 사진이 큼직하게 보임.</p>
+  <p class="event-title">교통학회 회장상 & 최우수상</p>
+  <div class="grid-d">
+    <div class="tile port"><img src="images/gallery/2501_교통학회_수상/25_교통학회_1.jpg"></div>
+    <div class="tile port"><img src="images/gallery/2501_교통학회_수상/25_교통학회_2.jpg"></div>
+    <div class="tile land"><img src="images/gallery/2501_교통학회_수상/25_교통학회_3.jpg"></div>
+    <div class="tile land"><img src="images/gallery/2501_교통학회_수상/25_교통학회_4.jpg"></div>
+  </div>
+  <p class="event-title">하계 MT 2024</p>
+  <div class="grid-d">
+    <div class="tile port"><img src="images/gallery/2406_하계MT/24_하계MT_1.jpg"></div>
+    <div class="tile land"><img src="images/gallery/2406_하계MT/24_하계MT_2.jpg"></div>
+    <div class="tile land"><img src="images/gallery/2406_하계MT/24_하계MT_3.jpg"></div>
+    <div class="tile land"><img src="images/gallery/2406_하계MT/24_하계MT_4.jpg"></div>
+  </div>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Members 레이아웃 예시 비교</title>
+  <link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Instrument Sans', sans-serif; background: #f1f5f9; color: #1e293b; }
+
+    .top-bar {
+      background: #0a1628; color: #fff;
+      padding: 1rem 2rem; text-align: center;
+      font-size: .9rem; letter-spacing: .04em;
+    }
+    .top-bar strong { color: #93c5fd; }
+
+    .option-label {
+      background: #0a1628; color: #fff;
+      padding: 2.5rem 2rem 1.5rem;
+      max-width: 900px; margin: 0 auto;
+    }
+    .option-label .badge {
+      display: inline-block; background: #1d6fd6;
+      font-size: .75rem; font-weight: 700; letter-spacing: .1em;
+      padding: .25rem .75rem; border-radius: 999px; margin-bottom: .75rem;
+    }
+    .option-label h2 { font-size: 1.4rem; font-weight: 700; margin-bottom: .4rem; }
+    .option-label p { font-size: .9rem; color: #94a3b8; }
+
+    .demo-box {
+      max-width: 900px; margin: 0 auto 0;
+      background: #fff; border: 1px solid #e2e8f0;
+      border-radius: 0 0 12px 12px; overflow: hidden;
+    }
+
+    .spacer { height: 2.5rem; background: #f1f5f9; }
+
+    /* ── 공통 내부 스타일 ── */
+    .demo { padding: 3rem 3rem; }
+    .page-h1 { font-size: 2.8rem; font-weight: 700; color: #215F9A; margin-bottom: .5rem; }
+    .page-sub { font-size: 1rem; color: #64748b; margin-bottom: 2rem; }
+    .divider { border: none; border-top: 1px solid #e2e8f0; margin-bottom: 2.5rem; }
+
+    .group-label {
+      font-size: .75rem; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: #94a3b8;
+      margin-bottom: 1rem; padding-bottom: .75rem;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    .member-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-bottom: 2.5rem; }
+    .member-card {
+      border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden;
+      transition: box-shadow .2s;
+    }
+    .member-photo { width: 100%; aspect-ratio: 3/4; background: #f1f5f9; }
+    .member-info { padding: 1rem; }
+    .member-name { font-weight: 700; font-size: .95rem; color: #0a1628; margin-bottom: .2rem; }
+    .member-role { font-size: .82rem; color: #64748b; }
+    .member-research { font-size: .78rem; color: #94a3b8; margin-top: .3rem; }
+
+    .alumni-row {
+      display: flex; align-items: center; gap: 1rem;
+      padding: .85rem 0; border-bottom: 1px solid #f1f5f9;
+    }
+    .alumni-row:last-child { border-bottom: none; }
+    .alumni-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: #e2e8f0; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .72rem; font-weight: 700; color: #94a3b8;
+    }
+    .alumni-year { font-size: .82rem; color: #94a3b8; min-width: 36px; }
+    .alumni-name { font-weight: 600; font-size: .92rem; color: #0a1628; }
+    .alumni-dest { font-size: .82rem; color: #64748b; margin-top: .1rem; }
+    .alumni-info { flex: 1; }
+
+    /* ── 옵션 1: 섹션 연속 ── */
+    .section-heading {
+      font-size: 1.25rem; font-weight: 700; color: #0a1628;
+      margin-bottom: 1.25rem; margin-top: 3rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .section-heading:first-of-type { margin-top: 0; }
+    .section-count {
+      font-size: .75rem; font-weight: 600; color: #94a3b8;
+      background: #f1f5f9; padding: .2rem .6rem; border-radius: 999px;
+    }
+
+    /* ── 옵션 2: 앵커 링크 ── */
+    .anchor-nav {
+      display: flex; gap: 0; margin-bottom: 2.5rem;
+      border-bottom: 2px solid #e2e8f0;
+    }
+    .anchor-btn {
+      padding: .75rem 1.5rem; font-weight: 600; font-size: .95rem;
+      color: #64748b; text-decoration: none;
+      border-bottom: 3px solid transparent; margin-bottom: -2px;
+      transition: color .2s, border-color .2s;
+    }
+    .anchor-btn.active { color: #0a1628; border-bottom-color: #7c2d12; }
+    .anchor-target { scroll-margin-top: 2rem; }
+
+    /* ── 옵션 3: 아코디언 ── */
+    .accordion {
+      border: 1px solid #e2e8f0; border-radius: 10px;
+      overflow: hidden; margin-top: 2.5rem;
+    }
+    .accordion-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 1.1rem 1.5rem; cursor: pointer;
+      background: #f8fafc; user-select: none;
+      transition: background .2s;
+    }
+    .accordion-header:hover { background: #f1f5f9; }
+    .accordion-title { font-weight: 700; font-size: 1rem; color: #0a1628; }
+    .accordion-meta { font-size: .82rem; color: #94a3b8; }
+    .accordion-icon { font-size: 1rem; color: #94a3b8; transition: transform .25s; }
+    .accordion-body { padding: 1.5rem; border-top: 1px solid #e2e8f0; display: none; }
+    .accordion.open .accordion-body { display: block; }
+    .accordion.open .accordion-icon { transform: rotate(180deg); }
+  </style>
+</head>
+<body>
+
+<div class="top-bar">
+  <strong>Members 페이지 레이아웃 미리보기</strong> — 3가지 방식 비교. 실제 적용 전 확인용입니다.
+</div>
+
+<!-- ════════════════════════════════════════
+     옵션 1: 두 섹션 연속 배치
+════════════════════════════════════════ -->
+<div class="spacer"></div>
+<div class="option-label">
+  <div class="badge">옵션 1</div>
+  <h2>두 섹션 연속 배치</h2>
+  <p>탭 없이 스크롤하면 Current Members → Alumni 순서로 이어서 보임. 가장 단순하고 안정적.</p>
+</div>
+<div class="demo-box">
+  <div class="demo">
+    <h1 class="page-h1">Lab Members</h1>
+    <p class="page-sub">The people behind SMOP Lab's research</p>
+    <hr class="divider">
+
+    <div class="section-heading">
+      Current Members <span class="section-count">4명</span>
+    </div>
+    <p class="group-label">PhD Students</p>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">홍길동</p><p class="member-role">PhD Student (2022–)</p><p class="member-research">교통 네트워크 최적화</p></div></div>
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">김민수</p><p class="member-role">PhD Student (2023–)</p><p class="member-research">물류 시스템 모델링</p></div></div>
+    </div>
+    <p class="group-label">Master's Students</p>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">이지은</p><p class="member-role">MS Student (2024–)</p><p class="member-research">대중교통 수요 예측</p></div></div>
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">박서연</p><p class="member-role">MS Student (2024–)</p><p class="member-research">스마트 모빌리티</p></div></div>
+    </div>
+
+    <div class="section-heading">
+      Alumni <span class="section-count">3명</span>
+    </div>
+    <div class="alumni-row"><div class="alumni-avatar">이영</div><span class="alumni-year">2024</span><div class="alumni-info"><p class="alumni-name">이영희</p><p class="alumni-dest">MS → Google Korea</p></div></div>
+    <div class="alumni-row"><div class="alumni-avatar">박지</div><span class="alumni-year">2023</span><div class="alumni-info"><p class="alumni-name">박지수</p><p class="alumni-dest">PhD → Samsung Research</p></div></div>
+    <div class="alumni-row"><div class="alumni-avatar">최현</div><span class="alumni-year">2022</span><div class="alumni-info"><p class="alumni-name">최현우</p><p class="alumni-dest">MS → 국토연구원</p></div></div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     옵션 2: 앵커 점프 링크
+════════════════════════════════════════ -->
+<div class="spacer"></div>
+<div class="option-label">
+  <div class="badge">옵션 2</div>
+  <h2>앵커 점프 링크</h2>
+  <p>탭처럼 생겼지만 클릭하면 해당 섹션으로 부드럽게 스크롤. JS 없이 동작.</p>
+</div>
+<div class="demo-box">
+  <div class="demo">
+    <h1 class="page-h1">Lab Members</h1>
+    <p class="page-sub">The people behind SMOP Lab's research</p>
+    <hr class="divider">
+
+    <nav class="anchor-nav">
+      <a href="#opt2-current" class="anchor-btn active">Current Members</a>
+      <a href="#opt2-alumni" class="anchor-btn">Alumni</a>
+    </nav>
+
+    <div id="opt2-current" class="anchor-target">
+      <p class="group-label">PhD Students</p>
+      <div class="member-grid">
+        <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">홍길동</p><p class="member-role">PhD Student (2022–)</p><p class="member-research">교통 네트워크 최적화</p></div></div>
+        <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">김민수</p><p class="member-role">PhD Student (2023–)</p><p class="member-research">물류 시스템 모델링</p></div></div>
+      </div>
+      <p class="group-label">Master's Students</p>
+      <div class="member-grid">
+        <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">이지은</p><p class="member-role">MS Student (2024–)</p><p class="member-research">대중교통 수요 예측</p></div></div>
+        <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">박서연</p><p class="member-role">MS Student (2024–)</p><p class="member-research">스마트 모빌리티</p></div></div>
+      </div>
+    </div>
+
+    <div id="opt2-alumni" class="anchor-target" style="margin-top:2.5rem;">
+      <p class="group-label">Alumni</p>
+      <div class="alumni-row"><div class="alumni-avatar">이영</div><span class="alumni-year">2024</span><div class="alumni-info"><p class="alumni-name">이영희</p><p class="alumni-dest">MS → Google Korea</p></div></div>
+      <div class="alumni-row"><div class="alumni-avatar">박지</div><span class="alumni-year">2023</span><div class="alumni-info"><p class="alumni-name">박지수</p><p class="alumni-dest">PhD → Samsung Research</p></div></div>
+      <div class="alumni-row"><div class="alumni-avatar">최현</div><span class="alumni-year">2022</span><div class="alumni-info"><p class="alumni-name">최현우</p><p class="alumni-dest">MS → 국토연구원</p></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════════════════════════════════════
+     옵션 3: 아코디언
+════════════════════════════════════════ -->
+<div class="spacer"></div>
+<div class="option-label">
+  <div class="badge">옵션 3</div>
+  <h2>접기/펼치기 (Accordion)</h2>
+  <p>Current Members는 항상 보이고, Alumni는 클릭하면 펼쳐짐.</p>
+</div>
+<div class="demo-box">
+  <div class="demo">
+    <h1 class="page-h1">Lab Members</h1>
+    <p class="page-sub">The people behind SMOP Lab's research</p>
+    <hr class="divider">
+
+    <p class="group-label">PhD Students</p>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">홍길동</p><p class="member-role">PhD Student (2022–)</p><p class="member-research">교통 네트워크 최적화</p></div></div>
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">김민수</p><p class="member-role">PhD Student (2023–)</p><p class="member-research">물류 시스템 모델링</p></div></div>
+    </div>
+    <p class="group-label">Master's Students</p>
+    <div class="member-grid">
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">이지은</p><p class="member-role">MS Student (2024–)</p><p class="member-research">대중교통 수요 예측</p></div></div>
+      <div class="member-card"><div class="member-photo"></div><div class="member-info"><p class="member-name">박서연</p><p class="member-role">MS Student (2024–)</p><p class="member-research">스마트 모빌리티</p></div></div>
+    </div>
+
+    <div class="accordion" id="acc">
+      <div class="accordion-header" onclick="document.getElementById('acc').classList.toggle('open')">
+        <div>
+          <span class="accordion-title">Alumni</span>
+          <span class="accordion-meta" style="margin-left:.75rem;">3명</span>
+        </div>
+        <span class="accordion-icon">▼</span>
+      </div>
+      <div class="accordion-body">
+        <div class="alumni-row"><div class="alumni-avatar">이영</div><span class="alumni-year">2024</span><div class="alumni-info"><p class="alumni-name">이영희</p><p class="alumni-dest">MS → Google Korea</p></div></div>
+        <div class="alumni-row"><div class="alumni-avatar">박지</div><span class="alumni-year">2023</span><div class="alumni-info"><p class="alumni-name">박지수</p><p class="alumni-dest">PhD → Samsung Research</p></div></div>
+        <div class="alumni-row"><div class="alumni-avatar">최현</div><span class="alumni-year">2022</span><div class="alumni-info"><p class="alumni-name">최현우</p><p class="alumni-dest">MS → 국토연구원</p></div></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="spacer"></div>
+
+</body>
+</html>

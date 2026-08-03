@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미리보기 — 홈 대안 (실제 연구실 홈페이지 스타일)</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;600;700&display=swap" />
+  <style>
+    :root { --navy:#16233d; --blue:#215F9A; --brown:#80350E; --gray:#6b7280; --line:#e2e4e8; --ink:#333a45; }
+    * { margin:0; padding:0; box-sizing:border-box; }
+    body { background:#e9eaec; font-family:'Noto Sans KR',sans-serif; color:var(--ink); }
+    a { color:inherit; text-decoration:none; }
+
+    .pv-wrap { max-width:1240px; margin:0 auto; padding:2.5rem 1.25rem 6rem; }
+    .pv-note { background:#fff7ed; border:1px solid #fdba74; border-radius:6px;
+      padding:1.1rem 1.35rem; font-size:.92rem; color:#9a3412; line-height:1.8; margin-bottom:2.5rem; }
+    .pv-note ul { margin:.5rem 0 0 1.1rem; }
+    .pv-label { font-weight:700; font-size:1.25rem; color:var(--navy); margin:3.2rem 0 .3rem; }
+    .pv-desc { font-size:.92rem; color:#5b6270; margin-bottom:1rem; line-height:1.7; }
+    .pv-frame { background:#fff; border-radius:10px; overflow:hidden;
+      box-shadow:0 8px 30px rgba(0,0,0,.13); border:1px solid #d4d6da; }
+    .pv-bar { background:#f1f2f4; border-bottom:1px solid #e2e4e8; padding:.55rem .9rem; display:flex; gap:.4rem; }
+    .pv-bar i { width:10px; height:10px; border-radius:50%; background:#d0d3d8; display:block; }
+
+    .m-nav { display:flex; align-items:center; justify-content:space-between;
+      padding:.85rem 2.5rem; border-bottom:1px solid var(--line); }
+    .m-logo { font-weight:800; font-size:1rem; color:var(--blue); letter-spacing:-.5px; }
+    .m-logo span { color:var(--brown); }
+    .m-menu { display:flex; gap:1.3rem; font-size:.75rem; font-weight:600; letter-spacing:.04em; color:#58606e; }
+    .inner { max-width:1000px; margin:0 auto; padding:0 2.5rem; }
+    .narrow { max-width:760px; margin:0 auto; padding:0 2.5rem; }
+
+    /* 공통 텍스트 */
+    h1.labname { font-size:1.5rem; font-weight:700; color:var(--navy); line-height:1.45; }
+    h1.labname small { display:block; font-size:1rem; font-weight:500; color:var(--gray); margin-top:.25rem; }
+    .affil { font-size:.88rem; color:var(--gray); margin-top:.5rem; }
+    p.intro { font-size:.97rem; line-height:1.95; color:var(--ink); }
+    p.intro + p.intro { margin-top:.9rem; }
+    .h2 { font-size:1.05rem; font-weight:700; color:var(--navy); padding-bottom:.5rem;
+      border-bottom:1px solid var(--line); margin-bottom:.9rem; display:flex; justify-content:space-between; align-items:baseline; }
+    .more { font-size:.8rem; font-weight:500; color:var(--gray); }
+    .more:hover { color:var(--brown); }
+
+    /* 소식 목록 */
+    .nlist { list-style:none; }
+    .nrow { display:flex; gap:1rem; padding:.6rem 0; border-bottom:1px solid #f0f1f3; font-size:.93rem; line-height:1.65; }
+    .nrow:last-child { border-bottom:none; }
+    .ndate { color:var(--gray); font-size:.85rem; white-space:nowrap; flex-shrink:0; padding-top:.1rem; }
+    .ntext a:hover, .ntext:hover { color:var(--brown); }
+    /* 논문 목록 */
+    .plist { list-style:none; }
+    .prow { padding:.65rem 0; border-bottom:1px solid #f0f1f3; font-size:.92rem; line-height:1.7; }
+    .prow:last-child { border-bottom:none; }
+    .pt { color:var(--navy); font-weight:500; }
+    .pv { color:var(--gray); font-size:.86rem; display:block; margin-top:.1rem; }
+    .link { color:var(--blue); border-bottom:1px solid #b9cbe0; }
+    .link:hover { border-bottom-color:var(--brown); color:var(--brown); }
+
+    /* ─── A: 2단 (본문 + 사이드바) ─── */
+    .a-grid { display:grid; grid-template-columns:1fr 262px; gap:3.2rem; padding:2.4rem 0 3rem; }
+    .a-side .sbox + .sbox { margin-top:1.8rem; }
+    .a-sh { font-size:.82rem; font-weight:700; color:var(--navy); padding-bottom:.4rem;
+      border-bottom:2px solid var(--navy); margin-bottom:.6rem; }
+    .a-si { font-size:.86rem; color:var(--ink); line-height:1.9; }
+    .a-si b { font-weight:600; color:var(--navy); }
+    .a-block { margin-top:2rem; }
+
+    /* ─── B: 단일 좁은 칼럼 ─── */
+    .b-pad { padding:3rem 0 3.5rem; }
+    .b-sec { margin-top:2.4rem; }
+
+    /* ─── C: 게시판형 ─── */
+    .c-head { padding:2.2rem 0 1.6rem; border-bottom:1px solid var(--line); }
+    .c-two { display:grid; grid-template-columns:1fr 1fr; gap:2.6rem; padding:2rem 0 1rem; }
+    .c-full { padding:1rem 0 3rem; }
+    .c-fields { display:flex; flex-wrap:wrap; gap:.4rem 1.2rem; font-size:.9rem; color:var(--ink); margin-top:.8rem; }
+    .c-fields span::before { content:'· '; color:var(--brown); }
+
+    /* ─── D: 논문 우선 ─── */
+    .d-pad { padding:2.6rem 0 3rem; }
+    .d-top { display:grid; grid-template-columns:1.25fr 1fr; gap:3rem; padding-bottom:1.8rem;
+      border-bottom:1px solid var(--line); align-items:start; }
+    .d-meta { font-size:.86rem; line-height:2; color:var(--ink); }
+    .d-meta b { font-weight:600; color:var(--navy); }
+    .d-sec { margin-top:2.2rem; }
+    .d-num { color:var(--gray); font-size:.85rem; margin-right:.45rem; }
+  </style>
+</head>
+<body>
+<div class="pv-wrap">
+
+  <div class="pv-note">
+    <strong>앞선 시안들이 계속 "티"가 났던 진짜 이유</strong> — 디자인이 부족해서가 아니라 <b>내용이 비어 있어서</b>입니다.
+    큰 배너 + 똑같은 크기의 상자 4개 + 영어 홍보 문구는 내용이 없을 때 화면을 채우려고 쓰는 방식이라,
+    보는 사람은 "채워 넣은 페이지"로 읽습니다. 오히려 <b>화려한 디자인일수록 더 그렇게 보입니다.</b><br><br>
+    실제 대학 연구실 홈페이지는 대부분 <b>수수하고 내용이 빽빽</b>합니다 — 날짜가 붙은 구체적인 소식, 실제 논문 제목, 실제 이름.
+    아래 4가지는 배너를 아예 없애고, <b>이 연구실의 진짜 데이터</b>(실제 논문·학회 발표·졸업·수상 기록)로 채운 시안입니다.
+    <ul>
+      <li>지금 홈의 소식 4건(김민준·이수빈 석사 졸업 등)은 <b>실존하지 않는 내용</b>입니다 — 아래처럼 실제 기록으로 교체해야 합니다</li>
+      <li>모집란의 영어 문구("Fully funded" 등)도 실제 조건이 아니므로 확인·교체 필요</li>
+    </ul>
+  </div>
+
+  <!-- ══════════ A ══════════ -->
+  <h2 class="pv-label">방식 A — 본문 + 오른쪽 정보란 (기관 홈페이지형)</h2>
+  <p class="pv-desc">배너 없이 바로 내용이 시작됩니다. 왼쪽은 소개와 소식, 오른쪽은 지도교수·연락처·모집 안내가 고정된 정보란입니다. 국내외 학과·연구실 홈페이지에서 가장 흔한 형태라 눈에 익고, 정보 밀도가 높습니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="inner"><div class="a-grid">
+      <div>
+        <h1 class="labname">Smart Mobility Operations and Planning Lab
+          <small>스마트 모빌리티 운영 · 계획 연구실</small></h1>
+        <p class="affil">고려대학교 건축사회환경공학부 · 지도교수 강승모</p>
+        <p class="intro" style="margin-top:1.2rem;">교통 및 물류 체계에 최적화 기법과 데이터 분석을 적용하여 효율성을 높이는 연구를 수행합니다.
+        대중교통 노선 설계, 수요응답형 모빌리티, 물류 네트워크 최적화를 중심으로 지속가능한 모빌리티 체계를 다룹니다.</p>
+
+        <div class="a-block">
+          <p class="h2">연구실 소식 <a href="#" class="more">전체보기</a></p>
+          <ul class="nlist">
+            <li class="nrow"><span class="ndate">2026.07</span><span class="ntext">정구홍 박사님 세미나 및 연구실 MT 진행</span></li>
+            <li class="nrow"><span class="ndate">2026.02</span><span class="ntext">백승훈·장시원 석사 학위 취득</span></li>
+            <li class="nrow"><span class="ndate">2026.01</span><span class="ntext">TRB Annual Meeting 포스터 발표 (Washington D.C.)</span></li>
+            <li class="nrow"><span class="ndate">2025.12</span><span class="ntext">NeurIPS 2025 포스터 발표 (San Diego) — BO4Mob 벤치마크</span></li>
+            <li class="nrow"><span class="ndate">2025.11</span><span class="ntext">ACM SIGSPATIAL 포스터 발표 (Minneapolis)</span></li>
+          </ul>
+        </div>
+
+        <div class="a-block">
+          <p class="h2">최근 논문 <a href="#" class="more">전체보기</a></p>
+          <ul class="plist">
+            <li class="prow"><span class="pt">Development of LLM-based Mobility Simulation Framework with Self-calibration for On-demand Service Analysis</span>
+              <span class="pv">IEEE Access, Vol. 14, pp. 77211–77224 · 2026</span></li>
+            <li class="prow"><span class="pt">Pickup and Delivery Problem with Synchronous and Asynchronous Transshipment for Q-Commerce Delivery</span>
+              <span class="pv">Transportation Research Record · 2026 (accepted)</span></li>
+            <li class="prow"><span class="pt">Diffusion Process-based Model for Network Trajectory Propagation</span>
+              <span class="pv">IEEE Transactions on Intelligent Transportation Systems, Vol. 27, No. 5 · 2026</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <aside class="a-side">
+        <div class="sbox">
+          <p class="a-sh">연락처</p>
+          <p class="a-si"><b>강승모 교수</b><br>건축사회환경공학부<br>
+          <a href="#" class="link">s_kang@korea.ac.kr</a><br>02-3290-4862</p>
+        </div>
+        <div class="sbox">
+          <p class="a-sh">구성원</p>
+          <p class="a-si">박사과정 9명 · 석사과정 4명<br>박사후연구원 1명 · 졸업생 23명</p>
+        </div>
+        <div class="sbox">
+          <p class="a-sh">대학원생 모집</p>
+          <p class="a-si">스마트 모빌리티·교통계획·물류·최적화 분야에 관심 있는
+          대학원생 및 학부연구생을 모집합니다. 전공 제한은 없습니다.<br>
+          <a href="#" class="link">모집 안내 보기</a></p>
+        </div>
+      </aside>
+    </div></div>
+  </div>
+
+  <!-- ══════════ B ══════════ -->
+  <h2 class="pv-label">방식 B — 한 칼럼 (해외 교수·연구실 홈페이지형)</h2>
+  <p class="pv-desc">폭을 좁게 잡고 글만 위에서 아래로 흐르게 합니다. 장식이 거의 없어 <b>가장 담백</b>하고, 해외 대학 연구실에서 흔히 쓰는 형태입니다. 내용이 적어도 빈약해 보이지 않는 게 장점입니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="narrow"><div class="b-pad">
+      <h1 class="labname">Smart Mobility Operations and Planning Lab
+        <small>스마트 모빌리티 운영 · 계획 연구실</small></h1>
+      <p class="affil">고려대학교 건축사회환경공학부 · 지도교수 <a href="#" class="link">강승모</a></p>
+
+      <p class="intro" style="margin-top:1.4rem;">우리 연구실은 교통과 물류 시스템에서 발생하는 문제를 수리 모형과 최적화 알고리즘으로 해결합니다.
+      대중교통 노선망 설계, 수요응답형 모빌리티(DRT), 물류 네트워크 최적화, 교통 안전 분석을 주로 다루며,
+      머신러닝과 Operations Research를 결합한 방법론을 연구합니다.</p>
+      <p class="intro">연구 결과는 <i>Transportation Research Part B</i>, <i>IEEE Transactions on ITS</i>,
+      <i>Accident Analysis and Prevention</i>, <i>European Journal of Operational Research</i> 등에 발표되었습니다.</p>
+
+      <div class="b-sec">
+        <p class="h2">소식</p>
+        <ul class="nlist">
+          <li class="nrow"><span class="ndate">2026.07</span><span class="ntext">정구홍 박사님 세미나 및 연구실 MT 진행</span></li>
+          <li class="nrow"><span class="ndate">2026.02</span><span class="ntext">백승훈·장시원 석사 학위 취득 — 각각 현대글로비스 입사, 폐기물 수거 경로 최적화 연구</span></li>
+          <li class="nrow"><span class="ndate">2026.01</span><span class="ntext">TRB Annual Meeting 포스터 발표 (Washington D.C.)</span></li>
+          <li class="nrow"><span class="ndate">2025.12</span><span class="ntext">NeurIPS 2025 포스터 발표 (San Diego)</span></li>
+          <li class="nrow"><span class="ndate">2025.05</span><span class="ntext">대한교통학회 회장상 및 최우수상 수상</span></li>
+        </ul>
+      </div>
+
+      <div class="b-sec">
+        <p class="h2">최근 논문</p>
+        <ul class="plist">
+          <li class="prow">Park, Hyuncheol, Hyun Park, and <b>Seungmo Kang</b> (2026).
+            “Development of LLM-based Mobility Simulation Framework with Self-calibration for On-demand Service Analysis,”
+            <span class="pv">IEEE Access, Vol. 14, pp. 77211–77224.</span></li>
+          <li class="prow">Park, Hyun, Hyuncheol Park, and <b>Seungmo Kang</b> (2026).
+            “Pickup and Delivery Problem with Synchronous and Asynchronous Transshipment for Q-Commerce Delivery,”
+            <span class="pv">Transportation Research Record (accepted).</span></li>
+          <li class="prow">Ryu, Seunghee, Donghoon Kwon, Seongjin Choi, Aryan Deshwal, <b>Seungmo Kang</b>, and Carolina Osorio (2025).
+            “BO4Mob: Bayesian Optimization Benchmarks for High-Dimensional Urban Mobility Problem,”
+            <span class="pv">NeurIPS 2025.</span></li>
+        </ul>
+      </div>
+
+      <div class="b-sec">
+        <p class="h2">대학원생 모집</p>
+        <p class="intro">스마트 모빌리티, 교통공학, 물류, 최적화 분야에 관심 있는 대학원생(석사·박사·석박사통합)과
+        학부연구생을 상시 모집합니다. 전공 제한은 없으며, 관심 있는 분은
+        <a href="#" class="link">s_kang@korea.ac.kr</a>로 연락 바랍니다.</p>
+      </div>
+    </div></div>
+  </div>
+
+  <!-- ══════════ C ══════════ -->
+  <h2 class="pv-label">방식 C — 게시판형 (국내 대학 연구실에서 흔한 형태)</h2>
+  <p class="pv-desc">상단에 짧은 소개, 아래는 <b>소식과 논문을 좌우 목록</b>으로 나란히 놓습니다. 연구 분야는 상자 없이 한 줄로 나열합니다. 국내 대학 사이트 특유의 목록 중심 구성이라 익숙하게 읽힙니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="inner">
+      <div class="c-head">
+        <h1 class="labname">Smart Mobility Operations and Planning Lab
+          <small>스마트 모빌리티 운영 · 계획 연구실 · 고려대학교 건축사회환경공학부</small></h1>
+        <p class="intro" style="margin-top:.9rem;">교통·물류 체계에 최적화 기법과 데이터 분석을 적용하여 지속가능한 모빌리티 체계를 연구합니다.</p>
+        <div class="c-fields">
+          <span>교통 계획 및 운영</span><span>물류 최적화</span><span>지능형 교통체계</span><span>대중교통체계</span>
+          <span>교통 경제 및 투자 분석</span><span>교통시설물 설치 및 관리</span><span>항공 교통</span><span>항만 운영</span>
+        </div>
+      </div>
+      <div class="c-two">
+        <div>
+          <p class="h2">연구실 소식 <a href="#" class="more">+ 더보기</a></p>
+          <ul class="nlist">
+            <li class="nrow"><span class="ndate">2026.07</span><span class="ntext">정구홍 박사님 세미나 및 MT</span></li>
+            <li class="nrow"><span class="ndate">2026.02</span><span class="ntext">백승훈·장시원 석사 학위 취득</span></li>
+            <li class="nrow"><span class="ndate">2026.01</span><span class="ntext">TRB Annual Meeting 발표</span></li>
+            <li class="nrow"><span class="ndate">2025.12</span><span class="ntext">NeurIPS 2025 포스터 발표</span></li>
+            <li class="nrow"><span class="ndate">2025.05</span><span class="ntext">대한교통학회 회장상·최우수상 수상</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="h2">진행 중인 과제 <a href="#" class="more">+ 더보기</a></p>
+          <ul class="nlist">
+            <li class="nrow"><span class="ndate">2025–26</span><span class="ntext">포천-철원 고속도로 예비타당성조사 (KDI)</span></li>
+            <li class="nrow"><span class="ndate">2025–26</span><span class="ntext">제6차 국도·국지도 건설 5개년 계획 (KDI)</span></li>
+            <li class="nrow"><span class="ndate">2025</span><span class="ntext">화성시 교통약자 이동서비스 개선 연구</span></li>
+            <li class="nrow"><span class="ndate">2025</span><span class="ntext">경기도 철도 노선별 환승손실보조금 추정</span></li>
+            <li class="nrow"><span class="ndate">2021–26</span><span class="ntext">O2O 공유 모빌리티 알고리즘 웨어하우스 (NRF)</span></li>
+          </ul>
+        </div>
+      </div>
+      <div class="c-full">
+        <p class="h2">최근 논문 <a href="#" class="more">+ 더보기</a></p>
+        <ul class="plist">
+          <li class="prow"><span class="pt">Development of LLM-based Mobility Simulation Framework with Self-calibration for On-demand Service Analysis</span>
+            <span class="pv">IEEE Access, Vol. 14, pp. 77211–77224 · 2026</span></li>
+          <li class="prow"><span class="pt">Multiobjective Transit Network Design with Travel Time Reliability for Conventional and Autonomous Electric Vehicles</span>
+            <span class="pv">IEEE Access, Vol. 13, pp. 47938–47954 · 2025</span></li>
+          <li class="prow"><span class="pt">Optimizing Shelter Locations for Bus Evacuation and Relief Supply under Traffic Congestion</span>
+            <span class="pv">IET Intelligent Transport Systems, Vol. 19, Issue 1 · 2025</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ D ══════════ -->
+  <h2 class="pv-label">방식 D — 연구 성과 중심</h2>
+  <p class="pv-desc">첫 화면부터 <b>논문 목록</b>이 바로 보입니다. 소개는 두 문장으로 줄이고, 오른쪽에 지도교수·구성원·연락처를 짧게 둡니다. "무엇을 하는가"보다 "무엇을 했는가"를 앞세우는 구성이라 연구 중심 인상이 강합니다.</p>
+  <div class="pv-frame">
+    <div class="pv-bar"><i></i><i></i><i></i></div>
+    <div class="m-nav"><span class="m-logo">SM<span>OP</span></span><span class="m-menu">HOME&nbsp; PROFESSOR&nbsp; MEMBERS&nbsp; PUBLICATIONS&nbsp; PROJECTS&nbsp; GALLERY&nbsp; CONTACT</span></div>
+    <div class="inner"><div class="d-pad">
+      <div class="d-top">
+        <div>
+          <h1 class="labname">Smart Mobility Operations and Planning Lab
+            <small>스마트 모빌리티 운영 · 계획 연구실</small></h1>
+          <p class="intro" style="margin-top:1rem;">교통과 물류 시스템의 문제를 수리 모형과 최적화 알고리즘으로 해결합니다.
+          대중교통 노선망 설계, 수요응답형 모빌리티, 물류 네트워크 최적화가 주요 주제입니다.</p>
+        </div>
+        <div class="d-meta">
+          <b>고려대학교 건축사회환경공학부</b><br>
+          지도교수 강승모 · <a href="#" class="link">s_kang@korea.ac.kr</a><br>
+          구성원 16명 · 졸업생 23명<br>
+          국제 학술논문 41편 · 특허 4건<br>
+          <a href="#" class="link">대학원생 모집 안내</a>
+        </div>
+      </div>
+
+      <div class="d-sec">
+        <p class="h2">최근 발표 논문 <a href="#" class="more">전체 41편 보기</a></p>
+        <ul class="plist">
+          <li class="prow"><span class="d-num">1.</span><span class="pt">Development of LLM-based Mobility Simulation Framework with Self-calibration for On-demand Service Analysis</span>
+            <span class="pv">Park, Hyuncheol, Hyun Park, Seungmo Kang — IEEE Access, Vol. 14, pp. 77211–77224 (2026)</span></li>
+          <li class="prow"><span class="d-num">2.</span><span class="pt">Pickup and Delivery Problem with Synchronous and Asynchronous Transshipment for Q-Commerce Delivery</span>
+            <span class="pv">Park, Hyun, Hyuncheol Park, Seungmo Kang — Transportation Research Record, accepted (2026)</span></li>
+          <li class="prow"><span class="d-num">3.</span><span class="pt">Diffusion Process-based Model for Network Trajectory Propagation</span>
+            <span class="pv">Sleiman et al. — IEEE Transactions on Intelligent Transportation Systems, Vol. 27, No. 5 (2026)</span></li>
+          <li class="prow"><span class="d-num">4.</span><span class="pt">BO4Mob: Bayesian Optimization Benchmarks for High-Dimensional Urban Mobility Problem</span>
+            <span class="pv">Ryu, Seunghee et al. — NeurIPS 2025</span></li>
+          <li class="prow"><span class="d-num">5.</span><span class="pt">Multiobjective Transit Network Design with Travel Time Reliability</span>
+            <span class="pv">Park, Su Jin, Seungmo Kang — IEEE Access, Vol. 13, pp. 47938–47954 (2025)</span></li>
+        </ul>
+      </div>
+
+      <div class="d-sec">
+        <p class="h2">소식</p>
+        <ul class="nlist">
+          <li class="nrow"><span class="ndate">2026.07</span><span class="ntext">정구홍 박사님 세미나 및 연구실 MT</span></li>
+          <li class="nrow"><span class="ndate">2026.02</span><span class="ntext">백승훈·장시원 석사 학위 취득</span></li>
+          <li class="nrow"><span class="ndate">2026.01</span><span class="ntext">TRB Annual Meeting 포스터 발표</span></li>
+        </ul>
+      </div>
+    </div></div>
+  </div>
+
+</div>
+</body>
+</html>

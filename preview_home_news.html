@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미리보기 — 홈 뉴스 섹션 대안</title>
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    body { background: #e9eaec; }
+    .pv-wrap { max-width: 1050px; margin: 0 auto; padding: 2.5rem 1.25rem 6rem; }
+    .pv-note { background: #fff7ed; border: 1px solid #fdba74; border-radius: 6px;
+      padding: 1rem 1.25rem; font-size: .9rem; color: #9a3412; line-height: 1.7; margin-bottom: 2.5rem; }
+    .pv-label { font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;
+      color: var(--navy); margin: 3rem 0 .35rem; }
+    .pv-label:first-of-type { margin-top: 0; }
+    .pv-desc { font-size: .9rem; color: var(--gray-500); margin-bottom: 1rem; line-height: 1.7; }
+    .frame { background: #fff; padding: 3rem 2.5rem; border-radius: 8px;
+      box-shadow: 0 4px 18px rgba(0,0,0,.08); }
+    .sec-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.9rem; color: #215F9A; margin-bottom: 1.8rem; }
+
+    /* ── A: 현재 ── */
+    .a-item { display: grid; grid-template-columns: 120px 1fr; gap: 2rem; padding: 1.6rem 0; border-bottom: 1px solid var(--gray-100); }
+    .a-item:last-child { border-bottom: none; }
+    .a-date { font-size: 1rem; font-weight: 700; color: #747474; padding-top: .2rem; }
+    .a-title { font-size: 1.15rem; font-weight: 600; color: var(--navy); margin-bottom: .4rem; }
+    .a-desc { font-size: 1rem; color: var(--gray-600); line-height: 1.7; }
+
+    /* ── B: 한 줄 뉴스 ── */
+    .b-row { display: flex; gap: 1.4rem; align-items: baseline; padding: .85rem 0; border-bottom: 1px solid var(--gray-100); }
+    .b-row:last-child { border-bottom: none; }
+    .b-date { font-size: .92rem; color: var(--gray-400); white-space: nowrap; flex-shrink: 0; }
+    .b-title { font-size: 1.08rem; font-weight: 500; color: var(--gray-700); line-height: 1.6; }
+
+    /* ── C: 말머리 게시판형 ── */
+    .c-row { display: flex; gap: 1rem; align-items: baseline; padding: .85rem 0; border-bottom: 1px solid var(--gray-100); }
+    .c-row:last-child { border-bottom: none; }
+    .c-cat { font-size: .95rem; font-weight: 700; color: #80350E; white-space: nowrap; flex-shrink: 0; min-width: 58px; }
+    .c-title { font-size: 1.08rem; font-weight: 500; color: var(--gray-700); line-height: 1.6; flex: 1; }
+    .c-date { font-size: .9rem; color: var(--gray-400); white-space: nowrap; }
+
+    /* ── D: 최신 1건 강조 ── */
+    .d-first { padding-bottom: 1.5rem; border-bottom: 1px solid var(--gray-200); margin-bottom: .6rem; }
+    .d-fdate { font-size: .92rem; font-weight: 600; color: #80350E; }
+    .d-ftitle { font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-top: .35rem; line-height: 1.5; }
+    .d-fdesc { font-size: 1.02rem; color: var(--gray-600); line-height: 1.8; margin-top: .5rem; }
+
+    /* ── E: 연도별 아카이브형 ── */
+    .e-year { font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700; color: #747474;
+      margin: 1.6rem 0 .4rem; padding-bottom: .4rem; border-bottom: 2px solid #80350E; }
+    .e-year:first-of-type { margin-top: 0; }
+  </style>
+</head>
+<body>
+<div class="pv-wrap">
+
+  <div class="pv-note">
+    <strong>홈 뉴스 섹션 대안</strong> — 내용은 실제 기록(학회 발표·졸업·수상)으로 채웠습니다.
+    지금 데이터에 있는 4건(김민준·이수빈 등)은 실존하지 않는 예시라서 어떤 방식을 고르든 교체가 필요합니다.
+  </div>
+
+  <!-- A -->
+  <h2 class="pv-label">방식 A — 현재 (비교용): 날짜 + 제목 + 설명</h2>
+  <p class="pv-desc">한 건마다 설명까지 있어 자리를 크게 차지 — 4건만 보여도 화면이 김. 설명이 제목을 반복하는 경우가 많아 밀도가 낮습니다.</p>
+  <div class="frame">
+    <h2 class="sec-title">Recent News</h2>
+    <div class="a-item"><span class="a-date">2026.07</span><div><p class="a-title">정구홍 박사님 세미나 및 연구실 MT 진행</p><p class="a-desc">정구홍 박사님을 모시고 세미나를 진행한 뒤 연구실 MT를 다녀왔습니다.</p></div></div>
+    <div class="a-item"><span class="a-date">2026.02</span><div><p class="a-title">백승훈·장시원 석사 학위 취득</p><p class="a-desc">백승훈, 장시원 학생이 석사 학위를 취득하였습니다.</p></div></div>
+    <div class="a-item"><span class="a-date">2026.01</span><div><p class="a-title">TRB Annual Meeting 포스터 발표</p><p class="a-desc">Washington D.C.에서 열린 TRB 연례회의에서 포스터를 발표했습니다.</p></div></div>
+  </div>
+
+  <!-- B -->
+  <h2 class="pv-label">방식 B — 설명 없이 한 줄씩</h2>
+  <p class="pv-desc">제목에 정보를 다 담고 설명을 뺌. 같은 공간에 6~8건이 들어가서 "활동이 많은 연구실"로 보입니다. 국내 대학 사이트에서 가장 흔한 형태.</p>
+  <div class="frame">
+    <h2 class="sec-title">Recent News</h2>
+    <div class="b-row"><span class="b-date">2026.07</span><span class="b-title">정구홍 박사님 세미나 및 연구실 MT 진행</span></div>
+    <div class="b-row"><span class="b-date">2026.02</span><span class="b-title">백승훈·장시원 석사 학위 취득 (현대글로비스, KDI 공공투자관리센터)</span></div>
+    <div class="b-row"><span class="b-date">2026.01</span><span class="b-title">TRB Annual Meeting 포스터 발표 (Washington D.C.)</span></div>
+    <div class="b-row"><span class="b-date">2025.12</span><span class="b-title">NeurIPS 2025 포스터 발표 (San Diego) — BO4Mob 벤치마크</span></div>
+    <div class="b-row"><span class="b-date">2025.11</span><span class="b-title">ACM SIGSPATIAL 포스터 발표 (Minneapolis)</span></div>
+    <div class="b-row"><span class="b-date">2025.05</span><span class="b-title">대한교통학회 회장상·최우수상 수상</span></div>
+  </div>
+
+  <!-- C -->
+  <h2 class="pv-label">방식 C — 말머리 게시판형</h2>
+  <p class="pv-desc">[수상] [학회] [졸업] 같은 말머리를 앞에 붙이고 날짜는 오른쪽 끝으로. 학교 공지 게시판의 익숙한 문법이라 자연스럽고, 소식 종류가 한눈에 구분됩니다.</p>
+  <div class="frame">
+    <h2 class="sec-title">Recent News</h2>
+    <div class="c-row"><span class="c-cat">[행사]</span><span class="c-title">정구홍 박사님 세미나 및 연구실 MT 진행</span><span class="c-date">2026.07</span></div>
+    <div class="c-row"><span class="c-cat">[졸업]</span><span class="c-title">백승훈·장시원 석사 학위 취득</span><span class="c-date">2026.02</span></div>
+    <div class="c-row"><span class="c-cat">[학회]</span><span class="c-title">TRB Annual Meeting 포스터 발표 (Washington D.C.)</span><span class="c-date">2026.01</span></div>
+    <div class="c-row"><span class="c-cat">[학회]</span><span class="c-title">NeurIPS 2025 포스터 발표 (San Diego)</span><span class="c-date">2025.12</span></div>
+    <div class="c-row"><span class="c-cat">[수상]</span><span class="c-title">대한교통학회 회장상·최우수상 수상</span><span class="c-date">2025.05</span></div>
+  </div>
+
+  <!-- D -->
+  <h2 class="pv-label">방식 D — 최신 1건만 크게, 나머지는 한 줄</h2>
+  <p class="pv-desc">가장 최근 소식만 제목·설명을 크게 싣고, 이전 소식은 한 줄로. 뉴스가 뜸해도 최신 1건이 화면을 받쳐주는 구조입니다.</p>
+  <div class="frame">
+    <h2 class="sec-title">Recent News</h2>
+    <div class="d-first">
+      <p class="d-fdate">2026.07</p>
+      <p class="d-ftitle">정구홍 박사님 세미나 및 연구실 MT 진행</p>
+      <p class="d-fdesc">정구홍 박사님을 모시고 세미나를 진행한 뒤, 연구실 구성원들과 함께 MT를 다녀왔습니다.</p>
+    </div>
+    <div class="b-row"><span class="b-date">2026.02</span><span class="b-title">백승훈·장시원 석사 학위 취득</span></div>
+    <div class="b-row"><span class="b-date">2026.01</span><span class="b-title">TRB Annual Meeting 포스터 발표 (Washington D.C.)</span></div>
+    <div class="b-row"><span class="b-date">2025.12</span><span class="b-title">NeurIPS 2025 포스터 발표 (San Diego)</span></div>
+  </div>
+
+  <!-- E -->
+  <h2 class="pv-label">방식 E — 연도별 묶음 (홈이 곧 아카이브)</h2>
+  <p class="pv-desc">별도 페이지 없이 홈에 전체 소식을 연도별로 쌓아가는 방식. 다른 페이지들(논문·프로젝트)과 같은 연도 구분 문법이라 통일감 있고, 소식이 늘어도 구조가 유지됩니다.</p>
+  <div class="frame">
+    <h2 class="sec-title">News</h2>
+    <p class="e-year">2026</p>
+    <div class="b-row"><span class="b-date">07월</span><span class="b-title">정구홍 박사님 세미나 및 연구실 MT 진행</span></div>
+    <div class="b-row"><span class="b-date">02월</span><span class="b-title">백승훈·장시원 석사 학위 취득</span></div>
+    <div class="b-row"><span class="b-date">01월</span><span class="b-title">TRB Annual Meeting 포스터 발표 (Washington D.C.)</span></div>
+    <p class="e-year">2025</p>
+    <div class="b-row"><span class="b-date">12월</span><span class="b-title">NeurIPS 2025 포스터 발표 (San Diego)</span></div>
+    <div class="b-row"><span class="b-date">11월</span><span class="b-title">ACM SIGSPATIAL 포스터 발표 (Minneapolis)</span></div>
+    <div class="b-row"><span class="b-date">05월</span><span class="b-title">대한교통학회 회장상·최우수상 수상</span></div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -164,6 +164,7 @@ section { padding: 6rem 2rem; }
   font-weight: 700; line-height: 1.1; color: #215F9A;
 }
 .page-header p { margin-top: .75rem; font-size: 1rem; color: var(--gray-500); max-width: 560px; line-height: 1.75; }
+.page-header p:empty { display: none; }   /* 설명문이 비어 있으면 빈 줄이 생기지 않도록 */
 .breadcrumb { display: flex; align-items: center; gap: .4rem; font-size: .78rem; color: var(--gray-300); margin-bottom: 1.25rem; }
 .breadcrumb a { color: var(--gray-400); transition: color var(--transition); }
 .breadcrumb a:hover { color: var(--navy); }

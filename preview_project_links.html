@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>미리보기 — 프로젝트 링크 표시 방식 3가지</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="css/projects.css" />
+  <style>
+    body { background: var(--gray-50, #fafafa); }
+    .preview-wrap { max-width: 900px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; }
+    .preview-note {
+      background: #fff7ed; border: 1px solid #fdba74; border-radius: 6px;
+      padding: 1rem 1.25rem; font-size: .9rem; color: #9a3412; margin-bottom: 2.5rem; line-height: 1.6;
+    }
+    .option-label {
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.25rem;
+      color: var(--navy, #1a2b4a); margin: 3rem 0 .35rem;
+    }
+    .option-desc { font-size: .9rem; color: var(--gray-500, #737373); margin-bottom: 1.25rem; }
+
+    /* ── 방식 A: 카드 하단 Link 버튼 ── */
+    .proj-bottom { display: flex; justify-content: space-between; align-items: center; margin-top: .75rem; }
+    .proj-bottom .proj-status { margin-top: 0; }
+    .proj-link {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-size: .8rem; font-weight: 600; color: #80350E;
+      border: 1.5px solid #80350E; border-radius: var(--radius-full, 999px);
+      padding: .2rem .7rem; text-decoration: none;
+      transition: all .15s ease;
+    }
+    .proj-link:hover { background: #80350E; color: #fff; }
+
+    /* ── 방식 B: 제목 클릭 ── */
+    .proj-title a {
+      color: inherit; text-decoration: none;
+      border-bottom: 1.5px solid transparent; transition: border-color .15s ease;
+    }
+    .proj-title a:hover { border-bottom-color: #80350E; color: #80350E; }
+    .proj-title a .ext { font-size: .8em; color: #80350E; margin-left: .2rem; }
+
+    /* ── 방식 C: 카드 전체 클릭 ── */
+    .proj-card.clickable { cursor: pointer; }
+    .proj-card.clickable:hover {
+      border-color: #80350E; box-shadow: 0 4px 14px rgba(0,0,0,.08);
+      transform: translateY(-2px);
+    }
+    .proj-card.clickable .card-arrow {
+      position: absolute; right: 1.1rem; bottom: 1.1rem;
+      font-size: .9rem; color: #80350E;
+    }
+    .proj-card.clickable > a.stretch {
+      position: absolute; inset: 0; z-index: 1;
+    }
+  </style>
+</head>
+<body>
+
+<div class="preview-wrap">
+
+  <div class="preview-note">
+    <strong>미리보기 페이지</strong> — 프로젝트 카드에 링크를 표시하는 3가지 방식 비교용입니다.
+    각 방식마다 왼쪽 카드는 <b>링크 있음</b>, 오른쪽 카드는 <b>링크 없음</b> 상태입니다.
+    마우스를 올려보고 클릭해보세요. (링크는 KDI 홈페이지로 연결되는 예시입니다)
+  </div>
+
+  <!-- ══════════ 방식 A ══════════ -->
+  <h2 class="option-label">방식 A — 카드 하단 Link 버튼</h2>
+  <p class="option-desc">상태 배지 옆에 작은 "Link ↗" 버튼. 링크 유무가 한눈에 보이고 카드 디자인이 일관됨.</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-top">
+        <p class="proj-title">포천-철원 고속도로 건설사업 예비타당성조사 교통수요 및 편익추정</p>
+        <span class="proj-period">2025–2026</span>
+      </div>
+      <p class="proj-agency">한국개발연구원 (KDI)</p>
+      <div class="proj-bottom">
+        <span class="proj-status active">Ongoing</span>
+        <a class="proj-link" href="https://www.kdi.re.kr" target="_blank" rel="noopener">Link ↗</a>
+      </div>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top">
+        <p class="proj-title">화성시 교통약자 이동서비스 운영체계 개선방안 연구 용역</p>
+        <span class="proj-period">2025</span>
+      </div>
+      <p class="proj-agency">화성시청</p>
+      <div class="proj-bottom">
+        <span class="proj-status completed">Completed</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════ 방식 B ══════════ -->
+  <h2 class="option-label">방식 B — 제목 클릭</h2>
+  <p class="option-desc">링크가 있으면 제목 자체가 링크가 됨 (호버 시 색 변경 + 밑줄). 깔끔하지만 링크 유무를 알아차리기 어려울 수 있음.</p>
+  <div class="proj-grid">
+    <div class="proj-card">
+      <div class="proj-top">
+        <p class="proj-title"><a href="https://www.kdi.re.kr" target="_blank" rel="noopener">포천-철원 고속도로 건설사업 예비타당성조사 교통수요 및 편익추정<span class="ext">↗</span></a></p>
+        <span class="proj-period">2025–2026</span>
+      </div>
+      <p class="proj-agency">한국개발연구원 (KDI)</p>
+      <span class="proj-status active">Ongoing</span>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top">
+        <p class="proj-title">화성시 교통약자 이동서비스 운영체계 개선방안 연구 용역</p>
+        <span class="proj-period">2025</span>
+      </div>
+      <p class="proj-agency">화성시청</p>
+      <span class="proj-status completed">Completed</span>
+    </div>
+  </div>
+
+  <!-- ══════════ 방식 C ══════════ -->
+  <h2 class="option-label">방식 C — 카드 전체 클릭</h2>
+  <p class="option-desc">링크가 있으면 카드 아무 곳이나 클릭해도 이동 (호버 시 카드가 살짝 떠오름 + 우하단 ↗). 모바일에서 편하지만, 클릭되는 카드와 안 되는 카드가 섞이면 혼란스러울 수 있음.</p>
+  <div class="proj-grid">
+    <div class="proj-card clickable">
+      <a class="stretch" href="https://www.kdi.re.kr" target="_blank" rel="noopener" aria-label="포천-철원 고속도로 프로젝트 링크"></a>
+      <div class="proj-top">
+        <p class="proj-title">포천-철원 고속도로 건설사업 예비타당성조사 교통수요 및 편익추정</p>
+        <span class="proj-period">2025–2026</span>
+      </div>
+      <p class="proj-agency">한국개발연구원 (KDI)</p>
+      <span class="proj-status active">Ongoing</span>
+      <span class="card-arrow">↗</span>
+    </div>
+    <div class="proj-card">
+      <div class="proj-top">
+        <p class="proj-title">화성시 교통약자 이동서비스 운영체계 개선방안 연구 용역</p>
+        <span class="proj-period">2025</span>
+      </div>
+      <p class="proj-agency">화성시청</p>
+      <span class="proj-status completed">Completed</span>
+    </div>
+  </div>
+
+</div>
+
+</body>
+</html>
