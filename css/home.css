@@ -56,19 +56,11 @@
 
 /* RECRUITING */
 .recruiting { background: #F4F5F4; color: var(--navy); }
-.recruit-top { margin-bottom: 3rem; }
+.recruit-top { margin-bottom: 0; }
 .recruit-sub { font-size: 1.05rem; color: var(--gray-600); max-width: 600px; line-height: 1.8; }
-.recruit-roles {
-  display: grid; grid-template-columns: repeat(4,1fr);
-  gap: 0; border-top: 1px solid var(--gray-200);
-}
-.recruit-role-item { padding: 2rem 1.75rem; border-right: 1px solid var(--gray-200); }
-.recruit-role-item:last-child { border-right: none; }
-.recruit-role-name { font-family: var(--font-heading); font-weight: 600; font-size: 1.1rem; color: var(--navy); margin-bottom: .5rem; }
-.recruit-role-desc { font-size: .95rem; color: var(--gray-600); line-height: 1.75; }
 .btn-recruit {
   display: inline-flex; align-items: center;
-  margin-top: 2.5rem; background: #fff; color: var(--navy);
+  margin-top: 2rem; background: #fff; color: var(--navy);
   padding: .85rem 2rem; font-size: .95rem; font-weight: 600;
   border-radius: var(--radius-xs); transition: all var(--transition);
 }
@@ -77,10 +69,7 @@
 @media (max-width: 960px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
   .topic-list { grid-template-columns: 1fr; }
-  .recruit-roles { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .recruit-roles { grid-template-columns: 1fr; }
-  .recruit-role-item { border-right: none; border-bottom: 1px solid var(--gray-200); padding-right: 0; }
   .news-item { grid-template-columns: 1fr; gap: .4rem; }
 }
