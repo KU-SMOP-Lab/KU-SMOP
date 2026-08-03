@@ -43,16 +43,22 @@
 
 /* NEWS */
 .news-head { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 2rem; }
-.news-list { display: flex; flex-direction: column; }
-.news-item {
-  display: grid; grid-template-columns: 140px 1fr;
-  gap: 2rem; padding: 2rem 0; border-bottom: 1px solid var(--gray-100);
+
+/* 선택된 소식 (크게) */
+.news-featured { padding-bottom: 1.6rem; border-bottom: 1px solid var(--gray-200); margin-bottom: .6rem; }
+.nf-date { font-size: .95rem; font-weight: 600; color: #80350E; }
+.nf-title { font-size: 1.4rem; font-weight: 700; color: var(--navy); margin-top: .35rem; line-height: 1.5; }
+.nf-desc { font-size: 1.05rem; color: var(--gray-600); line-height: 1.85; margin-top: .55rem; }
+
+/* 나머지 소식 (한 줄 목록, 클릭 시 위로 올라옴) */
+.news-row {
+  display: flex; gap: 1.4rem; align-items: baseline;
+  padding: .9rem 0; border-bottom: 1px solid var(--gray-100); cursor: pointer;
 }
-.news-item:last-child { border-bottom: none; }
-.news-date { font-size: 1rem; font-weight: 700; color: #747474; letter-spacing: .03em; padding-top: .25rem; }
-.news-title { font-size: 1.2rem; font-weight: 600; color: var(--navy); line-height: 1.5; margin-bottom: .5rem; }
-.news-title em { font-style: italic; font-weight: 400; }
-.news-desc { font-size: 1.05rem; color: var(--gray-600); line-height: 1.7; }
+.news-row:last-child { border-bottom: none; }
+.news-row:hover .nr-title { color: #80350E; }
+.nr-date { font-size: .95rem; color: var(--gray-400); white-space: nowrap; flex-shrink: 0; }
+.nr-title { font-size: 1.1rem; font-weight: 500; color: var(--gray-700); line-height: 1.6; transition: color var(--transition); }
 
 /* RECRUITING */
 .recruiting { background: #F4F5F4; color: var(--navy); }
@@ -71,5 +77,5 @@
   .topic-list { grid-template-columns: 1fr; }
 }
 @media (max-width: 640px) {
-  .news-item { grid-template-columns: 1fr; gap: .4rem; }
+  .news-row { flex-direction: column; gap: .15rem; }
 }

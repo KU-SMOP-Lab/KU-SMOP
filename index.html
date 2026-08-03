@@ -74,7 +74,8 @@
     <div class="news-head">
       <h2 class="section-title" style="margin-bottom:0; color:#215F9A;">Recent News</h2>
     </div>
-    <div class="news-list" id="news-list"></div>
+    <div id="news-featured"></div>
+    <div id="news-rest"></div>
   </div>
 </section>
 
@@ -98,14 +99,34 @@
 
 <script src="data/news.js"></script>
 <script>
-document.getElementById("news-list").innerHTML = NEWS.slice(0, 4).map(n => `
-  <div class="news-item">
-    <span class="news-date">${n.date}</span>
-    <div class="news-body">
-      <p class="news-title">${n.title}</p>
-      <p class="news-desc">${n.desc}</p>
-    </div>
-  </div>`).join("");
+// 최신 4건만 표시. 기본으로 맨 위(최신) 소식이 크게 뜨고,
+// 아래 목록을 클릭하면 그 소식이 큰 자리로 올라옴.
+const NEWS_SHOWN = NEWS.slice(0, 4);
+let newsSelected = 0;
+
+function renderNews() {
+  const f = NEWS_SHOWN[newsSelected];
+  document.getElementById("news-featured").innerHTML = `
+    <div class="news-featured">
+      <p class="nf-date">${f.date}</p>
+      <p class="nf-title">${f.title}</p>
+      <p class="nf-desc">${f.desc}</p>
+    </div>`;
+  document.getElementById("news-rest").innerHTML = NEWS_SHOWN.map((n, i) => i === newsSelected ? "" : `
+    <div class="news-row" data-index="${i}">
+      <span class="nr-date">${n.date}</span>
+      <span class="nr-title">${n.title}</span>
+    </div>`).join("");
+}
+
+document.getElementById("news-rest").addEventListener("click", e => {
+  const row = e.target.closest(".news-row");
+  if (!row) return;
+  newsSelected = parseInt(row.dataset.index);
+  renderNews();
+});
+
+renderNews();
 </script>
 
 </body>
