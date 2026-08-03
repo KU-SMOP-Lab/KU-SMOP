@@ -127,7 +127,7 @@ section { padding: 6rem 2rem; }
   border: none; transition: all var(--transition); white-space: nowrap;
 }
 .btn-primary { background: var(--navy); color: #fff; }
-.btn-primary:hover { background: var(--ink); transform: translateY(-1px); box-shadow: 0 4px 18px rgba(10,22,40,.25); }
+.btn-primary:hover { background: var(--ink); box-shadow: 0 4px 18px rgba(10,22,40,.25); }
 .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--gray-300); }
 .btn-outline:hover { background: var(--gray-100); border-color: var(--navy); }
 
@@ -137,7 +137,7 @@ section { padding: 6rem 2rem; }
   border-radius: var(--radius-md); padding: 1.85rem;
   transition: box-shadow var(--transition), transform var(--transition), border-color var(--transition);
 }
-.card:hover { box-shadow: var(--shadow-md); transform: translateY(-2px); border-color: var(--gray-300); }
+.card:hover { box-shadow: var(--shadow-md); border-color: var(--gray-300); }
 
 /* ── TAGS ─────────────────────────── */
 .tag {

@@ -35,10 +35,8 @@
 .topic-row {
   display: flex; align-items: baseline; gap: 1rem;
   padding: .95rem 0; border-bottom: 1px dotted var(--gray-300);
-  transition: padding-left var(--transition);
 }
-.topic-row:hover { padding-left: .4rem; }
-.topic-num { font-size: .85rem; font-weight: 600; color: #80350E; min-width: 1.6rem; flex-shrink: 0; }
+.topic-num { font-size: 1.05rem; font-weight: 700; color: #80350E; min-width: 1.9rem; flex-shrink: 0; }
 .topic-name { font-size: 1.12rem; font-weight: 600; color: var(--navy); }
 .topic-en { font-size: .82rem; color: var(--gray-400); margin-left: auto; text-align: right; white-space: nowrap; }
 
@@ -71,7 +69,7 @@
   padding: .85rem 2rem; font-size: .95rem; font-weight: 600;
   border-radius: var(--radius-xs); transition: all var(--transition);
 }
-.btn-recruit:hover { background: rgba(255,255,255,.88); transform: translateY(-1px); }
+.btn-recruit:hover { background: rgba(255,255,255,.88); }
 
 @media (max-width: 960px) {
   .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
