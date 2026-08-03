@@ -34,6 +34,8 @@ const NAV_ITEMS = [
   // URL에서 현재 페이지 감지 (예: /smop-lab/members/alumni/ → currentKey="members", depth=2)
   const knownKeys = NAV_ITEMS.map(i => i.key).filter(k => k !== "home");
   const segs = window.location.pathname.replace(/\/$/, "").split("/").filter(Boolean);
+  // 파일을 직접 열었을 때(.../members/index.html)도 폴더 기준으로 계산되도록 파일명 제거
+  if (segs.length && segs[segs.length - 1].includes(".")) segs.pop();
   const lastSeg = segs[segs.length - 1] || "";
   const prevSeg = segs[segs.length - 2] || "";
 

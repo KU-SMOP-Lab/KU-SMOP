@@ -42,11 +42,20 @@ const FOOTER_COL2 = [
 
 (function () {
   const knownKeys = ["professor","members","publications","projects","gallery","contact"];
-  const lastSeg = window.location.pathname.replace(/\/$/, "").split("/").pop() || "";
-  const prefix = knownKeys.includes(lastSeg) ? "../" : "";
+  const segs = window.location.pathname.replace(/\/$/, "").split("/").filter(Boolean);
+  // 파일을 직접 열었을 때(.../members/index.html)도 폴더 기준으로 계산되도록 파일명 제거
+  if (segs.length && segs[segs.length - 1].includes(".")) segs.pop();
+  const lastSeg = segs[segs.length - 1] || "";
+  const prevSeg = segs[segs.length - 2] || "";
+
+  // 하위 폴더 깊이 계산 (예: members/alumni/ → 2단계)
+  let depth = 0;
+  if (knownKeys.includes(lastSeg))      depth = 1;
+  else if (knownKeys.includes(prevSeg)) depth = 2;
+  const prefix = "../".repeat(depth);
 
   const link = ({ label, key }) =>
-    `<li><a href="${prefix}${key}${key ? "/" : "./"}">${label}</a></li>`;
+    `<li><a href="${key ? `${prefix}${key}/` : (prefix || "./")}">${label}</a></li>`;
 
   document.getElementById("footer-root").innerHTML = `
     <footer>
