@@ -27,7 +27,7 @@
 
 const NOTICE = {
 
-  show: true,
+  show: false,
   version: 1,
   position: "left",
 

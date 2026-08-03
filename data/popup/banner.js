@@ -35,13 +35,13 @@
 
 const BANNER = {
 
-  show: false,        // ← 띄우려면 true 로 바꾸세요
+  show: true,         // ← 띄우려면 true 로 바꾸세요
   version: 1,
 
   image: "images/popup/sample-banner.svg",   // ← 직접 만든 이미지로 교체
   alt:   "졸업을 축하합니다 — 백승훈 공학석사, 장시원 공학석사",
 
-  width: 820,
+  width: 1050,
   position: "center",
 
   // link: { url: "members/alumni/" },     // 이미지를 누르면 이동 (선택)
