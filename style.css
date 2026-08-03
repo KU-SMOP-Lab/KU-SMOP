@@ -99,23 +99,11 @@ footer { background: #F4F5F4; padding: 3.5rem 2rem 2rem; }
 /* ── SECTION ──────────────────────── */
 section { padding: 6rem 2rem; }
 .section-inner { max-width: 1200px; margin: 0 auto; }
-.section-label {
-  display: inline-flex; align-items: center; gap: .4rem;
-  font-size: .75rem; font-weight: 700; letter-spacing: .12em;
-  text-transform: uppercase; color: var(--gray-600);
-  background: var(--gray-100); border-radius: var(--radius-full);
-  padding: .3rem .9rem; margin-bottom: 1rem;
-  border: 1px solid var(--gray-200);
-}
 .section-title {
   font-family: var(--font-heading);
   font-size: clamp(1.8rem, 2.8vw, 2.4rem);
   font-weight: 700; color: var(--navy);
   line-height: 1.15; letter-spacing: -.2px; margin-bottom: .75rem;
-}
-.section-sub {
-  font-size: 1.05rem; color: var(--gray-600);
-  max-width: 540px; line-height: 1.75;
 }
 
 /* ── BUTTONS ──────────────────────── */
@@ -126,8 +114,6 @@ section { padding: 6rem 2rem; }
   padding: .7rem 1.5rem; cursor: pointer;
   border: none; transition: all var(--transition); white-space: nowrap;
 }
-.btn-primary { background: var(--navy); color: #fff; }
-.btn-primary:hover { background: var(--ink); box-shadow: 0 4px 18px rgba(10,22,40,.25); }
 .btn-outline { background: transparent; color: var(--navy); border: 1.5px solid var(--gray-300); }
 .btn-outline:hover { background: var(--gray-100); border-color: var(--navy); }
 
@@ -171,18 +157,11 @@ section { padding: 6rem 2rem; }
 .breadcrumb span { color: var(--gray-200); }
 
 /* ── GRID ─────────────────────────── */
-.grid-2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 1.5rem; }
-.grid-3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 1.5rem; }
-.grid-4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 1.25rem; }
-
 /* ── RESPONSIVE ───────────────────── */
 @media (max-width: 960px) {
-  .grid-4 { grid-template-columns: repeat(2,1fr); }
-  .grid-3 { grid-template-columns: repeat(2,1fr); }
   .footer-inner { grid-template-columns: 1fr 1fr; }
 }
 @media (max-width: 640px) {
-  .grid-2, .grid-3, .grid-4 { grid-template-columns: 1fr; }
   .section-title { font-size: 1.6rem; }
   section { padding: 4rem 1.25rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
