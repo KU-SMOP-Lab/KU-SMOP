@@ -68,7 +68,9 @@ section { padding-top: 2.5rem; }
   color: #80350E; border: 2px solid #80350E; border-radius: 8px;
   padding: .1rem .55rem; background: var(--white); vertical-align: middle; margin-left: .3rem;
 }
-.alumni-year { min-width: 50px; font-size: .95rem; font-weight: 700; color: var(--gray-400); white-space: nowrap; }
+/* 연도 칸은 고정 폭 — 연도 길이가 달라도 이름 시작 위치가 항상 같도록.
+   폭보다 긴 문구(예: "2022 · 2022-2024")는 두 줄로 나뉩니다. */
+.alumni-year { width: 92px; flex-shrink: 0; font-size: .95rem; font-weight: 700; color: var(--gray-400); }
 .alumni-mid { flex: 1; display: flex; flex-direction: column; gap: .3rem; }
 .alumni-name { font-weight: 600; font-size: 1.05rem; color: var(--navy); }
 .alumni-thesis { font-size: .88rem; color: var(--gray-600); line-height: 1.5; }
@@ -108,7 +110,7 @@ section { padding-top: 2.5rem; }
     padding: 1rem 0;
   }
   .alumni-avatar { grid-area: photo; width: 70px; height: 88px; border-radius: 6px; }
-  .alumni-year   { grid-area: year; min-width: 0; font-size: .8rem; color: #80350E; margin-bottom: .15rem; }
+  .alumni-year   { grid-area: year; width: auto; font-size: .8rem; color: #80350E; margin-bottom: .15rem; }
   .alumni-mid    { grid-area: info; }
   .alumni-name   { font-size: .98rem; line-height: 1.45; }
   .alumni-thesis,
