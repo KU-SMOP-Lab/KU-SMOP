@@ -35,7 +35,7 @@
 
 const BANNER = {
 
-  show: true,         // ← 띄우려면 true 로 바꾸세요
+  show: false,        // ← 띄우려면 true 로 바꾸세요
   version: 1,
 
   image: "images/popup/sample-banner.svg",   // ← 직접 만든 이미지로 교체
