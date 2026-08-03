@@ -5,23 +5,32 @@
    활동(이벤트) 하나에 사진 여러 장을 올리는 구조입니다.
 
    사진 추가 방법:
-   1. 사진 파일들을 images/gallery/ 아래에 넣기
-      (활동별로 폴더를 만들면 관리 편함: images/gallery/2026-winter-mt/1.jpg ...)
+   1. images/gallery/ 아래에 활동 폴더를 만들고 사진을 넣기
+      폴더 이름 규칙: 연도 2자리 + 순번 2자리 + 활동명
+      예) images/gallery/2603_동계MT/26동계MT_1.jpg
    2. 아래 GALLERY 배열 맨 앞(최신 활동이 위)에 추가:
 
    {
      title:    "활동 이름",              // 예: "2026 동계 MT"
      date:     "2026.02",               // 자유 형식 (예: "2025.10 · 제주")
-     category: "lab-life" | "conferences" | "field-trips" | "celebrations",
+     category: "field-trips",           // 아래 4가지 중 하나만 적기
      photos: [
-       "images/gallery/폴더명/사진1.jpg",
-       "images/gallery/폴더명/사진2.jpg",
-       // ... 몇 장이든 가능. 첫 번째 사진이 제일 앞에 표시됨
+       "images/gallery/2603_동계MT/26동계MT_1.jpg",
+       "images/gallery/2603_동계MT/26동계MT_2.jpg",
+       // ... 몇 장이든 가능. 적은 순서대로 표시됨
      ],
    }
 
+   category 값과 화면에 표시되는 필터 이름:
+     "lab-life"     → 연구실 생활
+     "conferences"  → 학회
+     "field-trips"  → 답사·MT
+     "celebrations" → 축하 행사
+
    ※ photos 를 [] 로 비워두면 "사진 준비 중" 자리표시자가 표시됩니다.
    ※ 화면에는 배열에 적힌 순서 그대로 (최신 활동이 위) 표시됩니다.
+   ※ 세로로 긴 사진은 자동으로 인식되어 세로 칸에 표시됩니다 (따로 표시할 필요 없음).
+   ※ 사진 경로는 확장자 대소문자(.jpg / .JPG)까지 파일명과 똑같이 적어야 합니다.
 
 ================================================================ */
 

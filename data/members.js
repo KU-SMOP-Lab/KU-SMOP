@@ -6,12 +6,16 @@
    {
      name:     "English Name",
      nameKr:   "한국어 이름",
-     role:     "postdoc" | "phd" | "phdcourse" | "masters" | "undergrad",
+     role:     "phd",   // "postdoc" / "phd" / "phdcourse" / "masters" / "undergrad" 중 하나만 적기
+                        // 해당 role에 아무도 없으면 그 항목은 화면에 표시되지 않고,
+                        // 멤버를 추가하면 자동으로 다시 나타납니다
      interest: "관심분야1, 관심분야2, ...",
                // "Research Interest:" 접두어는 써도 되고 안 써도 됨 (화면에서 자동 처리)
                // 카드에는 "RESEARCH INTERESTS" 라벨 아래 내용만 표시됨
      email:    "email@korea.ac.kr",
-     photo:    "images/members/파일명.jpg",  // 없으면 null
+     photo:    "images/members/current/파일명.jpg",  // 없으면 null
+               // 사진 파일은 images/members/current/ 폴더에 넣으세요
+               // 확장자 대소문자(.jpg / .JPG)까지 파일명과 똑같이 적어야 합니다
      links: [
        // 개인 링크 목록 — 카드의 이메일 아래에 아이콘+이름 칩 버튼으로 표시됨
        // 없으면 links: [] 로 비워두면 됨 (칩이 아예 안 나타남)

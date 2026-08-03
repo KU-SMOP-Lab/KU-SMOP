@@ -9,8 +9,12 @@
    복사해서 쓰는 템플릿:
    { year:2026,
      title:"챕터 제목",
-     authors:["저자1","Kang, Seungmo"],
-     venue:"책 제목 · 출판사, pp. XX–XX · 2026",
+     authors:["성, 이름","이름 성","Seungmo Kang"],
+              // 1저자만 "성, 이름", 나머지는 "이름 성" 순서
+              // "Seungmo Kang" / "Kang, Seungmo"는 자동 bold
+              // ※ "Silverstein, Claire E." 처럼 쉼표가 들어간 이름은
+              //   반드시 따옴표 하나 안에 넣으세요 (나누면 두 사람으로 표시됨)
+     venue:"in 편저자 (ed.) 책 제목 · 출판사, pp. XX–XX · 2026",
      tags:["Book Chapter"] },
 
 ================================================================ */
@@ -19,7 +23,7 @@ const BOOK_CHAPTERS = [
 
   { year:2019,
     title:"Macroscopic Fundamental Diagram Validation for Collision Formation on Freeway Networks",
-    authors:["Silverstein", "Claire E.","Samer H. Hamdar","Kang, Seungmo","Kitae Jang"],
+    authors:["Silverstein, Claire E.","Samer H. Hamdar","Seungmo Kang","Kitae Jang"],
     venue:"in Samer H. Hamdar (ed.) Traffic and Granular Flow '17 · Springer, pp. 107–116 · 2019",
     tags:["Book Chapter"] },
 
