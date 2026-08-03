@@ -93,3 +93,25 @@ section { padding-top: 2.5rem; }
 @media (max-width: 960px) { .member-grid { grid-template-columns: repeat(3,1fr); } }
 @media (max-width: 680px) { .member-grid { grid-template-columns: repeat(2,1fr); } }
 @media (max-width: 420px) { .member-grid { grid-template-columns: 1fr; } }
+
+/* ── 좁은 화면(휴대폰)에서의 졸업생 목록 ──
+   데스크톱 화면은 위 설정 그대로이고, 아래는 640px 이하에서만 적용됩니다.
+   사진을 왼쪽으로 옮기고 오른쪽에 연도·이름·소속을 세로로 쌓아
+   글자가 들어갈 폭을 넓게 확보합니다. */
+@media (max-width: 640px) {
+  .alumni-item {
+    display: grid;
+    grid-template-columns: 70px 1fr;
+    grid-template-areas: "photo year" "photo info";
+    column-gap: .85rem;
+    align-items: start;
+    padding: 1rem 0;
+  }
+  .alumni-avatar { grid-area: photo; width: 70px; height: 88px; border-radius: 6px; }
+  .alumni-year   { grid-area: year; min-width: 0; font-size: .8rem; color: #80350E; margin-bottom: .15rem; }
+  .alumni-mid    { grid-area: info; }
+  .alumni-name   { font-size: .98rem; line-height: 1.45; }
+  .alumni-thesis,
+  .alumni-where  { font-size: .85rem; }
+  .alumni-group-title { font-size: 1.05rem; }
+}
