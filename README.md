@@ -141,6 +141,9 @@ Pull 없이 수정하면 나중에 올릴 때 **충돌(conflict)** 이 나서 �
 | 연구 과제 추가 | `data/projects.js` |
 | 갤러리 활동·사진 추가 | `data/gallery.js` |
 | 홈 화면 소식 추가 | `data/news.js` |
+| 공지 팝업 내용 수정 / 끄기 | `data/popup/notice.js` |
+| 졸업·수상 축하 팝업 | `data/popup/celebration.js` |
+| 직접 만든 현수막 이미지 띄우기 | `data/popup/banner.js` |
 | 교수님 정보 수정 (경력, 수상, 위원회 활동) | `data/professor.js` |
 | 상단 메뉴 수정 | `components/nav.js` |
 | 하단 푸터(연락처, 저작권 연도) 수정 | `components/footer.js` |
@@ -208,6 +211,63 @@ Pull 없이 수정하면 나중에 올릴 때 **충돌(conflict)** 이 나서 �
 
 기본 정보, 약력(bio), 학력, 경력, 수상, 기타 경력(편집위원·위원회 활동)이 들어 있습니다.
 형식은 파일 안의 주석을 참고하세요.
+
+---
+
+## 팝업 (공지 창)
+
+페이지에 들어오면 뜨는 팝업입니다. 현재 **홈 화면**에만 적용되어 있습니다.
+세 종류가 있고, 필요한 것만 켜서 쓰면 됩니다. 모두 `data/popup/` 폴더에서 관리합니다.
+
+| 종류 | 파일 | 모습 |
+|---|---|---|
+| 공지 팝업 | `data/popup/notice.js` | 화면 **왼쪽 아래 구석**에 떠 있음. 배경을 가리지 않아 페이지를 그대로 읽을 수 있고, 닫기를 눌러야 사라짐 |
+| 축하 팝업 | `data/popup/celebration.js` | 화면 **가운데**에 크게. 졸업생 사진·이름·학위를 넣어 축하 메시지 표시 |
+| 이미지 팝업 | `data/popup/banner.js` | **직접 만든 현수막 이미지**를 그대로 표시 |
+
+### 켜고 끄기
+
+각 파일 안의 `show` 값만 바꾸면 됩니다. 내용은 지우지 마세요.
+
+```js
+show: true,    // 팝업 표시
+show: false,   // 팝업 안 뜸
+```
+
+현재 기본 설정은 **공지 팝업만 켜져 있고**, 축하·이미지 팝업은 꺼져 있습니다.
+
+### 직접 만든 현수막 이미지 띄우기
+
+1. 포토샵·미리캔버스·PPT 등으로 이미지를 만듭니다
+   (가로형 현수막은 **1200 × 260** 정도, 파일 용량은 500KB 이하 권장)
+2. 만든 이미지를 `images/popup/` 폴더에 넣습니다
+3. `data/popup/banner.js` 에서 경로를 적고 `show: true` 로 바꿉니다
+
+```js
+show: true,
+image: "images/popup/2026-졸업축하.jpg",
+width: 820,            // 팝업 최대 가로 폭(px)
+position: "center",    // "center" = 가운데(배경 어둡게) / "corner" = 오른쪽 아래
+```
+
+`images/popup/sample-banner.svg` 에 예시 이미지가 들어 있으니 참고하세요.
+
+### 다시 띄우기
+
+방문자가 **"오늘 하루 보지 않기"** 를 누르면 그날 자정까지 다시 뜨지 않습니다.
+내용을 새로 바꿔서 그 사람들에게도 다시 보이게 하려면 파일 안의 `version` 을 1 올리세요 (예: `1` → `2`).
+
+### 다른 페이지에도 팝업을 넣으려면
+
+넣고 싶은 페이지의 `index.html` 을 열고 `</body>` 바로 위에 아래를 추가합니다.
+(하위 폴더의 페이지라면 경로 앞에 `../` 를 붙이세요)
+
+```html
+<script src="data/popup/notice.js"></script>
+<script src="components/popup.js"></script>
+```
+
+쓰고 싶은 종류의 데이터 파일만 넣으면 되고, `components/popup.js` 는 항상 **맨 마지막**에 와야 합니다.
 
 ---
 
@@ -292,6 +352,7 @@ kang-lab/
 │
 ├── data/               ★ 내용을 수정하는 곳 — 대부분의 작업은 여기서 끝납니다
 │   ├── publications/     논문 (국제·국내·도서·특허)
+│   ├── popup/            팝업 (공지·축하·이미지)
 │   ├── members.js        재학생
 │   ├── alumni.js         졸업생
 │   ├── projects.js       연구 과제
@@ -303,11 +364,13 @@ kang-lab/
 │   ├── members/current/  재학생 사진
 │   ├── members/alumni/   졸업생 사진
 │   ├── gallery/          갤러리 사진 (활동별 폴더)
+│   ├── popup/            팝업용 현수막 이미지
 │   └── professor/        교수님 사진
 │
 ├── components/         모든 페이지가 함께 쓰는 부분
 │   ├── nav.js            상단 메뉴
-│   └── footer.js         하단 푸터
+│   ├── footer.js         하단 푸터
+│   └── popup.js          팝업 표시
 │
 ├── css/                페이지별 디자인
 │   └── home.css, members.css, publications.css, ...

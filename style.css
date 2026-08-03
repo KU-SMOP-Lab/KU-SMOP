@@ -156,7 +156,120 @@ section { padding: 6rem 2rem; }
 .breadcrumb a:hover { color: var(--navy); }
 .breadcrumb span { color: var(--gray-200); }
 
-/* ── GRID ─────────────────────────── */
+/* ── POPUP ────────────────────────────
+   공지 팝업(구석) · 축하 팝업(가운데) 공용 스타일.
+   내용은 data/notice.js · data/celebration.js 에서 수정하세요. */
+
+/* 공통 요소 */
+.pop-x {
+  position: absolute; top: .6rem; right: .7rem;
+  width: 28px; height: 28px; border: none; background: none;
+  color: var(--gray-400); font-size: .95rem; cursor: pointer; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+}
+.pop-x:hover { background: var(--gray-100); color: var(--navy); }
+.pop-foot {
+  display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+  margin-top: 1.2rem; padding-top: .8rem; border-top: 1px solid var(--gray-200);
+}
+.pop-today { display: flex; align-items: center; gap: .4rem; font-size: .82rem; color: var(--gray-500); cursor: pointer; }
+.pop-today input { cursor: pointer; }
+.pop-close {
+  border: none; background: var(--navy); color: #fff;
+  font-family: var(--font-body); font-size: .85rem; font-weight: 600;
+  padding: .5rem 1.25rem; border-radius: var(--radius-xs); cursor: pointer;
+  transition: background var(--transition);
+}
+.pop-close:hover { background: var(--ink); }
+
+/* ① 공지 팝업 — 화면 구석에 떠 있음 (배경을 가리지 않음) */
+.pop-corner {
+  position: fixed; bottom: 24px; z-index: 9990;
+  width: 330px; background: var(--white);
+  border-radius: 8px; border-top: 4px solid #80350E;
+  box-shadow: 0 12px 40px rgba(0,0,0,.22);
+  padding: 1.6rem 1.4rem 1rem;
+}
+.pop-corner-left  { left: 24px; }
+.pop-corner-right { right: 24px; }
+.pop-label { font-size: .68rem; font-weight: 700; letter-spacing: .14em; color: #80350E; }
+.pop-corner .pop-title {
+  font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+  color: var(--navy); margin-top: .35rem; line-height: 1.45;
+}
+.pop-body { font-size: .88rem; color: var(--gray-600); line-height: 1.8; margin-top: .6rem; }
+.pop-link {
+  display: inline-block; margin-top: 1rem;
+  font-size: .85rem; font-weight: 600; color: #80350E;
+  border: 1.5px solid #80350E; border-radius: var(--radius-xs);
+  padding: .45rem 1.1rem; transition: all var(--transition);
+}
+.pop-link:hover { background: #80350E; color: #fff; }
+
+/* ② 축하 팝업 — 화면 가운데, 배경 어둡게 */
+.pop-dim {
+  position: fixed; inset: 0; z-index: 9995;
+  background: rgba(10,18,32,.6);
+  display: flex; align-items: center; justify-content: center; padding: 1.25rem;
+}
+.pop-card {
+  position: relative; background: var(--white);
+  width: 100%; max-width: 430px; max-height: 88vh; overflow-y: auto;
+  border-radius: 12px; box-shadow: 0 24px 70px rgba(0,0,0,.35);
+}
+.pop-card-top {
+  background: linear-gradient(135deg, #215F9A, #16406e);
+  color: #fff; text-align: center; padding: 1.8rem 1.5rem 1.4rem;
+}
+.pop-card .pop-x { color: rgba(255,255,255,.8); }
+.pop-card .pop-x:hover { background: rgba(255,255,255,.2); color: #fff; }
+.pop-emoji { font-size: 2rem; line-height: 1; }
+.pop-card-title { font-family: var(--font-heading); font-weight: 700; font-size: 1.35rem; margin-top: .6rem; }
+.pop-card-sub { font-size: .85rem; color: rgba(255,255,255,.8); margin-top: .3rem; }
+.pop-card-body { padding: 1.5rem; }
+.pop-people { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; }
+.pop-person { text-align: center; }
+.pop-person img {
+  width: 72px; height: 90px; object-fit: cover;
+  border-radius: 8px; border: 1px solid var(--gray-200);
+}
+.pop-person-noimg {
+  width: 72px; height: 90px; border-radius: 8px;
+  background: var(--gray-100); border: 1px solid var(--gray-200);
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700; color: var(--gray-400);
+}
+.pop-person-name { font-weight: 700; font-size: .95rem; color: var(--navy); margin-top: .5rem; }
+.pop-person-degree { font-size: .78rem; color: var(--gray-500); margin-top: .1rem; }
+.pop-message { text-align: center; font-size: .9rem; color: var(--gray-600); line-height: 1.8; margin-top: 1.2rem; }
+.pop-card .pop-foot { margin: 0 1.5rem 1.1rem; }
+
+/* ③ 이미지 팝업 — 직접 만든 현수막 이미지를 그대로 표시 */
+.pop-banner {
+  position: relative; background: var(--white);
+  width: 100%; border-radius: 10px; overflow: hidden;
+  box-shadow: 0 20px 60px rgba(0,0,0,.3);
+}
+.pop-banner-img { display: block; width: 100%; height: auto; }
+.pop-banner .pop-foot { margin: 0 1.1rem; padding: .7rem 0; }
+.pop-banner .pop-x {
+  background: rgba(255,255,255,.9); color: var(--gray-500);
+  box-shadow: 0 1px 6px rgba(0,0,0,.2);
+}
+.pop-banner .pop-x:hover { background: #fff; color: var(--navy); }
+.pop-banner-corner {
+  position: fixed; right: 24px; bottom: 24px; z-index: 9990;
+}
+
+@media (max-width: 480px) {
+  .pop-corner { left: 12px; right: 12px; bottom: 12px; width: auto; }
+  .pop-banner-corner { left: 12px; right: 12px; bottom: 12px; }
+  .pop-card-title { font-size: 1.2rem; }
+  .pop-foot { flex-direction: column-reverse; align-items: stretch; gap: .7rem; }
+  .pop-close { width: 100%; }
+  .pop-today { justify-content: center; }
+}
+
 /* ── RESPONSIVE ───────────────────── */
 @media (max-width: 960px) {
   .footer-inner { grid-template-columns: 1fr 1fr; }

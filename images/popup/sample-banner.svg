@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 260" width="1200" height="260" role="img" aria-label="졸업 축하 현수막 예시">
+  <rect width="1200" height="260" fill="#ffffff"/>
+  <g fill="#215F9A">
+    <polygon points="0,0 150,0 60,260 0,260"/>
+    <polygon points="1200,0 1200,260 1140,260 1050,0"/>
+  </g>
+  <g fill="#80350E">
+    <polygon points="150,0 215,0 125,260 60,260"/>
+    <polygon points="1050,0 1115,0 1200,260 1140,260" />
+  </g>
+  <text x="600" y="62" text-anchor="middle" font-family="'Noto Sans KR',sans-serif"
+        font-size="22" font-weight="600" fill="#747474" letter-spacing="2">SMOP Lab · Korea University</text>
+  <text x="600" y="140" text-anchor="middle" font-family="'Noto Sans KR',sans-serif"
+        font-size="62" font-weight="800" fill="#16233d">졸업을 축하합니다</text>
+  <line x1="330" y1="176" x2="870" y2="176" stroke="#80350E" stroke-width="3"/>
+  <text x="600" y="216" text-anchor="middle" font-family="'Noto Sans KR',sans-serif"
+        font-size="24" font-weight="500" fill="#4b5563">백승훈 공학석사 · 장시원 공학석사</text>
+  <text x="600" y="244" text-anchor="middle" font-family="'Noto Sans KR',sans-serif"
+        font-size="18" fill="#9ca3af">2025학년도 후기 학위수여식 · 2026년 2월</text>
+</svg>
