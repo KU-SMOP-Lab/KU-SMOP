@@ -42,23 +42,16 @@
 const CURRENT_MEMBERS = [
 
   // ── Postdoctoral Researchers ───────────────────────────────────
-  {
-    name:     "Seongjong Woo",
-    nameKr:   "우성종",
-    role:     "postdoc",
-    interest: "Research Interest: [Add here]",
-    email:    "seongjongwoo@korea.ac.kr",
-    photo:    "images/members/current/우성종.jpg",
-    links:    [],
-  },
+  // (현재 0명 — 멤버가 없는 항목은 페이지에 자동으로 표시되지 않고,
+  //  여기에 멤버를 추가하면 해당 섹션이 자동으로 다시 나타남)
 
   // ── Ph.D. Candidates ──────────────────────────────────────────
   {
     name:     "Hun Jeong",
     nameKr:   "정헌",
     role:     "phd",
-    interest: "Research Interest: [Add here]",
-    email:    "[email]@korea.ac.kr",
+    //interest: "Research Interest: [Add here]",
+    //email:    "[email]@korea.ac.kr",
     photo:    "images/members/current/정헌.jpg",
     links:    [],
   },
@@ -66,7 +59,7 @@ const CURRENT_MEMBERS = [
     name:     "Haru Min",
     nameKr:   "민하루",
     role:     "phd",
-    interest: "Research Interest: [Add here]",
+    //interest: "Research Interest: [Add here]",
     email:    "mm1nha@naver.com",
     photo:    "images/members/current/민하루.jpg",
     links:    [],
@@ -93,8 +86,8 @@ const CURRENT_MEMBERS = [
     name:     "Taisung Woo",
     nameKr:   "우태성",
     role:     "phd",
-    interest: "Research Interest: [Add here]",
-    email:    "[email]@korea.ac.kr",
+    //interest: "Research Interest: [Add here]",
+    //email:    "[email]@korea.ac.kr",
     photo:    null,
     links:    [],
   },
@@ -140,7 +133,7 @@ const CURRENT_MEMBERS = [
     name:     "Hyeontae Lim",
     nameKr:   "임현태",
     role:     "phdcourse",
-    interest: "Research Interest: [Add here]",
+    //interest: "Research Interest: [Add here]",
     email:    "jameslht@korea.ac.kr",
     photo:    "images/members/current/임현태.jpg",
     links:    [],
@@ -178,7 +171,7 @@ const CURRENT_MEMBERS = [
     name:     "Minseo Park",
     nameKr:   "박민서",
     role:     "masters",
-    interest: "Research Interest: [Add here]",
+    //interest: "Research Interest: [Add here]",
     email:    "miinseo324@korea.ac.kr",
     photo:    "images/members/current/박민서.jpg",
     links:    [],

@@ -84,7 +84,7 @@ function renderCurrent() {
             <p class="member-name-kr">${m.nameKr}</p>
             <span class="tag ${cfg.tag} member-role">${cfg.badge}</span>
             ${interestText ? `<p class="interest-label">Research Interests</p><p class="member-interest">${interestText}</p>` : ""}
-            <p class="member-email"><a href="mailto:${m.email}">${m.email}</a></p>
+            ${m.email ? `<p class="member-email"><a href="mailto:${m.email}">${m.email}</a></p>` : ""}
             ${linkChips ? `<div class="link-chips">${linkChips}</div>` : ""}
           </div>
         </div>`;

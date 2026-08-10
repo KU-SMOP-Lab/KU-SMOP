@@ -91,6 +91,15 @@ const ALUMNI = [
      photo:    "images/members/alumni/오윤석.jpg",
    },
    {
+     name:     "Seongjong Woo",
+     nameKr:   "우성종",
+     year:     2026,            // 졸업 연도 (숫자)
+     month:    6,               // 졸업 월 (숫자) — 화면에 "2026.06"으로 표시됨
+     degree:   "박사",
+     // position: "현재 소속 / 직위",     // 정해지면 앞의 // 를 지우고 적으세요
+     photo:    "images/members/alumni/우성종.jpg",
+   },
+   {
      name:     "Sujin Park",
      nameKr:   "박수진",   // 없으면 null
      year:     2025,            // 졸업 연도 (숫자)
