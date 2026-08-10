@@ -1,25 +1,40 @@
 /* ================================================================
    PROFESSOR DATA FILE — SMOP Lab
    ================================================================
-   교수님 프로필 정보를 여기서만 수정하세요.
-   HTML 파일은 건드릴 필요 없습니다.
+   교수님 페이지(홈페이지 > PROFESSOR)의 모든 내용이 이 파일에 있습니다.
+   이 파일만 고치면 되고, 다른 파일은 건드릴 필요가 없습니다.
 
-   아래 항목들로 이루어져 있으며, 각 항목의 작성 형식은
-   해당 위치의 주석에 적혀 있습니다.
+   ── 이 파일의 구성 ─────────────────────────────────────────
+     기본 정보    이름 · 직함 · 사진 · 연락처   → 페이지 왼쪽에 표시
+     bio          소개 문단                     → Biography
+     education    학력                          → Education
+     career       경력                          → Experience
+     awards       수상                          → Awards
+     services     학회 편집위원 · 위원회 활동   → 기타 경력
 
-     기본 정보    이름 · 직함 · 사진 · 연락처
-     bio          소개 문단 (배열의 항목 하나가 문단 하나)
-     education    학력
-     career       경력 (Experience)
-     awards       수상
-     services     기타 경력 — 학회 편집위원, 위원회 활동
+   ── 수정할 때 지켜야 할 것 ─────────────────────────────────
+   1. 글자는 반드시 큰따옴표 "..." 로 감쌉니다.
+   2. 각 줄 끝과 항목 끝의 쉼표( , )를 빠뜨리지 마세요.
+      → 이 두 가지가 어긋나면 페이지 내용이 안 나옵니다.
+        (그런 경우 화면 위에 빨간 안내창이 떠서 알려줍니다)
+   3. 항목을 지우고 싶으면 그 줄 맨 앞에 // 를 붙이면 화면에서 사라집니다.
+   4. 목록(education, career, awards, services)은
+      { ... }, 한 덩어리가 화면의 한 줄입니다.
+      적은 순서 그대로 화면에 표시되므로, 새 항목은 보통 맨 위에 넣습니다.
+   5. 수정한 뒤에는 professor/index.html 을 더블클릭해 화면을 꼭 확인하세요.
 
-   ※ 항목이 비어 있으면(services: []) 그 섹션은 화면에 표시되지 않습니다.
+   ※ 목록이 비어 있으면(예: awards: []) 그 섹션 자체가 화면에 안 나옵니다.
 ================================================================ */
 
 const PROFESSOR = {
 
-  /* ── 기본 정보 ──────────────────────────────────────────────── */
+  /* ── 기본 정보 ──────────────────────────────────────────────
+     페이지 왼쪽(사진 아래)에 표시됩니다.
+     title 안의 <br> 은 "여기서 줄을 바꾼다"는 뜻입니다.
+     사진을 바꾸려면 새 사진을 images/professor/ 폴더에 넣고
+     아래 photo 의 파일 이름을 그 파일과 똑같이 적으세요.
+     (.jpg / .JPG 처럼 대소문자까지 같아야 합니다)
+  ─────────────────────────────────────────────────────────── */
   name:   "Seungmo Kang",
   nameKr: "강승모",
   title:  "Professor<br>School of Civil, Environmental and Architectural Engineering<br>Korea University",
@@ -28,8 +43,16 @@ const PROFESSOR = {
   phone:  "+82-2-3290-4862",
   office: "Seoul, Korea",
 
-  /* ── Biography ──────────────────────────────────────────────
-     문단 배열로 작성. 각 항목이 하나의 <p> 태그가 됩니다.
+  /* ── Biography (소개) ───────────────────────────────────────
+     ` ` (백틱) 로 감싼 덩어리 하나가 화면의 한 문단입니다.
+     문단을 추가하려면 아래처럼 덩어리를 하나 더 쓰고 쉼표로 구분하세요.
+
+       bio: [
+         `첫 번째 문단입니다.`,
+         `두 번째 문단입니다.`,
+       ],
+
+     문장 안에서 <em>기울임</em>, <strong>굵게</strong> 를 쓸 수 있습니다.
   ─────────────────────────────────────────────────────────── */
   bio: [
     `Professor Kang's research interests lie in developing mathematical models to address
@@ -40,8 +63,12 @@ const PROFESSOR = {
      behavior of various system elements.`,
   ],
 
-  /* ── Education ──────────────────────────────────────────────
-     형식: { degree, school, field, year }
+  /* ── Education (학력) ───────────────────────────────────────
+     복사해서 쓰는 한 줄:
+     { degree:"Ph.D.", school:"학교 이름", field:"전공", year:"2008" },
+
+     degree  왼쪽 회색 칸에 들어가는 학위 (Ph.D. / M.S. / B.S.)
+     year    연도는 숫자가 아니라 "2008" 처럼 따옴표 안에 적습니다
   ─────────────────────────────────────────────────────────── */
   education: [
     { degree:"Ph.D.", school:"University of Illinois at Urbana-Champaign", field:"Civil Engineering", year:"2008" },
@@ -49,8 +76,14 @@ const PROFESSOR = {
     { degree:"B.S.",  school:"Seoul National University", field:"Civil Engineering (Urban Engineering Major)", year:"1998" },
   ],
 
-  /* ── Experience ─────────────────────────────────────────────
-     형식: { period, role, org }
+  /* ── Experience (경력) ──────────────────────────────────────
+     복사해서 쓰는 한 줄:
+     { period:"Mar. 2026 – present", role:"직함", org:"소속 기관" },
+
+     period  왼쪽 칸의 기간. 형식은 자유이며 적은 그대로 표시됩니다.
+             (현재 진행 중이면 "– present" 로 적습니다)
+     role    직함     org  소속 기관
+     새 경력은 보통 맨 위에 추가합니다.
   ─────────────────────────────────────────────────────────── */
   career: [
     { period:"Sep. 2019 – present",    role:"Professor",                          org:"Korea University" },
@@ -65,8 +98,12 @@ const PROFESSOR = {
     { period:"Mar. 1998 – Feb. 2000",  role:"Research Assistant",                 org:"Seoul National University" },
   ],
 
-  /* ── Awards ─────────────────────────────────────────────────
-     형식: { year, name, org }
+  /* ── Awards (수상) ──────────────────────────────────────────
+     복사해서 쓰는 한 줄:
+     { year:"Mar. 2026", name:"상 이름", org:"주는 기관" },
+
+     year  "2026" 처럼 연도만 적어도 되고, "Mar. 2026" 처럼 월까지 적어도 됩니다.
+     새 수상은 보통 맨 위에 추가합니다.
   ─────────────────────────────────────────────────────────── */
   awards: [
     { year:"Apr. 2020", name:"Certificate of Achievement",              org:"World Road Association (PIARC)" },
@@ -76,7 +113,11 @@ const PROFESSOR = {
   ],
 
   /* ── 기타 경력 (학회 편집위원 · 위원회 활동) ──────────────────
-     형식: { period, role, org }
+     복사해서 쓰는 한 줄:
+     { period:"2026 – 2028", role:"직책", org:"기관 이름" },
+
+     국문·영문 모두 가능하며, 적은 순서 그대로 표시됩니다.
+     예) { period:"2026 – 2028", role:"이사", org:"한국도시부동산학회" },
   ─────────────────────────────────────────────────────────── */
   services: [
     { period:"2020 – present", role:"Associate Editor",                     org:"Asian Transport Studies" },
