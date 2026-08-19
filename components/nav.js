@@ -19,6 +19,7 @@
 ================================================================ */
 
 const NAV_ITEMS = [
+  { label: "Home",         key: "home" },
   { label: "Professor",    key: "professor" },
   { label: "Members",      key: "members" },
   { label: "Publications", key: "publications" },
