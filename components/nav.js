@@ -52,11 +52,6 @@ const NAV_ITEMS = [
     return `<li><a href="${href}"${active}>${i.label}</a></li>`;
   }).join("");
 
-  const favicon = document.createElement("link");
-  favicon.rel = "icon"; favicon.type = "image/png";
-  favicon.href = `${prefix}images/smop_logo_cut.png`;
-  document.head.appendChild(favicon);
-
   document.getElementById("nav-root").innerHTML = `
     <nav class="navbar">
       <div class="nav-inner">
