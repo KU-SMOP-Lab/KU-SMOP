@@ -62,7 +62,6 @@ ul { list-style: none; }
 }
 .nav-logo { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
 .nav-logo-img { height: 52px; width: auto; display: block; flex-shrink: 0; min-width: unset; }
-.nav-logo-text { font-size: 1.1rem; font-weight: 700; letter-spacing: .04em; color: #215F9A; }
 .nav-links { display: flex; gap: .1rem; }
 .nav-links a {
   font-family: var(--font-heading);

@@ -23,7 +23,6 @@
   color: #215F9A;
 }
 .hero-title .line2 { color: #747474; }
-.hero-logo { height: clamp(200px, 30vw, 380px); width: auto; display: block; }
 
 /* ABOUT */
 .about-section { border-bottom: 1px solid var(--gray-200); }
