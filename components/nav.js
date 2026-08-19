@@ -55,9 +55,7 @@ const NAV_ITEMS = [
   document.getElementById("nav-root").innerHTML = `
     <nav class="navbar">
       <div class="nav-inner">
-        <a href="${prefix || "./"}" class="nav-logo">
-          <img src="${prefix}images/smop_logo.png" alt="SMOP Lab" class="nav-logo-img">
-        </a>
+        <a href="${prefix || "./"}" class="nav-logo nav-logo-text">SMOP Lab</a>
         <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Toggle menu">
           <span></span><span></span><span></span>
         </button>
