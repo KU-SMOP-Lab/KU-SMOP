@@ -51,7 +51,7 @@ let html = "";
 years.forEach(yr => {
   const items = groups[yr];
   html += `<div class="year-group">
-    <h2 class="year-label">${yr} <span class="year-count">${items.length} project${items.length !== 1 ? 's' : ''}</span></h2>
+    <h2 class="year-label">${yr}</h2>
     <div class="proj-grid">`;
   items.forEach(p => {
     const ongoing = isOngoing(p.period);
