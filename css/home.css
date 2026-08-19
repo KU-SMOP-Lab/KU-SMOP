@@ -21,16 +21,16 @@
 .hero-kicker {
   display: inline-flex; align-items: center; gap: .6rem;
   font-size: .8rem; font-weight: 600; letter-spacing: .16em;
-  text-transform: uppercase; color: #f4a261; margin-bottom: 1.1rem;
+  text-transform: uppercase; color: #80350E; margin-bottom: 1.1rem;
 }
-.hero-kicker::before { content: ''; width: 20px; height: 1px; background: #f4a261; }
+.hero-kicker::before { content: ''; width: 20px; height: 1px; background: #80350E; }
 .hero-title {
   font-family: var(--font-heading);
   font-size: clamp(3rem, 6vw, 5rem);
   font-weight: 700; line-height: 1.06; letter-spacing: -.3px;
-  color: #ffffff;
+  color: #215F9A;
 }
-.hero-title .line2 { color: rgba(255,255,255,.6); }
+.hero-title .line2 { color: #747474; }
 
 /* ABOUT */
 .about-section { border-bottom: 1px solid var(--gray-200); }
