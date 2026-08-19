@@ -58,8 +58,9 @@ function renderAuthors(authors) {
   return authors.map(a => a.trim()).map(a => PI_NAMES.includes(a)
     ? `<strong>${a}</strong>` : a).join("; ");
 }
+const HIDDEN_TAGS = new Set(["SCI", "SSCI"]);
 function renderTags(tags) {
-  return tags.map(t => `<span class="tag ${TAG_CLASS[t] || ''}">${t}</span>`).join("");
+  return tags.filter(t => !HIDDEN_TAGS.has(t)).map(t => `<span class="tag ${TAG_CLASS[t] || ''}">${t}</span>`).join("");
 }
 
 function render(filter) {
