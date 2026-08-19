@@ -86,7 +86,7 @@ function render(filter) {
           let cnt = String(intl);
           if (allAccepted) cnt += " accepted";
           if (domestic > 0) cnt += ` + ${domestic} domestic`;
-          return `<h2 class="year-label">${p.yearLabel} <span class="year-count">${cnt}</span></h2>`;
+          return `<h2 class="year-label">${p.yearLabel}</h2>`;
         })();
     html += `<div class="year-group">${label}`;
     grp.forEach(pub => {
