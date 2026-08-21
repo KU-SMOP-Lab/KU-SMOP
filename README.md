@@ -152,6 +152,7 @@ Pull 없이 수정하면 나중에 올릴 때 **충돌(conflict)** 이 나서 �
 | 상단 메뉴 수정 | `components/nav.js` |
 | 하단 푸터(연락처, 저작권 연도) 수정 | `components/footer.js` |
 | 홈 화면 문구·연구분야 목록 수정 | `index.html` |
+| 홈 히어로 배경 이미지 변경 | `index.html` (img src) + `css/home.css` (.hero-bg) |
 | 연락처 페이지 주소·지도 수정 | `contact/index.html` |
 
 ---
@@ -329,6 +330,7 @@ position: "center",    // "center" = 가운데(배경 어둡게) / "corner" = �
 | 졸업생 | `images/members/alumni/` | `"images/members/alumni/홍길동.jpg"` |
 | 갤러리 | `images/gallery/활동폴더/` | `"images/gallery/2603_동계MT/26동계MT_1.jpg"` |
 | 교수님 | `images/professor/` | `"images/professor/강승모.jpg"` |
+| 홈 히어로 배경 | `images/home/` | `css/home.css` 의 `.hero-bg` 에서 직접 지정 |
 
 사진이 아직 없으면 `photo: null` 로 두세요. 재학생은 회색 칸, 졸업생은 이름 이니셜로 표시됩니다.
 
@@ -417,6 +419,7 @@ kang-lab/
 │   └── professor.js      교수님 정보
 │
 ├── images/             사진 파일
+│   ├── home/             홈 전용 이미지 (로고, 파비콘, 히어로 배경 등)
 │   ├── members/current/  재학생 사진
 │   ├── members/alumni/   졸업생 사진
 │   ├── gallery/          갤러리 사진 (활동별 폴더)
