@@ -23,6 +23,12 @@
   color: #215F9A;
 }
 .hero-title .line2 { color: #747474; }
+.hero-title-kr {
+  font-family: 'Noto Sans KR', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2.5rem);
+  font-weight: 500; color: #555;
+  margin-top: .6rem; letter-spacing: -.01em;
+}
 
 /* ABOUT */
 .about-section { border-bottom: 1px solid var(--gray-200); }
