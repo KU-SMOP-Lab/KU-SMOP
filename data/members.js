@@ -101,7 +101,7 @@ const CURRENT_MEMBERS = [
     links:    [],
   },
      {
-    name:     "Wongyun Choi",
+    name:     "Won-gyun Choi",
     nameKr:   "최원균",
     role:     "phd",
     interest: "Research Interest: Public Transport Planning, Sustainable Transportation, International Development Cooperation",
