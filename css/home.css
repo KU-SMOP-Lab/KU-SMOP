@@ -3,8 +3,8 @@
 /* HERO */
 .hero {
   position: relative; color: #fff;
-  padding: 12rem 2rem 8rem; overflow: hidden;
-  min-height: 560px; display: flex; align-items: flex-end;
+  padding: 10rem 2rem 6.5rem; overflow: hidden;
+  min-height: 500px; display: flex; align-items: flex-end;
   background-color: #E8E9E8;
 }
 .hero-bg { display: none; }
