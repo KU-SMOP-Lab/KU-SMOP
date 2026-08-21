@@ -74,7 +74,7 @@ function renderCurrent() {
     members.forEach(m => {
       const avatar = m.photo ? `<img src="../${m.photo}" alt="${m.name}">` : "";
       const interestText = (m.interest || "").replace(/^\s*Research Interests?\s*:\s*/i, "");
-      const interestHtml = interestText.split(',').map(s => s.trim()).filter(Boolean).join('<br>');
+      const interestHtml = interestText.split(',').map(s => s.trim()).filter(Boolean).map(s => `<span class="member-interest-item">${s}</span>`).join('');
       const linkChips = (m.links || []).map(l => `
         <a href="${l.url}" target="_blank" rel="noopener" class="link-chip link-chip-${l.type}">
           ${LINK_ICONS[l.type] || LINK_ICONS.website}${LINK_LABELS[l.type] || "Link"}
