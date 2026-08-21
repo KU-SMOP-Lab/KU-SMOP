@@ -37,6 +37,12 @@
 const GALLERY = [
 
   // ── 2026 ──────────────────────────────────────────────────────
+  { title:"8월 연구실 풋살", date:"2026",
+    category:"lab-life",
+    photos:[
+      "images/gallery/2606_8월_풋살/8월_연구실_풋살.jpg",
+    ] },
+
   { title:"7월 정구홍 박사님 세미나 및 MT", date:"2026",
     category:"field-trips",
     photos:[
