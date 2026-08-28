@@ -3,7 +3,7 @@
 고려대학교 스마트 모빌리티 운영·계획 연구실(SMOP Lab) 홈페이지의 관리 문서입니다.
 논문·멤버·프로젝트·사진 등을 추가하거나 수정하는 방법을 정리했습니다.
 
-- GitHub 저장소: <https://github.com/miinseoo/smop-lab>
+- GitHub 저장소: <https://github.com/KU-SMOP-Lab/KU-SMOP>
 - 공개된 사이트 주소는 저장소 **Settings → Pages** 에서 확인할 수 있습니다.
 
 > **인쇄해서 볼 수 있는 워드 문서**가 `docs/` 폴더에 있습니다.
@@ -35,15 +35,15 @@
 **GitHub Desktop을 쓰는 경우**
 1. GitHub Desktop 실행 → 처음에 GitHub 계정으로 로그인
 2. `File` → `Clone repository` → `GitHub.com` 탭
-3. 목록에서 **smop-lab** 선택
+3. 목록에서 **KU-SMOP** 선택
 4. `Local path` 에서 저장할 위치를 정합니다 (예: `문서\smop-lab`)
 5. `Clone` 클릭 → 잠시 기다리면 폴더가 만들어집니다
 
 **명령어를 쓰는 경우**
 ```bash
 # 저장할 위치로 이동한 뒤
-git clone https://github.com/miinseoo/smop-lab.git
-cd smop-lab
+git clone https://github.com/KU-SMOP-Lab/KU-SMOP.git
+cd KU-SMOP
 
 # 커밋에 기록될 본인 이름과 이메일 설정 (최초 1회)
 git config user.name "홍길동"
@@ -476,7 +476,6 @@ kang-lab/
    정보를 받으면 `data/members.js` 에서 `//` 를 지우고 채우면 됩니다.
 2. **갤러리 사진 용량** — 기존 사진 일부가 원본 크기(최대 13MB)로 올라가 있어 갤러리가 무겁습니다.
    긴 변 1920px로 줄이면 크게 개선됩니다. (위 "사진 넣는 법" 참고)
-3. **저장소 이전** — 연구실 공식 GitHub 계정으로 옮길 예정입니다. 옮긴 뒤에는
-   ① **Settings → Pages** 에서 페이지 다시 켜기 ② 구성원 다시 초대
-   ③ 이 문서와 `docs/` 워드 문서의 저장소 주소 수정
-   ④ 각자 컴퓨터에서 `git remote set-url origin <새 주소>` 실행이 필요합니다.
+3. **저장소 이전 완료** — `KU-SMOP-Lab/KU-SMOP` 으로 이전되었습니다.
+   기존에 clone해둔 분들은 아래 명령어로 remote 주소를 업데이트하세요:
+   `git remote set-url origin https://github.com/KU-SMOP-Lab/KU-SMOP.git`
