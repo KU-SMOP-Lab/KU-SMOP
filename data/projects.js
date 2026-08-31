@@ -36,6 +36,10 @@ const PROJECTS = [
     agency:"한국도로공사 (KEC)" },
 
   { startYear:2026, period:"2026",
+    title:"국내 고속철도 적정 운영속도 및 기술개발 방향 수립",
+    agency:"한국철도기술연구원 (KRRI)" },
+
+  { startYear:2026, period:"2026",
     title:"KTX-1 고속도로 리빌딩 사업의 KTX-1 리빌딩 사업 타당성 검증 연구",
     agency:"우진산전" },
 
