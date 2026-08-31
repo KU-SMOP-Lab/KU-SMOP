@@ -37,6 +37,14 @@
 const GALLERY = [
 
   // ── 2026 ──────────────────────────────────────────────────────
+  { title:"홈커밍데이", date:"2026.08",
+    category:"lab-life",
+    photos:[
+      "images/gallery/2607_홈커밍데이/260828_홈커밍데이_1.jpg",
+      "images/gallery/2607_홈커밍데이/260828_홈커밍데이_2.jpg",
+      "images/gallery/2607_홈커밍데이/260828_홈커밍데이_3.jpg",
+    ] },
+
   { title:"8월 연구실 풋살", date:"2026",
     category:"lab-life",
     photos:[
