@@ -29,11 +29,11 @@ const PROJECTS = [
 
   { startYear:2026, period:"2026",
     title:"서평택-평택 고속도로 확장사업 정책성 평가",
-    agency:"한국도로공사 (KEC)" },
+    agency:"한국도로공사 (EX)" },
 
   { startYear:2026, period:"2026",
     title:"서청주-증평 고속도로 확장사업 정책성 평가",
-    agency:"한국도로공사 (KEC)" },
+    agency:"한국도로공사 (EX)" },
 
   { startYear:2026, period:"2026",
     title:"국내 고속철도 적정 운영속도 및 기술개발 방향 수립",
