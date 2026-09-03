@@ -88,7 +88,7 @@ const GALLERY = [
 
   // ── 2025 ──────────────────────────────────────────────────────
   { title:"공공기술기반 시장연계 창업탐색 사업 대표수료", date:"2025",
-    category:"celebration",
+    category:"celebrations",
     photos:[
       "images/gallery/2507_텍스코어/25_텍스코어.jpg",
     ] },
