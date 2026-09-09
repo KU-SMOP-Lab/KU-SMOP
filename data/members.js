@@ -180,6 +180,15 @@ const CURRENT_MEMBERS = [
   // ── Undergraduate Researchers ──────────────────────────────────
   // (현재 0명 — 멤버가 없는 항목은 페이지에 자동으로 표시되지 않고,
   //  여기에 멤버를 추가하면 해당 섹션이 자동으로 다시 나타남)
+  {
+    name:     "Younghwan Joo",
+    nameKr:   "주영환",
+    role:     "Undergrad",
+    interest: "Research Interest: Public Transportaion, Railway Transportation",
+    email:    "0hwan01z6@korea.ac.kr",
+    photo:    "images/members/current/주영환.jpg",
+    links:    [],
+  },
 
 ];
 
