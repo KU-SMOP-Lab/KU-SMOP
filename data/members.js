@@ -183,7 +183,7 @@ const CURRENT_MEMBERS = [
   {
     name:     "Younghwan Joo",
     nameKr:   "주영환",
-    role:     "Undergrad",
+    role:     "undergrad",
     interest: "Research Interest: Public Transportaion, Railway Transportation",
     email:    "0hwan01z6@korea.ac.kr",
     photo:    "images/members/current/주영환.jpg",
