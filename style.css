@@ -91,6 +91,12 @@ footer { background: #F4F5F4; padding: 3.5rem 2rem 2rem; }
 .footer-tagline { font-size: .88rem; color: var(--gray-600); line-height: 1.7; margin-bottom: 1rem; }
 .footer-info { font-size: .85rem; color: var(--gray-600); line-height: 1.9; }
 .footer-info a:hover { color: var(--navy); }
+.footer-contacts { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.footer-contact-title {
+  font-size: .72rem; font-weight: 700; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--gray-400); margin-bottom: .15rem;
+}
+.footer-address { margin-top: .8rem; }
 .footer-col h4 { color: var(--gray-400); font-size: .8rem; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; margin-bottom: 1rem; }
 .footer-col li { margin-bottom: .45rem; }
 .footer-col a { font-size: .88rem; color: var(--gray-600); transition: color var(--transition); }
@@ -279,6 +285,7 @@ section { padding: 6rem 2rem; }
   .section-title { font-size: 1.6rem; }
   section { padding: 4rem 1.25rem; }
   .footer-inner { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-contacts { grid-template-columns: 1fr; gap: 1rem; }
   .nav-links {
     display: none; flex-direction: column;
     position: fixed; top: 68px; left: 0; right: 0;

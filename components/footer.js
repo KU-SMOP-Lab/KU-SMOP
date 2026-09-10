@@ -17,9 +17,11 @@ const FOOTER = {
   tagline: "Smart Mobility Operations and Planning Laboratory<br>Korea University, Seoul, Korea",
 
   // ── 연락처 수정 ──────────────────────────────────────────────
-  email:   "s_kang@korea.ac.kr",
-  phone:   "+82-2-3290-3526",
-  address: "신공학관, Korea University, Seoul",
+  profEmail: "s_kang@korea.ac.kr",
+  profPhone: "+82-2-3290-4862",
+  labEmail:  "ku.tlsyslab@gmail.com",
+  labPhone:  "+82-2-3290-3526",
+  address:   "신공학관 311호, Korea University, Seoul",
 
   // ── 저작권 연도 ──────────────────────────────────────────────
   year: 2026,
@@ -63,11 +65,21 @@ const FOOTER_COL2 = [
         <div>
           <p class="footer-brand">${FOOTER.brand}</p>
           <p class="footer-tagline">${FOOTER.tagline}</p>
-          <p class="footer-info">
-            <a href="mailto:${FOOTER.email}">${FOOTER.email}</a><br>
-            ${FOOTER.phone}<br>
-            ${FOOTER.address}
-          </p>
+          <div class="footer-info">
+            <div class="footer-contacts">
+              <div>
+                <p class="footer-contact-title">Professor</p>
+                <a href="mailto:${FOOTER.profEmail}">${FOOTER.profEmail}</a><br>
+                ${FOOTER.profPhone}
+              </div>
+              <div>
+                <p class="footer-contact-title">Lab</p>
+                <a href="mailto:${FOOTER.labEmail}">${FOOTER.labEmail}</a><br>
+                ${FOOTER.labPhone}
+              </div>
+            </div>
+            <p class="footer-address">${FOOTER.address}</p>
+          </div>
         </div>
         <div class="footer-col">
           <h4>Pages</h4>
