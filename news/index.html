@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" href="../images/home/favicon.png" type="image/png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>News — SMOP Lab</title>
+  <meta name="description" content="SMOP Lab 소식과 활동 — 수상, 학회 발표, 세미나 및 연구실 행사 사진." />
+  <link rel="stylesheet" href="../style.css" />
+  <link rel="stylesheet" href="../css/news.css" />
+  <script src="../components/guard.js"></script>
+</head>
+<body>
+
+<div id="nav-root"></div>
+<script src="../components/nav.js"></script>
+
+<div class="page-header">
+  <div class="page-header-inner">
+    <div class="breadcrumb"><a href="../">Home</a><span>/</span><span>News</span></div>
+    <h1>News</h1>
+    <p></p>
+  </div>
+</div>
+
+<section>
+  <div class="section-inner">
+
+    <div class="year-select-bar">
+      <label for="year-select">연도</label>
+      <select class="year-select" id="year-select"></select>
+    </div>
+
+    <div id="news-feed"></div>
+  </div>
+</section>
+
+<!-- Lightbox -->
+<div class="lightbox" id="lightbox">
+  <button class="lightbox-close" id="lightbox-close">✕</button>
+  <button class="lightbox-nav lightbox-prev" id="lightbox-prev">&#8592;</button>
+  <button class="lightbox-nav lightbox-next" id="lightbox-next">&#8594;</button>
+  <div class="lightbox-inner" id="lightbox-inner">
+    <div id="lightbox-content"></div>
+    <div class="lightbox-caption">
+      <p class="lightbox-title" id="lightbox-title"></p>
+      <p class="lightbox-date"  id="lightbox-date"></p>
+    </div>
+  </div>
+</div>
+
+<div id="footer-root"></div>
+<script src="../components/footer.js"></script>
+
+<script src="../data/news.js"></script>
+<script>
+const feed = document.getElementById("news-feed");
+const sel  = document.getElementById("year-select");
+
+let shown = [];   // 현재 화면에 표시 중인 소식들 (라이트박스 기준)
+let lbNews = 0;   // 라이트박스가 열려 있는 소식 index
+let lbIndex = 0;  // 그 소식 안에서 몇 번째 사진인지
+
+const yearOf = n => n.date.slice(0, 4);
+
+// 연도 선택 상자 — date 앞 4자리에서 자동 생성
+const years = [...new Set(NEWS.map(yearOf))];
+sel.innerHTML = `<option value="all">전체</option>`
+              + years.map(y => `<option value="${y}">${y}</option>`).join("");
+
+function renderNews() {
+  const v = sel.value;
+  shown = v === "all" ? NEWS : NEWS.filter(n => yearOf(n) === v);
+
+  let html = "", prevYear = null;
+  shown.forEach((n, ni) => {
+    const y = yearOf(n);
+    if (y !== prevYear) { html += `<div class="year-bar"><span>${y}</span></div>`; prevYear = y; }
+
+    // date가 연도만 있으면(예: "2026") 연도 구분선과 겹치므로 표시하지 않음
+    const dateTag = n.date.length > 4 ? `<span class="ni-date">${n.date}</span>` : "";
+    const desc    = n.desc ? `<p class="ni-desc">${n.desc}</p>` : "";
+    const photos  = (n.photos && n.photos.length)
+      ? `<div class="ni-photos">${n.photos.map((p, pi) => `
+          <div class="ni-photo" data-news="${ni}" data-photo="${pi}">
+            <img src="../${p}" alt="${n.title}" loading="lazy">
+          </div>`).join("")}</div>`
+      : "";
+
+    html += `
+      <article class="news-item">
+        <h2 class="ni-title">${n.title}${dateTag}</h2>
+        ${desc}${photos}
+      </article>`;
+  });
+  feed.innerHTML = html;
+
+  // 세로 사진 자동 인식 → 세로로 긴 칸(가로 2장 높이)으로 표시
+  feed.querySelectorAll(".ni-photo img").forEach(img => {
+    const mark = () => {
+      if (img.naturalHeight > img.naturalWidth) img.parentElement.classList.add("portrait");
+    };
+    if (img.complete && img.naturalWidth) mark();
+    else img.addEventListener("load", mark);
+  });
+}
+
+sel.addEventListener("change", renderNews);
+renderNews();
+
+// 사진 클릭 → lightbox 열기 (이벤트 위임)
+feed.addEventListener("click", e => {
+  const tile = e.target.closest(".ni-photo");
+  if (!tile) return;
+  openLightbox(parseInt(tile.dataset.news), parseInt(tile.dataset.photo));
+});
+
+function openLightbox(newsIndex, photoIndex) {
+  lbNews = newsIndex;
+  lbIndex = photoIndex;
+  showLightboxItem();
+  document.getElementById("lightbox").classList.add("open");
+  document.body.style.overflow = "hidden";
+}
+
+function showLightboxItem() {
+  const n = shown[lbNews];
+  document.getElementById("lightbox-content").innerHTML =
+    `<img class="lightbox-img" src="../${n.photos[lbIndex]}" alt="${n.title}">`;
+  document.getElementById("lightbox-title").textContent = n.title;
+  document.getElementById("lightbox-date").textContent =
+    `${n.date} · ${lbIndex + 1} / ${n.photos.length}`;
+
+  // 사진이 1장뿐인 소식이면 이전/다음 버튼 숨기기
+  const multi = n.photos.length > 1;
+  document.querySelector(".lightbox-prev").style.display = multi ? "" : "none";
+  document.querySelector(".lightbox-next").style.display = multi ? "" : "none";
+}
+
+function shiftLightbox(dir) {
+  const len = shown[lbNews].photos.length;
+  lbIndex = (lbIndex + dir + len) % len;
+  showLightboxItem();
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox").classList.remove("open");
+  document.body.style.overflow = "";
+}
+
+document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+document.getElementById("lightbox-prev").addEventListener("click", () => shiftLightbox(-1));
+document.getElementById("lightbox-next").addEventListener("click", () => shiftLightbox(1));
+
+// 배경(오버레이) 클릭 시 닫기
+document.getElementById("lightbox").addEventListener("click", e => {
+  if (e.target === document.getElementById("lightbox")) closeLightbox();
+});
+
+// 키보드
+document.addEventListener("keydown", e => {
+  if (!document.getElementById("lightbox").classList.contains("open")) return;
+  if (e.key === "Escape")     closeLightbox();
+  if (e.key === "ArrowLeft")  shiftLightbox(-1);
+  if (e.key === "ArrowRight") shiftLightbox(1);
+});
+</script>
+
+</body>
+</html>

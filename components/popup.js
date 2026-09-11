@@ -28,7 +28,7 @@
 (function () {
 
   // ── 루트까지의 상대 경로 계산 (하위 폴더 페이지에서도 링크·사진이 맞도록) ──
-  const knownKeys = ["professor", "members", "publications", "projects", "gallery", "contact"];
+  const knownKeys = ["professor", "members", "publications", "projects", "news", "contact"];
   const segs = window.location.pathname.replace(/\/$/, "").split("/").filter(Boolean);
   if (segs.length && segs[segs.length - 1].includes(".")) segs.pop();
   const lastSeg = segs[segs.length - 1] || "";

@@ -24,7 +24,7 @@ const NAV_ITEMS = [
   { label: "Members",      key: "members" },
   { label: "Publications", key: "publications" },
   { label: "Projects",     key: "projects" },
-  { label: "Gallery",      key: "gallery" },
+  { label: "News",         key: "news" },
   { label: "Contact",      key: "contact" },
 ];
 

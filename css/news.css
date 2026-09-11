@@ -1,0 +1,111 @@
+/* ── news/index.html 페이지 전용 스타일 ── */
+
+section { padding-top: 2rem; }
+
+/* ── 연도 선택 ── */
+.year-select-bar { display: flex; align-items: center; gap: .7rem; margin-bottom: 2.5rem; }
+.year-select-bar label {
+  font-family: var(--font-heading);
+  font-size: .85rem; font-weight: 600; color: var(--gray-400); letter-spacing: .06em;
+}
+.year-select {
+  font-family: var(--font-body); font-size: .95rem; font-weight: 600; color: var(--navy);
+  padding: .45rem 2.2rem .45rem 1rem; border: 2px solid var(--gray-200);
+  border-radius: 8px; background: var(--white); cursor: pointer;
+  appearance: none; transition: all var(--transition);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath fill='%2394a3b8' d='M0 0h10L5 6z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat; background-position: right .8rem center;
+}
+.year-select:hover { border-color: #215F9A; }
+
+/* ── 연도 구분선 (스크롤 시 네비게이션 바 아래에 고정) ── */
+.year-bar {
+  position: sticky; top: 68px; z-index: 10;
+  background: var(--white); padding: .9rem 0;
+  margin-bottom: 2rem;
+}
+.year-bar span {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 1.6rem; font-weight: 700; color: #215F9A;
+  letter-spacing: .04em; font-variant-numeric: tabular-nums;
+  border-bottom: 3px solid #215F9A; padding-bottom: .3rem;
+}
+/* 연도가 바뀌는 자리는 앞 소식과 간격을 더 벌림 */
+.news-item + .year-bar { margin-top: 3rem; }
+
+/* ── 소식 항목 ── */
+.news-item { margin-bottom: 4rem; }
+.ni-title {
+  font-family: var(--font-heading);
+  font-weight: 700; font-size: 1.3rem; color: var(--navy); line-height: 1.45;
+  margin-bottom: .8rem; padding-bottom: .45rem;
+  border-bottom: 2px solid #80350E;
+  display: flex; align-items: baseline; gap: .6rem; flex-wrap: wrap;
+}
+.ni-date { font-size: 1rem; font-weight: 600; color: var(--gray-400); }
+.ni-desc { font-size: 1.02rem; color: var(--gray-600); line-height: 1.85; max-width: 860px; }
+
+/* ── 사진 그리드 — 한 줄에 3장 ── */
+.ni-photos {
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  gap: .7rem; grid-auto-flow: dense; margin-top: 1.2rem;
+}
+.ni-photo {
+  aspect-ratio: 4/3; border-radius: 6px; overflow: hidden;
+  background: var(--gray-100); cursor: pointer; transition: all var(--transition);
+}
+/* 세로 사진: 가로 사진 2장을 쌓은 높이(2행)를 차지 — JS가 자동으로 클래스 부여 */
+.ni-photo.portrait { grid-row: span 2; aspect-ratio: 2/3; }
+.ni-photo img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.ni-photo:hover { transform: scale(1.02); box-shadow: var(--shadow-lg); }
+
+@media (max-width: 640px) {
+  .ni-photos { grid-template-columns: repeat(2, 1fr); gap: .5rem; }
+  .ni-title { font-size: 1.15rem; }
+  .ni-date { font-size: .95rem; }
+  .news-item { margin-bottom: 3rem; }
+  .news-item + .year-bar { margin-top: 2.5rem; }
+}
+
+/* ── Lightbox ── */
+.lightbox {
+  position: fixed; inset: 0; z-index: 9999;
+  background: rgba(5, 10, 20, .92);
+  display: flex; align-items: center; justify-content: center;
+  opacity: 0; pointer-events: none;
+  transition: opacity .25s ease;
+}
+.lightbox.open { opacity: 1; pointer-events: all; }
+.lightbox-inner {
+  position: relative; max-width: 90vw; max-height: 90vh;
+  display: flex; flex-direction: column; align-items: center; gap: 1rem;
+}
+.lightbox-img {
+  max-width: 90vw; max-height: 80vh;
+  object-fit: contain; border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0,0,0,.6);
+}
+.lightbox-caption { text-align: center; }
+.lightbox-title { font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; color: #fff; }
+.lightbox-date  { font-size: .85rem; color: rgba(255,255,255,.45); margin-top: .2rem; }
+.lightbox-close {
+  position: fixed; top: 1.5rem; right: 1.75rem;
+  width: 40px; height: 40px; border-radius: 50%;
+  background: rgba(255,255,255,.12); border: none;
+  color: #fff; font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lightbox-close:hover { background: rgba(255,255,255,.25); }
+.lightbox-nav {
+  position: fixed; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: rgba(255,255,255,.12); border: none;
+  color: #fff; font-size: 1.3rem; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  transition: background .2s;
+}
+.lightbox-nav:hover { background: rgba(255,255,255,.25); }
+.lightbox-prev { left: 1.25rem; }
+.lightbox-next { right: 1.25rem; }

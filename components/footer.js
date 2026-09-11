@@ -36,14 +36,14 @@ const FOOTER_COL1 = [
 ];
 const FOOTER_COL2 = [
   { label: "Projects", key: "projects" },
-  { label: "Gallery",  key: "gallery" },
+  { label: "News",     key: "news" },
   { label: "Contact",  key: "contact" },
 ];
 
 // ── 아래는 수정하지 마세요 ──────────────────────────────────────
 
 (function () {
-  const knownKeys = ["professor","members","publications","projects","gallery","contact"];
+  const knownKeys = ["professor","members","publications","projects","news","contact"];
   const segs = window.location.pathname.replace(/\/$/, "").split("/").filter(Boolean);
   // 파일을 직접 열었을 때(.../members/index.html)도 폴더 기준으로 계산되도록 파일명 제거
   if (segs.length && segs[segs.length - 1].includes(".")) segs.pop();
