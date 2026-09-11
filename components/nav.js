@@ -12,7 +12,7 @@
    ▸ 순서 변경 → 배열 순서 바꾸면 됨
    ▸ 하위 메뉴(마우스 올리면 펼쳐지는 것) → 항목에 sub 배열 추가
        sub: [
-         { label: "Members", key: "" },       // key 가 빈칸이면 상위 폴더 자체
+         { label: "Current Members", key: "" }, // key 가 빈칸이면 상위 폴더 자체
          { label: "Alumni",  key: "alumni" }, // → members/alumni/
        ]
      ※ 하위 폴더에 index.html 이 있어야 합니다
@@ -29,7 +29,7 @@ const NAV_ITEMS = [
   { label: "Professor",    key: "professor" },
   { label: "Members",      key: "members",
     sub: [
-      { label: "Members", key: "" },
+      { label: "Current Members", key: "" },
       { label: "Alumni",  key: "alumni" },
     ] },
   { label: "Publications", key: "publications" },
