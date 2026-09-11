@@ -10,6 +10,12 @@
        key   : 폴더 이름과 동일하게 작성 (home 제외)
                예) "members/" 폴더 → key: "members"
    ▸ 순서 변경 → 배열 순서 바꾸면 됨
+   ▸ 하위 메뉴(마우스 올리면 펼쳐지는 것) → 항목에 sub 배열 추가
+       sub: [
+         { label: "Members", key: "" },       // key 가 빈칸이면 상위 폴더 자체
+         { label: "Alumni",  key: "alumni" }, // → members/alumni/
+       ]
+     ※ 하위 폴더에 index.html 이 있어야 합니다
    ▸ 새 페이지 추가 시:
        1. 해당 폴더 + index.html 생성
        2. 아래 배열에 항목 추가
@@ -21,7 +27,11 @@
 const NAV_ITEMS = [
   { label: "Home",         key: "home" },
   { label: "Professor",    key: "professor" },
-  { label: "Members",      key: "members" },
+  { label: "Members",      key: "members",
+    sub: [
+      { label: "Members", key: "" },
+      { label: "Alumni",  key: "alumni" },
+    ] },
   { label: "Publications", key: "publications" },
   { label: "Projects",     key: "projects" },
   { label: "News",         key: "news" },
@@ -46,10 +56,27 @@ const NAV_ITEMS = [
   // 깊이에 따라 루트까지의 상대 경로 prefix 결정
   const prefix = depth === 0 ? "" : "../".repeat(depth);
 
+  // 하위 폴더까지 들어와 있을 때, 어느 하위 메뉴에 있는지 (예: members/alumni/ → "alumni")
+  const currentSub = depth === 2 ? lastSeg : "";
+
   const items = NAV_ITEMS.map(i => {
     const href = i.key === "home" ? (prefix || "./") : `${prefix}${i.key}/`;
     const active = i.key === currentKey ? ' class="active"' : "";
-    return `<li><a href="${href}"${active}>${i.label}</a></li>`;
+
+    if (!i.sub || !i.sub.length) {
+      return `<li><a href="${href}"${active}>${i.label}</a></li>`;
+    }
+
+    const subItems = i.sub.map(s => {
+      const subHref = s.key ? `${href}${s.key}/` : href;
+      const subActive = (i.key === currentKey && s.key === currentSub) ? ' class="active"' : "";
+      return `<a href="${subHref}"${subActive}>${s.label}</a>`;
+    }).join("");
+
+    return `<li class="has-sub">
+          <a href="${href}"${active}>${i.label}<i class="nav-caret"></i></a>
+          <div class="nav-sub">${subItems}</div>
+        </li>`;
   }).join("");
 
   document.getElementById("nav-root").innerHTML = `

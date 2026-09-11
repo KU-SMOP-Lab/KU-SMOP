@@ -79,6 +79,67 @@ ul { list-style: none; }
 .nav-toggle { display: none; background: none; border: none; cursor: pointer; padding: .4rem; }
 .nav-toggle span { display: block; width: 22px; height: 2px; background: var(--ink); margin: 5px 0; transition: var(--transition); border-radius: 2px; }
 
+/* ── NAV 하위 메뉴 (마우스 올리면 펼쳐짐) ─────────────── */
+.nav-links li.has-sub { position: relative; }
+
+.nav-sub {
+  position: absolute; top: 100%; left: 50%;
+  transform: translateX(-50%) translateY(6px);
+  min-width: 168px;
+  background: #fff;
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  box-shadow: var(--shadow-md);
+  padding: .4rem;
+  display: flex; flex-direction: column; gap: .1rem;
+  opacity: 0; visibility: hidden; pointer-events: none;
+  transition: opacity .18s var(--ease), transform .18s var(--ease), visibility .18s;
+  z-index: 210;
+}
+/* 마우스를 올리거나 키보드 포커스가 들어오면 펼침 */
+.nav-links li.has-sub:hover .nav-sub,
+.nav-links li.has-sub:focus-within .nav-sub {
+  opacity: 1; visibility: visible; pointer-events: auto;
+  transform: translateX(-50%) translateY(0);
+}
+/* 메뉴와 상자 사이 빈틈에서 마우스가 빠져 닫히는 것을 막는 투명 구간 */
+.nav-sub::before {
+  content: ""; position: absolute;
+  top: -10px; left: 0; right: 0; height: 10px;
+}
+.nav-sub a {
+  display: block; padding: .5rem .85rem;
+  font-size: .88rem; letter-spacing: .04em;
+  color: var(--gray-600);
+  border-bottom: none;
+  border-radius: var(--radius-xs);
+  text-align: left;
+}
+.nav-sub a:hover { background: var(--gray-100); color: var(--navy); }
+.nav-sub a.active { background: var(--gray-100); color: var(--navy); font-weight: 700; }
+
+/* 하위 메뉴가 있다는 표시 (작은 삼각형) */
+.nav-caret {
+  display: inline-block; margin-left: .3rem;
+  border-left: 3.5px solid transparent;
+  border-right: 3.5px solid transparent;
+  border-top: 4px solid currentColor;
+  vertical-align: middle; opacity: .55;
+  transition: transform var(--transition);
+}
+.nav-links li.has-sub:hover .nav-caret { transform: rotate(180deg); opacity: 1; }
+
+/* 휴대폰에는 마우스 올리기가 없으므로 펼치지 않고 항상 보이는 목록으로 */
+@media (max-width: 640px) {
+  .nav-sub {
+    position: static; transform: none;
+    opacity: 1; visibility: visible; pointer-events: auto;
+    border: none; box-shadow: none; background: transparent;
+    padding: 0 0 0 1rem; min-width: 0;
+  }
+  .nav-caret { display: none; }
+}
+
 /* ── FOOTER ───────────────────────── */
 footer { background: #F4F5F4; padding: 3.5rem 2rem 2rem; }
 .footer-inner {
