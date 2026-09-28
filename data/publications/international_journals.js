@@ -26,6 +26,12 @@ const INTERNATIONAL_JOURNALS = [
 
   // ── 2026 ──────────────────────────────────────────────────────
   { year:2026,
+    title:"Macroscopic Multimodal Hierarchy Model in Urban Public Transit Systems: A Framework with Empirical Evidence",
+    authors:["Oh, Jongho", "Yeonwoo Jung", "Seungmo Kang", "Chungwon Lee", "Jinwoo Lee"],
+    venue:"Transportation Research Part C: Emerging Technologies", accepted:true,
+    tags:["International Journal","SCI"] },
+   
+   { year:2026,
     title:"Development of LLM-based Mobility Simulation Framework with Self-calibration for On-demand Service Analysis",
     authors:["Park, Hyuncheol", "Hyun Park", "Seungmo Kang"],
     venue:"IEEE Access · Vol. 14, pp. 77211–77224",
