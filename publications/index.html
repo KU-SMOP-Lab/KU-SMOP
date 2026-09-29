@@ -27,9 +27,9 @@
   <div class="section-inner">
     <div class="filter-bar">
       <button class="filter-btn active" data-filter="all">All</button>
-      <button class="filter-btn" data-filter="journal">International Journals</button>
+      <button class="filter-btn" data-filter="journal">SCI(E)/SSCI</button>
+      <button class="filter-btn" data-filter="conference">Top Conferences</button>
       <button class="filter-btn" data-filter="domestic">Domestic Journals</button>
-      <button class="filter-btn" data-filter="conference">Conferences</button>
       <button class="filter-btn" data-filter="book-chapter">Book Chapters</button>
       <button class="filter-btn" data-filter="patent">Patents</button>
     </div>
@@ -47,11 +47,13 @@
 <script src="../data/publications/publications.js"></script>
 <script>
 const TAG_CLASS = {
+  "SCI(E)": "tag-blue",
+  "SSCI": "tag-blue",
   "International Journal": "tag-blue",
   "Domestic Journal": "tag-orange",
-  "Conference": "tag-purple",
+  "Top Conference": "tag-purple",
   "Book Chapter": "tag-green",
-  "Patent": "", "SCI": "", "SSCI": "",
+  "Patent": "",
 };
 const SPECIAL_LABELS = { "book-chapter": "Book Chapters", "patent": "Patents" };
 
@@ -60,7 +62,8 @@ function renderAuthors(authors) {
   return authors.map(a => a.trim()).map(a => PI_NAMES.includes(a)
     ? `<strong>${a}</strong>` : a).join("; ");
 }
-const HIDDEN_TAGS = new Set(["SCI", "SSCI"]);
+// 화면에 표시하지 않을 태그가 있으면 여기에 추가
+const HIDDEN_TAGS = new Set();
 function renderTags(tags) {
   return tags.filter(t => !HIDDEN_TAGS.has(t)).map(t => `<span class="tag ${TAG_CLASS[t] || ''}">${t}</span>`).join("");
 }
