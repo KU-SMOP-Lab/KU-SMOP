@@ -121,8 +121,8 @@ const PROFESSOR = {
   ─────────────────────────────────────────────────────────── */
   services: [
     { period:"2020 – present", role:"Associate Editor",                     org:"Asian Transport Studies" },
-    { period:"2020 – present", role:"Topic Editor, Editorial Board",        org:"Applied Sciences (SCIE)" },
     { period:"2020 – present", role:"Review Editor, Editorial Board",       org:"Frontiers in Future Transportation" },
+    { period:"2020 – 2026",    role:"Topic Editor, Editorial Board",        org:"Applied Sciences (SCIE)" },
     { period:"2017 – 2020",    role:"Associate Editor",                     org:"International Journal of Urban Sciences (SSCI)" },
     { period:"2016 – 2019",    role:"National Member (대한민국 대표), TC B.3", org:"World Road Association (PIARC)" },
     { period:"2026 – 2028",       role:"결함기술분석전문위원회 위원",                        org:"한국교통안전공단" },
