@@ -52,6 +52,19 @@
 const NEWS = [
 
   // ── 2026 ──────────────────────────────────────────────────────
+  { date:"2026.10", title:"방문연구학생 Paul Lin 송별회", desc:"",
+    photos:[
+      "images/gallery/2609_Paul_Lin_송별회/261030_Paul_Lin_송별회_1.jpg",
+      "images/gallery/2609_Paul_Lin_송별회/261030_Paul_Lin_송별회_2.jpg",
+    ] },
+
+  { date:"2026.10", title:"2026 강릉 ITS 세계총회 참석 및 MT", desc:"",
+    photos:[
+      "images/gallery/2608_강릉ITS세계총회_MT/261021_강릉ITS세계총회_MT_1.jpg",
+      "images/gallery/2608_강릉ITS세계총회_MT/261021_강릉ITS세계총회_MT_2.jpg",
+      "images/gallery/2608_강릉ITS세계총회_MT/261021_강릉ITS세계총회_MT_3.jpg",
+    ] },
+
   { date:"2026.08", title:"홈커밍데이", desc:"",
     photos:[
       "images/gallery/2607_홈커밍데이/260828_홈커밍데이_3.jpg",
