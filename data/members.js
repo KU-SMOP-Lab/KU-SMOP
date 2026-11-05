@@ -189,6 +189,15 @@ const CURRENT_MEMBERS = [
     photo:    "images/members/current/주영환.jpg",
     links:    [],
   },
+  {
+    name:     "Nakwon Song",
+    nameKr:   "송낙원",
+    role:     "undergrad",
+    interest: "Research Interest: Data Analysis, Traffic Simulation, Optimization",
+    email:    "songskrdnjs@mju.ac.kr",
+    photo:    "images/members/current/송낙원.jpg",
+    links:    [],
+  },
 
 ];
 
